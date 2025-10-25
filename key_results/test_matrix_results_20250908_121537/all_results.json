@@ -1,0 +1,68 @@
+[
+  {
+    "model": "resnet50",
+    "optimizer": "adam",
+    "pruning_method": "movement",
+    "target_sparsity": 0.7,
+    "final_accuracy": 70.37,
+    "best_accuracy": 71.23,
+    "best_epoch": 85,
+    "final_sparsity": 0.6999999830936234,
+    "test_accuracy": 70.37
+  },
+  {
+    "model": "resnet50",
+    "optimizer": "adamw",
+    "pruning_method": "movement",
+    "target_sparsity": 0.7,
+    "final_accuracy": 70.04,
+    "best_accuracy": 71.34,
+    "best_epoch": 91,
+    "final_sparsity": 0.6999999830936234,
+    "test_accuracy": 70.04
+  },
+  {
+    "model": "resnet50",
+    "optimizer": "adamwadv",
+    "pruning_method": "movement",
+    "target_sparsity": 0.7,
+    "final_accuracy": 70.4,
+    "best_accuracy": 70.65,
+    "best_epoch": 93,
+    "final_sparsity": 0.6999999830936234,
+    "test_accuracy": 70.4
+  },
+  {
+    "model": "resnet50",
+    "optimizer": "adamwprune",
+    "pruning_method": "state",
+    "target_sparsity": 0.7,
+    "final_accuracy": 70.56,
+    "best_accuracy": 72.61,
+    "best_epoch": 63,
+    "final_sparsity": 0.6999999830936234,
+    "test_accuracy": 70.56
+  },
+  {
+    "model": "resnet50",
+    "optimizer": "adamwspam",
+    "pruning_method": "movement",
+    "target_sparsity": 0.7,
+    "final_accuracy": 72.18,
+    "best_accuracy": 72.18,
+    "best_epoch": 100,
+    "final_sparsity": 0.6999999830936234,
+    "test_accuracy": 72.18
+  },
+  {
+    "model": "resnet50",
+    "optimizer": "sgd",
+    "pruning_method": "movement",
+    "target_sparsity": 0.7,
+    "final_accuracy": 74.26,
+    "best_accuracy": 74.57,
+    "best_epoch": 91,
+    "final_sparsity": 0.6999999830936234,
+    "test_accuracy": 74.26
+  }
+]

@@ -1,0 +1,1129 @@
+2025-09-23 01:09:52,929 - INFO - Training configuration: gpt2_adamwspam_magnitude_50
+2025-09-23 01:09:52,930 - INFO - Starting training with GPU monitoring: gpt2_adamwspam_magnitude_50
+2025-09-23 01:09:53,009 - INFO - Started simple GPU monitoring - stats will be saved to test_matrix_results_20250923_010926/gpt2_adamwspam_magnitude_50/gpu_stats_gpt2_adamwspam_magnitude_50_20250923_010952.json
+2025-09-23 01:09:53,010 - INFO - Command: /home/mcgrof/.local/share/mamba/envs/w7900-ml/bin/python3 /data/AdamWPrune/gpt2/train.py --optimizer adamwspam --dataset finewebedu --batch-size 32 --block-size 1024 --gradient-accumulation 4 --compile --flash-attention --warmup-steps 2000 --eval-interval 500 --eval-samples 200 --decay-lr --min-lr 6e-5 --learning-rate 6e-4 --weight-decay 0.1 --pruning-method magnitude --target-sparsity 0.5 --pruning-warmup 100 --spam-theta 50.0 --spam-interval 1000 --spam-warmup-steps 1000 --spam-enable-clip --json-output /data/AdamWPrune/test_matrix_results_20250923_010926/gpt2_adamwspam_magnitude_50/training_metrics.json --tracker wandb,trackio --tracker-project tracking-e97b5
+* Trackio project initialized: adamwprune-gpt2-20250922
+* Trackio metrics logged to: /home/mcgrof/.cache/huggingface/trackio
+* View dashboard by running in your terminal:
+[1m[38;5;208mtrackio show --project "adamwprune-gpt2-20250922"[0m
+* or by running in Python: trackio.show(project="adamwprune-gpt2-20250922")
+* Created new run: gpt2_adamwspam_20250923_010956
+Initialized Trackio tracking for project: adamwprune-gpt2-20250922
+wandb: Currently logged in as: mcgrof (mcgrof-citizen) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: creating run
+wandb: Tracking run with wandb version 0.22.0
+wandb: Run data is saved locally in /data/AdamWPrune/gpt2/wandb/run-20250923_010956-z2uhbnf6
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run gpt2_adamwspam_20250923_010956
+wandb: ⭐️ View project at https://wandb.ai/mcgrof-citizen/adamwprune-gpt2-20250922
+wandb: 🚀 View run at https://wandb.ai/mcgrof-citizen/adamwprune-gpt2-20250922/runs/z2uhbnf6
+wandb: Detected [huggingface_hub.inference] in use.
+wandb: Use W&B Weave for improved LLM call tracing. Weave is installed but not imported. Add `import weave` to the top of your script.
+wandb: For more information, check out the docs at: https://weave-docs.wandb.ai/
+Initialized WandB tracking for project: adamwprune-gpt2-20250922
+Initializing GPT-2 model: gpt2
+Number of parameters: 123.69M
+Compiling model with torch.compile()...
+Setting up adamwspam optimizer...
+Setting up magnitude pruning...
+
+Starting training...
+Parameters: 123.69M
+Device: cuda, dtype: torch.bfloat16
+Batch size: 32, Gradient accumulation: 4
+Effective batch size: 128
+--------------------------------------------------
+Iter     0 | loss 1.0998 | ppl    3.00 | lr 0.00e+00 | sparsity 0.0% | 965.3ms/iter
+Validation loss: 11.0053 | ppl: 60192.33
+Saved best model (val_loss: 11.0053)
+Iter    10 | loss 10.8289 | ppl 50457.01 | lr 3.00e-06 | sparsity 0.0% | 7032.6ms/iter
+Iter    20 | loss 10.1822 | ppl 26428.68 | lr 6.00e-06 | sparsity 0.0% | 2693.3ms/iter
+Iter    30 | loss 9.7349 | ppl 16897.31 | lr 9.00e-06 | sparsity 0.0% | 2695.2ms/iter
+Iter    40 | loss 9.5231 | ppl 13672.39 | lr 1.20e-05 | sparsity 0.0% | 2696.6ms/iter
+Iter    50 | loss 9.3012 | ppl 10951.41 | lr 1.50e-05 | sparsity 0.0% | 2698.1ms/iter
+Iter    60 | loss 9.0543 | ppl 8555.31 | lr 1.80e-05 | sparsity 0.0% | 2703.2ms/iter
+Iter    70 | loss 8.8030 | ppl 6654.21 | lr 2.10e-05 | sparsity 0.0% | 2703.5ms/iter
+Iter    80 | loss 8.5745 | ppl 5294.72 | lr 2.40e-05 | sparsity 0.0% | 2704.2ms/iter
+Iter    90 | loss 8.3288 | ppl 4141.56 | lr 2.70e-05 | sparsity 0.0% | 2707.7ms/iter
+Iter   100 | loss 8.0630 | ppl 3174.80 | lr 3.00e-05 | sparsity 0.0% | 2712.2ms/iter
+Iter   110 | loss 7.8477 | ppl 2559.92 | lr 3.30e-05 | sparsity 0.1% | 3186.2ms/iter
+Iter   120 | loss 7.6789 | ppl 2162.30 | lr 3.60e-05 | sparsity 0.1% | 3261.6ms/iter
+Iter   130 | loss 7.5809 | ppl 1960.45 | lr 3.90e-05 | sparsity 0.2% | 3242.1ms/iter
+Iter   140 | loss 7.4399 | ppl 1702.58 | lr 4.20e-05 | sparsity 0.2% | 3285.8ms/iter
+Iter   150 | loss 7.3324 | ppl 1529.11 | lr 4.50e-05 | sparsity 0.3% | 3292.0ms/iter
+Iter   160 | loss 7.2338 | ppl 1385.41 | lr 4.80e-05 | sparsity 0.3% | 3279.3ms/iter
+Iter   170 | loss 7.1621 | ppl 1289.62 | lr 5.10e-05 | sparsity 0.4% | 3304.9ms/iter
+Iter   180 | loss 7.1320 | ppl 1251.42 | lr 5.40e-05 | sparsity 0.4% | 3278.4ms/iter
+Iter   190 | loss 7.0651 | ppl 1170.38 | lr 5.70e-05 | sparsity 0.5% | 3291.5ms/iter
+Iter   200 | loss 7.0071 | ppl 1104.43 | lr 6.00e-05 | sparsity 0.5% | 3276.8ms/iter
+Iter   210 | loss 6.9759 | ppl 1070.54 | lr 6.30e-05 | sparsity 0.6% | 3293.6ms/iter
+Iter   220 | loss 6.9269 | ppl 1019.33 | lr 6.60e-05 | sparsity 0.6% | 3272.9ms/iter
+Iter   230 | loss 6.8750 | ppl  967.77 | lr 6.90e-05 | sparsity 0.7% | 3298.3ms/iter
+Iter   240 | loss 6.8129 | ppl  909.51 | lr 7.20e-05 | sparsity 0.7% | 3279.9ms/iter
+Iter   250 | loss 6.7713 | ppl  872.45 | lr 7.50e-05 | sparsity 0.8% | 3284.3ms/iter
+Iter   260 | loss 6.7603 | ppl  862.87 | lr 7.80e-05 | sparsity 0.8% | 3291.1ms/iter
+Iter   270 | loss 6.7140 | ppl  823.86 | lr 8.10e-05 | sparsity 0.9% | 3283.2ms/iter
+Iter   280 | loss 6.6664 | ppl  785.56 | lr 8.40e-05 | sparsity 0.9% | 3298.4ms/iter
+Iter   290 | loss 6.6197 | ppl  749.70 | lr 8.70e-05 | sparsity 1.0% | 3268.0ms/iter
+Iter   300 | loss 6.5960 | ppl  732.16 | lr 9.00e-05 | sparsity 1.0% | 3285.1ms/iter
+Iter   310 | loss 6.5493 | ppl  698.75 | lr 9.30e-05 | sparsity 1.1% | 3301.4ms/iter
+Iter   320 | loss 6.5246 | ppl  681.72 | lr 9.60e-05 | sparsity 1.1% | 3282.3ms/iter
+Iter   330 | loss 6.4883 | ppl  657.41 | lr 9.90e-05 | sparsity 1.2% | 3290.8ms/iter
+Iter   340 | loss 6.4667 | ppl  643.39 | lr 1.02e-04 | sparsity 1.2% | 3290.0ms/iter
+Iter   350 | loss 6.4180 | ppl  612.79 | lr 1.05e-04 | sparsity 1.3% | 3296.1ms/iter
+Iter   360 | loss 6.4067 | ppl  605.90 | lr 1.08e-04 | sparsity 1.3% | 3266.2ms/iter
+Iter   370 | loss 6.3642 | ppl  580.69 | lr 1.11e-04 | sparsity 1.4% | 3284.8ms/iter
+Iter   380 | loss 6.3418 | ppl  567.85 | lr 1.14e-04 | sparsity 1.4% | 3322.2ms/iter
+Iter   390 | loss 6.2946 | ppl  541.66 | lr 1.17e-04 | sparsity 1.5% | 3304.1ms/iter
+Iter   400 | loss 6.2678 | ppl  527.31 | lr 1.20e-04 | sparsity 1.5% | 3267.8ms/iter
+Iter   410 | loss 6.2489 | ppl  517.43 | lr 1.23e-04 | sparsity 1.6% | 3287.6ms/iter
+Iter   420 | loss 6.2061 | ppl  495.75 | lr 1.26e-04 | sparsity 1.6% | 3260.3ms/iter
+Iter   430 | loss 6.1946 | ppl  490.10 | lr 1.29e-04 | sparsity 1.7% | 3258.7ms/iter
+Iter   440 | loss 6.1783 | ppl  482.15 | lr 1.32e-04 | sparsity 1.7% | 3265.5ms/iter
+Iter   450 | loss 6.1713 | ppl  478.80 | lr 1.35e-04 | sparsity 1.8% | 3266.6ms/iter
+Iter   460 | loss 6.1268 | ppl  457.99 | lr 1.38e-04 | sparsity 1.8% | 3271.7ms/iter
+Iter   470 | loss 6.1263 | ppl  457.74 | lr 1.41e-04 | sparsity 1.9% | 3276.1ms/iter
+Iter   480 | loss 6.1124 | ppl  451.41 | lr 1.44e-04 | sparsity 1.9% | 3260.9ms/iter
+Iter   490 | loss 6.0875 | ppl  440.32 | lr 1.47e-04 | sparsity 2.0% | 3253.2ms/iter
+Iter   500 | loss 6.0668 | ppl  431.29 | lr 1.50e-04 | sparsity 2.0% | 3261.2ms/iter
+Validation loss: 5.9810 | ppl: 395.82
+Saved best model (val_loss: 5.9810)
+Iter   510 | loss 6.0579 | ppl  427.49 | lr 1.53e-04 | sparsity 2.1% | 7699.1ms/iter
+Iter   520 | loss 6.0661 | ppl  431.00 | lr 1.56e-04 | sparsity 2.1% | 3365.4ms/iter
+Iter   530 | loss 6.0492 | ppl  423.77 | lr 1.59e-04 | sparsity 2.2% | 3339.4ms/iter
+Iter   540 | loss 6.0485 | ppl  423.47 | lr 1.62e-04 | sparsity 2.2% | 3364.5ms/iter
+Iter   550 | loss 6.0355 | ppl  418.01 | lr 1.65e-04 | sparsity 2.3% | 3367.9ms/iter
+Iter   560 | loss 6.0317 | ppl  416.44 | lr 1.68e-04 | sparsity 2.3% | 3377.6ms/iter
+Iter   570 | loss 6.0103 | ppl  407.62 | lr 1.71e-04 | sparsity 2.4% | 3351.1ms/iter
+Iter   580 | loss 6.0156 | ppl  409.78 | lr 1.74e-04 | sparsity 2.4% | 3363.8ms/iter
+Iter   590 | loss 6.0124 | ppl  408.47 | lr 1.77e-04 | sparsity 2.5% | 3375.5ms/iter
+Iter   600 | loss 6.0131 | ppl  408.74 | lr 1.80e-04 | sparsity 2.5% | 3361.1ms/iter
+Iter   610 | loss 5.9903 | ppl  399.55 | lr 1.83e-04 | sparsity 2.6% | 3332.3ms/iter
+Iter   620 | loss 5.9875 | ppl  398.43 | lr 1.86e-04 | sparsity 2.6% | 3324.4ms/iter
+Iter   630 | loss 5.9870 | ppl  398.21 | lr 1.89e-04 | sparsity 2.7% | 3299.4ms/iter
+Iter   640 | loss 5.9852 | ppl  397.49 | lr 1.92e-04 | sparsity 2.7% | 3319.1ms/iter
+Iter   650 | loss 5.9866 | ppl  398.07 | lr 1.95e-04 | sparsity 2.8% | 3325.0ms/iter
+Iter   660 | loss 5.9728 | ppl  392.62 | lr 1.98e-04 | sparsity 2.8% | 3317.0ms/iter
+Iter   670 | loss 5.9725 | ppl  392.48 | lr 2.01e-04 | sparsity 2.9% | 3302.7ms/iter
+Iter   680 | loss 5.9486 | ppl  383.23 | lr 2.04e-04 | sparsity 2.9% | 3283.6ms/iter
+Iter   690 | loss 5.9489 | ppl  383.34 | lr 2.07e-04 | sparsity 3.0% | 3285.1ms/iter
+Iter   700 | loss 5.9446 | ppl  381.71 | lr 2.10e-04 | sparsity 3.0% | 3260.2ms/iter
+Iter   710 | loss 5.9285 | ppl  375.57 | lr 2.13e-04 | sparsity 3.1% | 3292.7ms/iter
+Iter   720 | loss 5.9369 | ppl  378.76 | lr 2.16e-04 | sparsity 3.1% | 3275.3ms/iter
+Iter   730 | loss 5.9364 | ppl  378.57 | lr 2.19e-04 | sparsity 3.2% | 3272.0ms/iter
+Iter   740 | loss 5.9244 | ppl  374.06 | lr 2.22e-04 | sparsity 3.2% | 3293.1ms/iter
+Iter   750 | loss 5.9263 | ppl  374.76 | lr 2.25e-04 | sparsity 3.3% | 3295.3ms/iter
+Iter   760 | loss 5.9121 | ppl  369.46 | lr 2.28e-04 | sparsity 3.3% | 3264.6ms/iter
+Iter   770 | loss 5.9109 | ppl  369.04 | lr 2.31e-04 | sparsity 3.4% | 3259.5ms/iter
+Iter   780 | loss 5.9066 | ppl  367.46 | lr 2.34e-04 | sparsity 3.4% | 3296.9ms/iter
+Iter   790 | loss 5.9152 | ppl  370.63 | lr 2.37e-04 | sparsity 3.5% | 3274.0ms/iter
+Iter   800 | loss 5.8938 | ppl  362.78 | lr 2.40e-04 | sparsity 3.5% | 3272.2ms/iter
+Iter   810 | loss 5.9173 | ppl  371.42 | lr 2.43e-04 | sparsity 3.6% | 3293.3ms/iter
+Iter   820 | loss 5.9153 | ppl  370.66 | lr 2.46e-04 | sparsity 3.6% | 3271.6ms/iter
+Iter   830 | loss 5.8989 | ppl  364.62 | lr 2.49e-04 | sparsity 3.7% | 3306.1ms/iter
+Iter   840 | loss 5.9225 | ppl  373.35 | lr 2.52e-04 | sparsity 3.7% | 3283.6ms/iter
+Iter   850 | loss 5.9280 | ppl  375.41 | lr 2.55e-04 | sparsity 3.8% | 3295.1ms/iter
+Iter   860 | loss 5.9304 | ppl  376.29 | lr 2.58e-04 | sparsity 3.8% | 3276.3ms/iter
+Iter   870 | loss 5.9499 | ppl  383.71 | lr 2.61e-04 | sparsity 3.9% | 3295.5ms/iter
+Iter   880 | loss 5.9267 | ppl  374.92 | lr 2.64e-04 | sparsity 3.9% | 3278.4ms/iter
+Iter   890 | loss 5.9292 | ppl  375.84 | lr 2.67e-04 | sparsity 4.0% | 3283.6ms/iter
+Iter   900 | loss 5.8738 | ppl  355.58 | lr 2.70e-04 | sparsity 4.0% | 3286.8ms/iter
+Iter   910 | loss 5.8634 | ppl  351.90 | lr 2.73e-04 | sparsity 4.1% | 3269.9ms/iter
+Iter   920 | loss 5.8645 | ppl  352.31 | lr 2.76e-04 | sparsity 4.1% | 3282.0ms/iter
+Iter   930 | loss 5.8378 | ppl  343.03 | lr 2.79e-04 | sparsity 4.2% | 3276.3ms/iter
+Iter   940 | loss 5.8088 | ppl  333.21 | lr 2.82e-04 | sparsity 4.2% | 3279.2ms/iter
+Iter   950 | loss 5.7997 | ppl  330.19 | lr 2.85e-04 | sparsity 4.3% | 3283.2ms/iter
+Iter   960 | loss 5.7775 | ppl  322.95 | lr 2.88e-04 | sparsity 4.3% | 3272.1ms/iter
+Iter   970 | loss 5.7373 | ppl  310.21 | lr 2.91e-04 | sparsity 4.4% | 3288.3ms/iter
+Iter   980 | loss 5.7088 | ppl  301.50 | lr 2.94e-04 | sparsity 4.4% | 3273.9ms/iter
+Iter   990 | loss 5.6696 | ppl  289.92 | lr 2.97e-04 | sparsity 4.5% | 3302.4ms/iter
+Iter  1000 | loss 5.6200 | ppl  275.88 | lr 3.00e-04 | sparsity 4.5% | 3298.6ms/iter
+Validation loss: 5.5095 | ppl: 247.02
+Saved best model (val_loss: 5.5095)
+Iter  1010 | loss 5.5864 | ppl  266.78 | lr 3.03e-04 | sparsity 4.6% | 7696.1ms/iter
+Iter  1020 | loss 5.5912 | ppl  268.07 | lr 3.06e-04 | sparsity 4.6% | 3367.3ms/iter
+Iter  1030 | loss 5.5724 | ppl  263.07 | lr 3.09e-04 | sparsity 4.7% | 3363.7ms/iter
+Iter  1040 | loss 5.5683 | ppl  261.98 | lr 3.12e-04 | sparsity 4.7% | 3382.0ms/iter
+Iter  1050 | loss 5.5573 | ppl  259.12 | lr 3.15e-04 | sparsity 4.8% | 3373.0ms/iter
+Iter  1060 | loss 5.5388 | ppl  254.37 | lr 3.18e-04 | sparsity 4.8% | 3344.4ms/iter
+Iter  1070 | loss 5.5488 | ppl  256.92 | lr 3.21e-04 | sparsity 4.9% | 3341.8ms/iter
+Iter  1080 | loss 5.5255 | ppl  251.00 | lr 3.24e-04 | sparsity 4.9% | 3346.7ms/iter
+Iter  1090 | loss 5.5150 | ppl  248.38 | lr 3.27e-04 | sparsity 5.0% | 3321.5ms/iter
+Iter  1100 | loss 5.5004 | ppl  244.79 | lr 3.30e-04 | sparsity 5.1% | 3294.3ms/iter
+Iter  1110 | loss 5.4990 | ppl  244.44 | lr 3.33e-04 | sparsity 5.1% | 3313.5ms/iter
+Iter  1120 | loss 5.5012 | ppl  244.99 | lr 3.36e-04 | sparsity 5.2% | 3283.7ms/iter
+Iter  1130 | loss 5.4852 | ppl  241.09 | lr 3.39e-04 | sparsity 5.2% | 3281.9ms/iter
+Iter  1140 | loss 5.4754 | ppl  238.75 | lr 3.42e-04 | sparsity 5.3% | 3293.3ms/iter
+Iter  1150 | loss 5.4756 | ppl  238.80 | lr 3.45e-04 | sparsity 5.3% | 3265.6ms/iter
+Iter  1160 | loss 5.4740 | ppl  238.42 | lr 3.48e-04 | sparsity 5.4% | 3290.1ms/iter
+Iter  1170 | loss 5.4476 | ppl  232.20 | lr 3.51e-04 | sparsity 5.4% | 3296.5ms/iter
+Iter  1180 | loss 5.4444 | ppl  231.46 | lr 3.54e-04 | sparsity 5.5% | 3285.0ms/iter
+Iter  1190 | loss 5.4397 | ppl  230.37 | lr 3.57e-04 | sparsity 5.5% | 3282.8ms/iter
+Iter  1200 | loss 5.4027 | ppl  222.01 | lr 3.60e-04 | sparsity 5.6% | 3298.5ms/iter
+Iter  1210 | loss 5.4169 | ppl  225.19 | lr 3.63e-04 | sparsity 5.6% | 3287.9ms/iter
+Iter  1220 | loss 5.4213 | ppl  226.17 | lr 3.66e-04 | sparsity 5.7% | 3284.8ms/iter
+Iter  1230 | loss 5.3910 | ppl  219.43 | lr 3.69e-04 | sparsity 5.7% | 3323.6ms/iter
+Iter  1240 | loss 5.3901 | ppl  219.23 | lr 3.72e-04 | sparsity 5.8% | 3264.0ms/iter
+Iter  1250 | loss 5.3854 | ppl  218.20 | lr 3.75e-04 | sparsity 5.8% | 3279.2ms/iter
+Iter  1260 | loss 5.3839 | ppl  217.87 | lr 3.78e-04 | sparsity 5.9% | 3269.6ms/iter
+Iter  1270 | loss 5.3811 | ppl  217.26 | lr 3.81e-04 | sparsity 5.9% | 3285.7ms/iter
+Iter  1280 | loss 5.3669 | ppl  214.20 | lr 3.84e-04 | sparsity 6.0% | 3289.4ms/iter
+Iter  1290 | loss 5.3469 | ppl  209.95 | lr 3.87e-04 | sparsity 6.0% | 3279.4ms/iter
+Iter  1300 | loss 5.3434 | ppl  209.22 | lr 3.90e-04 | sparsity 6.1% | 3304.1ms/iter
+Iter  1310 | loss 5.3360 | ppl  207.67 | lr 3.93e-04 | sparsity 6.1% | 3294.3ms/iter
+Iter  1320 | loss 5.3379 | ppl  208.07 | lr 3.96e-04 | sparsity 6.2% | 3315.5ms/iter
+Iter  1330 | loss 5.3432 | ppl  209.18 | lr 3.99e-04 | sparsity 6.2% | 3274.9ms/iter
+Iter  1340 | loss 5.3274 | ppl  205.90 | lr 4.02e-04 | sparsity 6.3% | 3294.5ms/iter
+Iter  1350 | loss 5.3296 | ppl  206.36 | lr 4.05e-04 | sparsity 6.3% | 3281.3ms/iter
+Iter  1360 | loss 5.3278 | ppl  205.98 | lr 4.08e-04 | sparsity 6.4% | 3309.1ms/iter
+Iter  1370 | loss 5.3157 | ppl  203.50 | lr 4.11e-04 | sparsity 6.4% | 3279.4ms/iter
+Iter  1380 | loss 5.3128 | ppl  202.92 | lr 4.14e-04 | sparsity 6.5% | 3286.4ms/iter
+Iter  1390 | loss 5.3162 | ppl  203.62 | lr 4.17e-04 | sparsity 6.5% | 3307.5ms/iter
+Iter  1400 | loss 5.3070 | ppl  201.74 | lr 4.20e-04 | sparsity 6.6% | 3292.6ms/iter
+Iter  1410 | loss 5.3185 | ppl  204.07 | lr 4.23e-04 | sparsity 6.6% | 3285.9ms/iter
+Iter  1420 | loss 5.3166 | ppl  203.70 | lr 4.26e-04 | sparsity 6.7% | 3275.7ms/iter
+Iter  1430 | loss 5.3032 | ppl  200.97 | lr 4.29e-04 | sparsity 6.7% | 3301.4ms/iter
+Iter  1440 | loss 5.2984 | ppl  200.02 | lr 4.32e-04 | sparsity 6.8% | 3272.1ms/iter
+Iter  1450 | loss 5.3025 | ppl  200.84 | lr 4.35e-04 | sparsity 6.8% | 3307.1ms/iter
+Iter  1460 | loss 5.2826 | ppl  196.88 | lr 4.38e-04 | sparsity 6.9% | 3266.9ms/iter
+Iter  1470 | loss 5.2908 | ppl  198.50 | lr 4.41e-04 | sparsity 6.9% | 3292.9ms/iter
+Iter  1480 | loss 5.2849 | ppl  197.33 | lr 4.44e-04 | sparsity 7.0% | 3285.5ms/iter
+Iter  1490 | loss 5.2752 | ppl  195.43 | lr 4.47e-04 | sparsity 7.0% | 3315.6ms/iter
+Iter  1500 | loss 5.2864 | ppl  197.63 | lr 4.50e-04 | sparsity 7.1% | 3313.7ms/iter
+Validation loss: 5.1453 | ppl: 171.63
+Saved best model (val_loss: 5.1453)
+Iter  1510 | loss 5.2734 | ppl  195.07 | lr 4.53e-04 | sparsity 7.1% | 7727.0ms/iter
+Iter  1520 | loss 5.2475 | ppl  190.09 | lr 4.56e-04 | sparsity 7.2% | 3377.3ms/iter
+Iter  1530 | loss 5.2003 | ppl  181.32 | lr 4.59e-04 | sparsity 7.2% | 3349.7ms/iter
+Iter  1540 | loss 5.1816 | ppl  177.96 | lr 4.62e-04 | sparsity 7.3% | 3362.7ms/iter
+Iter  1550 | loss 5.1726 | ppl  176.37 | lr 4.65e-04 | sparsity 7.3% | 3349.0ms/iter
+Iter  1560 | loss 5.1665 | ppl  175.30 | lr 4.68e-04 | sparsity 7.4% | 3347.4ms/iter
+Iter  1570 | loss 5.1352 | ppl  169.89 | lr 4.71e-04 | sparsity 7.4% | 3335.6ms/iter
+Iter  1580 | loss 5.1339 | ppl  169.69 | lr 4.74e-04 | sparsity 7.5% | 3288.4ms/iter
+Iter  1590 | loss 5.1235 | ppl  167.93 | lr 4.77e-04 | sparsity 7.5% | 3281.0ms/iter
+Iter  1600 | loss 5.1259 | ppl  168.33 | lr 4.80e-04 | sparsity 7.6% | 3306.2ms/iter
+Iter  1610 | loss 5.1206 | ppl  167.44 | lr 4.83e-04 | sparsity 7.6% | 3295.6ms/iter
+Iter  1620 | loss 5.1232 | ppl  167.88 | lr 4.86e-04 | sparsity 7.7% | 3303.0ms/iter
+Iter  1630 | loss 5.1076 | ppl  165.27 | lr 4.89e-04 | sparsity 7.7% | 3302.5ms/iter
+Iter  1640 | loss 5.0860 | ppl  161.74 | lr 4.92e-04 | sparsity 7.8% | 3271.7ms/iter
+Iter  1650 | loss 5.0852 | ppl  161.61 | lr 4.95e-04 | sparsity 7.8% | 3290.8ms/iter
+Iter  1660 | loss 5.0866 | ppl  161.84 | lr 4.98e-04 | sparsity 7.9% | 3277.0ms/iter
+Iter  1670 | loss 5.0771 | ppl  160.31 | lr 5.01e-04 | sparsity 7.9% | 3299.9ms/iter
+Iter  1680 | loss 5.0615 | ppl  157.83 | lr 5.04e-04 | sparsity 8.0% | 3292.8ms/iter
+Iter  1690 | loss 5.0640 | ppl  158.23 | lr 5.07e-04 | sparsity 8.0% | 3288.0ms/iter
+Iter  1700 | loss 5.0581 | ppl  157.29 | lr 5.10e-04 | sparsity 8.1% | 3307.5ms/iter
+Iter  1710 | loss 5.0497 | ppl  155.98 | lr 5.13e-04 | sparsity 8.1% | 3283.7ms/iter
+Iter  1720 | loss 5.0576 | ppl  157.21 | lr 5.16e-04 | sparsity 8.2% | 3302.2ms/iter
+Iter  1730 | loss 5.0308 | ppl  153.05 | lr 5.19e-04 | sparsity 8.2% | 3287.6ms/iter
+Iter  1740 | loss 5.0466 | ppl  155.50 | lr 5.22e-04 | sparsity 8.3% | 3317.9ms/iter
+Iter  1750 | loss 5.0289 | ppl  152.77 | lr 5.25e-04 | sparsity 8.3% | 3281.5ms/iter
+Iter  1760 | loss 5.0315 | ppl  153.17 | lr 5.28e-04 | sparsity 8.4% | 3265.2ms/iter
+Iter  1770 | loss 5.0306 | ppl  153.02 | lr 5.31e-04 | sparsity 8.4% | 3265.8ms/iter
+Iter  1780 | loss 5.0117 | ppl  150.16 | lr 5.34e-04 | sparsity 8.5% | 3293.6ms/iter
+Iter  1790 | loss 5.0349 | ppl  153.69 | lr 5.37e-04 | sparsity 8.5% | 3303.2ms/iter
+Iter  1800 | loss 5.0389 | ppl  154.31 | lr 5.40e-04 | sparsity 8.6% | 3282.7ms/iter
+Iter  1810 | loss 5.0542 | ppl  156.67 | lr 5.43e-04 | sparsity 8.6% | 3288.7ms/iter
+Iter  1820 | loss 5.0699 | ppl  159.15 | lr 5.46e-04 | sparsity 8.7% | 3265.7ms/iter
+Iter  1830 | loss 5.0533 | ppl  156.54 | lr 5.49e-04 | sparsity 8.7% | 3319.6ms/iter
+Iter  1840 | loss 5.0481 | ppl  155.72 | lr 5.52e-04 | sparsity 8.8% | 3276.9ms/iter
+Iter  1850 | loss 5.0655 | ppl  158.46 | lr 5.55e-04 | sparsity 8.8% | 3266.5ms/iter
+Iter  1860 | loss 5.0728 | ppl  159.62 | lr 5.58e-04 | sparsity 8.9% | 3272.8ms/iter
+Iter  1870 | loss 5.1073 | ppl  165.23 | lr 5.61e-04 | sparsity 8.9% | 3287.8ms/iter
+Iter  1880 | loss 5.1075 | ppl  165.26 | lr 5.64e-04 | sparsity 9.0% | 3288.2ms/iter
+Iter  1890 | loss 5.1451 | ppl  171.58 | lr 5.67e-04 | sparsity 9.0% | 3288.6ms/iter
+Iter  1900 | loss 5.1453 | ppl  171.62 | lr 5.70e-04 | sparsity 9.1% | 3273.8ms/iter
+Iter  1910 | loss 5.1499 | ppl  172.42 | lr 5.73e-04 | sparsity 9.1% | 3274.9ms/iter
+Iter  1920 | loss 5.1541 | ppl  173.14 | lr 5.76e-04 | sparsity 9.2% | 3285.8ms/iter
+Iter  1930 | loss 5.1794 | ppl  177.58 | lr 5.79e-04 | sparsity 9.2% | 3304.6ms/iter
+Iter  1940 | loss 5.2106 | ppl  183.21 | lr 5.82e-04 | sparsity 9.3% | 3277.8ms/iter
+Iter  1950 | loss 5.2107 | ppl  183.21 | lr 5.85e-04 | sparsity 9.3% | 3283.2ms/iter
+Iter  1960 | loss 5.2331 | ppl  187.38 | lr 5.88e-04 | sparsity 9.4% | 3292.7ms/iter
+Iter  1970 | loss 5.2431 | ppl  189.26 | lr 5.91e-04 | sparsity 9.4% | 3283.6ms/iter
+Iter  1980 | loss 5.2447 | ppl  189.56 | lr 5.94e-04 | sparsity 9.5% | 3312.1ms/iter
+Iter  1990 | loss 5.2598 | ppl  192.44 | lr 5.97e-04 | sparsity 9.5% | 3275.3ms/iter
+Iter  2000 | loss 5.2962 | ppl  199.57 | lr 6.00e-04 | sparsity 9.6% | 3305.1ms/iter
+Validation loss: 5.1458 | ppl: 171.72
+Iter  2010 | loss 5.2638 | ppl  193.21 | lr 6.00e-04 | sparsity 9.6% | 7538.7ms/iter
+Iter  2020 | loss 5.2198 | ppl  184.89 | lr 6.00e-04 | sparsity 9.7% | 3350.4ms/iter
+Iter  2030 | loss 5.1442 | ppl  171.44 | lr 6.00e-04 | sparsity 9.7% | 3364.0ms/iter
+Iter  2040 | loss 5.0631 | ppl  158.09 | lr 6.00e-04 | sparsity 9.8% | 3308.9ms/iter
+Iter  2050 | loss 5.0439 | ppl  155.08 | lr 6.00e-04 | sparsity 9.8% | 3315.5ms/iter
+Iter  2060 | loss 5.0166 | ppl  150.90 | lr 6.00e-04 | sparsity 9.9% | 3264.8ms/iter
+Iter  2070 | loss 4.9924 | ppl  147.29 | lr 6.00e-04 | sparsity 9.9% | 3278.2ms/iter
+Iter  2080 | loss 4.9765 | ppl  144.96 | lr 6.00e-04 | sparsity 10.0% | 3278.9ms/iter
+Iter  2090 | loss 4.9413 | ppl  139.95 | lr 6.00e-04 | sparsity 10.1% | 3285.0ms/iter
+Iter  2100 | loss 4.9173 | ppl  136.64 | lr 6.00e-04 | sparsity 10.1% | 3274.9ms/iter
+Iter  2110 | loss 4.9144 | ppl  136.24 | lr 6.00e-04 | sparsity 10.2% | 3308.7ms/iter
+Iter  2120 | loss 4.9002 | ppl  134.32 | lr 6.00e-04 | sparsity 10.2% | 3276.9ms/iter
+Iter  2130 | loss 4.8614 | ppl  129.21 | lr 6.00e-04 | sparsity 10.3% | 3284.1ms/iter
+Iter  2140 | loss 4.8514 | ppl  127.91 | lr 6.00e-04 | sparsity 10.3% | 3304.2ms/iter
+Iter  2150 | loss 4.8377 | ppl  126.18 | lr 6.00e-04 | sparsity 10.4% | 3276.4ms/iter
+Iter  2160 | loss 4.8215 | ppl  124.16 | lr 5.99e-04 | sparsity 10.4% | 3278.4ms/iter
+Iter  2170 | loss 4.8191 | ppl  123.86 | lr 5.99e-04 | sparsity 10.5% | 3278.8ms/iter
+Iter  2180 | loss 4.7935 | ppl  120.72 | lr 5.99e-04 | sparsity 10.5% | 3313.9ms/iter
+Iter  2190 | loss 4.7915 | ppl  120.49 | lr 5.99e-04 | sparsity 10.6% | 3277.6ms/iter
+Iter  2200 | loss 4.7901 | ppl  120.32 | lr 5.99e-04 | sparsity 10.6% | 3297.7ms/iter
+Iter  2210 | loss 4.7709 | ppl  118.03 | lr 5.99e-04 | sparsity 10.7% | 3295.5ms/iter
+Iter  2220 | loss 4.7602 | ppl  116.77 | lr 5.99e-04 | sparsity 10.7% | 3312.8ms/iter
+Iter  2230 | loss 4.7598 | ppl  116.72 | lr 5.99e-04 | sparsity 10.8% | 3297.3ms/iter
+Iter  2240 | loss 4.7630 | ppl  117.09 | lr 5.99e-04 | sparsity 10.8% | 3282.2ms/iter
+Iter  2250 | loss 4.7546 | ppl  116.12 | lr 5.99e-04 | sparsity 10.9% | 3291.7ms/iter
+Iter  2260 | loss 4.7252 | ppl  112.75 | lr 5.99e-04 | sparsity 10.9% | 3291.2ms/iter
+Iter  2270 | loss 4.7373 | ppl  114.12 | lr 5.98e-04 | sparsity 11.0% | 3297.7ms/iter
+Iter  2280 | loss 4.7051 | ppl  110.51 | lr 5.98e-04 | sparsity 11.0% | 3321.2ms/iter
+Iter  2290 | loss 4.7196 | ppl  112.13 | lr 5.98e-04 | sparsity 11.1% | 3318.3ms/iter
+Iter  2300 | loss 4.7162 | ppl  111.74 | lr 5.98e-04 | sparsity 11.1% | 3335.6ms/iter
+Iter  2310 | loss 4.7287 | ppl  113.15 | lr 5.98e-04 | sparsity 11.2% | 3300.9ms/iter
+Iter  2320 | loss 4.7191 | ppl  112.07 | lr 5.98e-04 | sparsity 11.2% | 3309.0ms/iter
+Iter  2330 | loss 4.7333 | ppl  113.67 | lr 5.98e-04 | sparsity 11.3% | 3308.7ms/iter
+Iter  2340 | loss 4.7300 | ppl  113.29 | lr 5.98e-04 | sparsity 11.3% | 3297.0ms/iter
+Iter  2350 | loss 4.7393 | ppl  114.36 | lr 5.97e-04 | sparsity 11.4% | 3325.7ms/iter
+Iter  2360 | loss 4.7262 | ppl  112.87 | lr 5.97e-04 | sparsity 11.4% | 3270.3ms/iter
+Iter  2370 | loss 4.7309 | ppl  113.40 | lr 5.97e-04 | sparsity 11.5% | 3293.1ms/iter
+Iter  2380 | loss 4.7065 | ppl  110.67 | lr 5.97e-04 | sparsity 11.5% | 3291.3ms/iter
+Iter  2390 | loss 4.7448 | ppl  114.99 | lr 5.97e-04 | sparsity 11.6% | 3292.6ms/iter
+Iter  2400 | loss 4.7254 | ppl  112.78 | lr 5.97e-04 | sparsity 11.6% | 3267.7ms/iter
+Iter  2410 | loss 4.7570 | ppl  116.39 | lr 5.97e-04 | sparsity 11.7% | 3260.6ms/iter
+Iter  2420 | loss 4.7411 | ppl  114.56 | lr 5.96e-04 | sparsity 11.7% | 3289.7ms/iter
+Iter  2430 | loss 4.7474 | ppl  115.29 | lr 5.96e-04 | sparsity 11.8% | 3282.6ms/iter
+Iter  2440 | loss 4.7697 | ppl  117.88 | lr 5.96e-04 | sparsity 11.8% | 3283.9ms/iter
+Iter  2450 | loss 4.7761 | ppl  118.64 | lr 5.96e-04 | sparsity 11.9% | 3275.7ms/iter
+Iter  2460 | loss 4.7397 | ppl  114.40 | lr 5.96e-04 | sparsity 11.9% | 3277.9ms/iter
+Iter  2470 | loss 4.7893 | ppl  120.21 | lr 5.95e-04 | sparsity 12.0% | 3281.3ms/iter
+Iter  2480 | loss 4.7682 | ppl  117.71 | lr 5.95e-04 | sparsity 12.0% | 3268.7ms/iter
+Iter  2490 | loss 4.7777 | ppl  118.83 | lr 5.95e-04 | sparsity 12.1% | 3266.0ms/iter
+Iter  2500 | loss 4.7741 | ppl  118.40 | lr 5.95e-04 | sparsity 12.1% | 3281.0ms/iter
+Validation loss: 4.6659 | ppl: 106.26
+Saved best model (val_loss: 4.6659)
+Iter  2510 | loss 4.7769 | ppl  118.73 | lr 5.95e-04 | sparsity 12.2% | 7723.3ms/iter
+Iter  2520 | loss 4.7726 | ppl  118.23 | lr 5.94e-04 | sparsity 12.2% | 3368.5ms/iter
+Iter  2530 | loss 4.7238 | ppl  112.59 | lr 5.94e-04 | sparsity 12.3% | 3392.7ms/iter
+Iter  2540 | loss 4.6750 | ppl  107.23 | lr 5.94e-04 | sparsity 12.3% | 3362.6ms/iter
+Iter  2550 | loss 4.6620 | ppl  105.85 | lr 5.94e-04 | sparsity 12.4% | 3347.4ms/iter
+Iter  2560 | loss 4.6180 | ppl  101.29 | lr 5.93e-04 | sparsity 12.4% | 3368.0ms/iter
+Iter  2570 | loss 4.6183 | ppl  101.32 | lr 5.93e-04 | sparsity 12.5% | 3341.9ms/iter
+Iter  2580 | loss 4.6006 | ppl   99.54 | lr 5.93e-04 | sparsity 12.5% | 3311.8ms/iter
+Iter  2590 | loss 4.5909 | ppl   98.58 | lr 5.93e-04 | sparsity 12.6% | 3274.4ms/iter
+Iter  2600 | loss 4.5816 | ppl   97.67 | lr 5.93e-04 | sparsity 12.6% | 3311.8ms/iter
+Iter  2610 | loss 4.5599 | ppl   95.57 | lr 5.92e-04 | sparsity 12.7% | 3294.5ms/iter
+Iter  2620 | loss 4.5478 | ppl   94.42 | lr 5.92e-04 | sparsity 12.7% | 3297.8ms/iter
+Iter  2630 | loss 4.5482 | ppl   94.46 | lr 5.92e-04 | sparsity 12.8% | 3275.6ms/iter
+Iter  2640 | loss 4.5266 | ppl   92.44 | lr 5.92e-04 | sparsity 12.8% | 3277.8ms/iter
+Iter  2650 | loss 4.5346 | ppl   93.18 | lr 5.91e-04 | sparsity 12.9% | 3270.2ms/iter
+Iter  2660 | loss 4.4991 | ppl   89.93 | lr 5.91e-04 | sparsity 12.9% | 3297.8ms/iter
+Iter  2670 | loss 4.5145 | ppl   91.34 | lr 5.91e-04 | sparsity 13.0% | 3290.9ms/iter
+Iter  2680 | loss 4.5066 | ppl   90.62 | lr 5.90e-04 | sparsity 13.0% | 3293.7ms/iter
+Iter  2690 | loss 4.4846 | ppl   88.64 | lr 5.90e-04 | sparsity 13.1% | 3288.3ms/iter
+Iter  2700 | loss 4.5234 | ppl   92.15 | lr 5.90e-04 | sparsity 13.1% | 3292.3ms/iter
+Iter  2710 | loss 4.5007 | ppl   90.08 | lr 5.90e-04 | sparsity 13.2% | 3279.0ms/iter
+Iter  2720 | loss 4.4900 | ppl   89.12 | lr 5.89e-04 | sparsity 13.2% | 3277.6ms/iter
+Iter  2730 | loss 4.4910 | ppl   89.21 | lr 5.89e-04 | sparsity 13.3% | 3294.5ms/iter
+Iter  2740 | loss 4.4761 | ppl   87.89 | lr 5.89e-04 | sparsity 13.3% | 3295.0ms/iter
+Iter  2750 | loss 4.4844 | ppl   88.62 | lr 5.88e-04 | sparsity 13.4% | 3318.4ms/iter
+Iter  2760 | loss 4.4730 | ppl   87.62 | lr 5.88e-04 | sparsity 13.4% | 3294.9ms/iter
+Iter  2770 | loss 4.4740 | ppl   87.71 | lr 5.88e-04 | sparsity 13.5% | 3285.6ms/iter
+Iter  2780 | loss 4.4854 | ppl   88.71 | lr 5.87e-04 | sparsity 13.5% | 3286.9ms/iter
+Iter  2790 | loss 4.4768 | ppl   87.95 | lr 5.87e-04 | sparsity 13.6% | 3297.6ms/iter
+Iter  2800 | loss 4.4805 | ppl   88.28 | lr 5.87e-04 | sparsity 13.6% | 3286.3ms/iter
+Iter  2810 | loss 4.4634 | ppl   86.78 | lr 5.86e-04 | sparsity 13.7% | 3321.1ms/iter
+Iter  2820 | loss 4.4898 | ppl   89.10 | lr 5.86e-04 | sparsity 13.7% | 3291.8ms/iter
+Iter  2830 | loss 4.4793 | ppl   88.18 | lr 5.86e-04 | sparsity 13.8% | 3301.2ms/iter
+Iter  2840 | loss 4.4766 | ppl   87.93 | lr 5.85e-04 | sparsity 13.8% | 3306.4ms/iter
+Iter  2850 | loss 4.4859 | ppl   88.76 | lr 5.85e-04 | sparsity 13.9% | 3302.1ms/iter
+Iter  2860 | loss 4.4790 | ppl   88.15 | lr 5.85e-04 | sparsity 13.9% | 3300.3ms/iter
+Iter  2870 | loss 4.4894 | ppl   89.07 | lr 5.84e-04 | sparsity 14.0% | 3291.6ms/iter
+Iter  2880 | loss 4.5083 | ppl   90.77 | lr 5.84e-04 | sparsity 14.0% | 3271.2ms/iter
+Iter  2890 | loss 4.5017 | ppl   90.17 | lr 5.84e-04 | sparsity 14.1% | 3282.9ms/iter
+Iter  2900 | loss 4.4856 | ppl   88.73 | lr 5.83e-04 | sparsity 14.1% | 3317.1ms/iter
+Iter  2910 | loss 4.4824 | ppl   88.45 | lr 5.83e-04 | sparsity 14.2% | 3297.5ms/iter
+Iter  2920 | loss 4.4916 | ppl   89.26 | lr 5.83e-04 | sparsity 14.2% | 3298.8ms/iter
+Iter  2930 | loss 4.4949 | ppl   89.56 | lr 5.82e-04 | sparsity 14.3% | 3289.9ms/iter
+Iter  2940 | loss 4.5012 | ppl   90.12 | lr 5.82e-04 | sparsity 14.3% | 3320.3ms/iter
+Iter  2950 | loss 4.4939 | ppl   89.47 | lr 5.81e-04 | sparsity 14.4% | 3283.5ms/iter
+Iter  2960 | loss 4.4872 | ppl   88.87 | lr 5.81e-04 | sparsity 14.4% | 3304.3ms/iter
+Iter  2970 | loss 4.4978 | ppl   89.82 | lr 5.81e-04 | sparsity 14.5% | 3295.3ms/iter
+Iter  2980 | loss 4.4739 | ppl   87.69 | lr 5.80e-04 | sparsity 14.5% | 3286.6ms/iter
+Iter  2990 | loss 4.5041 | ppl   90.39 | lr 5.80e-04 | sparsity 14.6% | 3304.1ms/iter
+Iter  3000 | loss 4.4874 | ppl   88.89 | lr 5.79e-04 | sparsity 14.6% | 3311.7ms/iter
+Validation loss: 4.4093 | ppl: 82.22
+Saved best model (val_loss: 4.4093)
+Iter  3010 | loss 4.5215 | ppl   91.97 | lr 5.79e-04 | sparsity 14.7% | 7714.1ms/iter
+Iter  3020 | loss 4.4989 | ppl   89.92 | lr 5.79e-04 | sparsity 14.7% | 3364.8ms/iter
+Iter  3030 | loss 4.4782 | ppl   88.07 | lr 5.78e-04 | sparsity 14.8% | 3354.9ms/iter
+Iter  3040 | loss 4.4597 | ppl   86.47 | lr 5.78e-04 | sparsity 14.8% | 3400.0ms/iter
+Iter  3050 | loss 4.4457 | ppl   85.26 | lr 5.77e-04 | sparsity 14.9% | 3372.1ms/iter
+Iter  3060 | loss 4.4093 | ppl   82.21 | lr 5.77e-04 | sparsity 14.9% | 3367.5ms/iter
+Iter  3070 | loss 4.3871 | ppl   80.41 | lr 5.77e-04 | sparsity 15.0% | 3363.9ms/iter
+Iter  3080 | loss 4.3843 | ppl   80.18 | lr 5.76e-04 | sparsity 15.1% | 3329.6ms/iter
+Iter  3090 | loss 4.3848 | ppl   80.22 | lr 5.76e-04 | sparsity 15.1% | 3321.8ms/iter
+Iter  3100 | loss 4.3639 | ppl   78.56 | lr 5.75e-04 | sparsity 15.2% | 3317.5ms/iter
+Iter  3110 | loss 4.3651 | ppl   78.66 | lr 5.75e-04 | sparsity 15.2% | 3293.4ms/iter
+Iter  3120 | loss 4.3529 | ppl   77.70 | lr 5.74e-04 | sparsity 15.3% | 3288.3ms/iter
+Iter  3130 | loss 4.3349 | ppl   76.31 | lr 5.74e-04 | sparsity 15.3% | 3257.2ms/iter
+Iter  3140 | loss 4.3508 | ppl   77.54 | lr 5.73e-04 | sparsity 15.4% | 3292.2ms/iter
+Iter  3150 | loss 4.3190 | ppl   75.11 | lr 5.73e-04 | sparsity 15.4% | 3292.3ms/iter
+Iter  3160 | loss 4.3515 | ppl   77.59 | lr 5.72e-04 | sparsity 15.5% | 3303.6ms/iter
+Iter  3170 | loss 4.3445 | ppl   77.05 | lr 5.72e-04 | sparsity 15.5% | 3271.8ms/iter
+Iter  3180 | loss 4.3148 | ppl   74.80 | lr 5.72e-04 | sparsity 15.6% | 3286.3ms/iter
+Iter  3190 | loss 4.3223 | ppl   75.36 | lr 5.71e-04 | sparsity 15.6% | 3283.5ms/iter
+Iter  3200 | loss 4.3281 | ppl   75.80 | lr 5.71e-04 | sparsity 15.7% | 3318.0ms/iter
+Iter  3210 | loss 4.2935 | ppl   73.22 | lr 5.70e-04 | sparsity 15.7% | 3298.4ms/iter
+Iter  3220 | loss 4.3171 | ppl   74.97 | lr 5.70e-04 | sparsity 15.8% | 3305.5ms/iter
+Iter  3230 | loss 4.3068 | ppl   74.21 | lr 5.69e-04 | sparsity 15.8% | 3291.0ms/iter
+Iter  3240 | loss 4.3183 | ppl   75.06 | lr 5.69e-04 | sparsity 15.9% | 3336.0ms/iter
+Iter  3250 | loss 4.3197 | ppl   75.16 | lr 5.68e-04 | sparsity 15.9% | 3285.3ms/iter
+Iter  3260 | loss 4.3199 | ppl   75.18 | lr 5.68e-04 | sparsity 16.0% | 3291.1ms/iter
+Iter  3270 | loss 4.2886 | ppl   72.87 | lr 5.67e-04 | sparsity 16.0% | 3299.1ms/iter
+Iter  3280 | loss 4.3118 | ppl   74.58 | lr 5.67e-04 | sparsity 16.1% | 3271.3ms/iter
+Iter  3290 | loss 4.3080 | ppl   74.29 | lr 5.66e-04 | sparsity 16.1% | 3293.1ms/iter
+Iter  3300 | loss 4.3229 | ppl   75.41 | lr 5.66e-04 | sparsity 16.2% | 3287.4ms/iter
+Iter  3310 | loss 4.3211 | ppl   75.27 | lr 5.65e-04 | sparsity 16.2% | 3288.9ms/iter
+Iter  3320 | loss 4.3107 | ppl   74.49 | lr 5.65e-04 | sparsity 16.3% | 3329.9ms/iter
+Iter  3330 | loss 4.3199 | ppl   75.18 | lr 5.64e-04 | sparsity 16.3% | 3285.0ms/iter
+Iter  3340 | loss 4.3222 | ppl   75.35 | lr 5.63e-04 | sparsity 16.4% | 3267.5ms/iter
+Iter  3350 | loss 4.3221 | ppl   75.34 | lr 5.63e-04 | sparsity 16.4% | 3284.2ms/iter
+Iter  3360 | loss 4.3132 | ppl   74.68 | lr 5.62e-04 | sparsity 16.5% | 3280.3ms/iter
+Iter  3370 | loss 4.3374 | ppl   76.51 | lr 5.62e-04 | sparsity 16.5% | 3311.7ms/iter
+Iter  3380 | loss 4.3366 | ppl   76.44 | lr 5.61e-04 | sparsity 16.6% | 3295.5ms/iter
+Iter  3390 | loss 4.3416 | ppl   76.83 | lr 5.61e-04 | sparsity 16.6% | 3290.2ms/iter
+Iter  3400 | loss 4.3295 | ppl   75.91 | lr 5.60e-04 | sparsity 16.7% | 3321.8ms/iter
+Iter  3410 | loss 4.3408 | ppl   76.77 | lr 5.60e-04 | sparsity 16.7% | 3314.5ms/iter
+Iter  3420 | loss 4.3392 | ppl   76.64 | lr 5.59e-04 | sparsity 16.8% | 3271.6ms/iter
+Iter  3430 | loss 4.3494 | ppl   77.43 | lr 5.59e-04 | sparsity 16.8% | 3321.5ms/iter
+Iter  3440 | loss 4.3317 | ppl   76.07 | lr 5.58e-04 | sparsity 16.9% | 3277.5ms/iter
+Iter  3450 | loss 4.3648 | ppl   78.63 | lr 5.57e-04 | sparsity 16.9% | 3316.3ms/iter
+Iter  3460 | loss 4.3528 | ppl   77.70 | lr 5.57e-04 | sparsity 17.0% | 3286.9ms/iter
+Iter  3470 | loss 4.3395 | ppl   76.67 | lr 5.56e-04 | sparsity 17.0% | 3303.8ms/iter
+Iter  3480 | loss 4.3294 | ppl   75.90 | lr 5.56e-04 | sparsity 17.1% | 3291.6ms/iter
+Iter  3490 | loss 4.3332 | ppl   76.18 | lr 5.55e-04 | sparsity 17.1% | 3321.0ms/iter
+Iter  3500 | loss 4.3415 | ppl   76.82 | lr 5.54e-04 | sparsity 17.2% | 3280.6ms/iter
+Validation loss: 4.2800 | ppl: 72.24
+Saved best model (val_loss: 4.2800)
+Iter  3510 | loss 4.3658 | ppl   78.72 | lr 5.54e-04 | sparsity 17.2% | 7739.1ms/iter
+Iter  3520 | loss 4.3761 | ppl   79.53 | lr 5.53e-04 | sparsity 17.3% | 3351.1ms/iter
+Iter  3530 | loss 4.3383 | ppl   76.58 | lr 5.53e-04 | sparsity 17.3% | 3380.3ms/iter
+Iter  3540 | loss 4.3154 | ppl   74.84 | lr 5.52e-04 | sparsity 17.4% | 3391.3ms/iter
+Iter  3550 | loss 4.2962 | ppl   73.42 | lr 5.52e-04 | sparsity 17.4% | 3375.0ms/iter
+Iter  3560 | loss 4.2674 | ppl   71.34 | lr 5.51e-04 | sparsity 17.5% | 3379.0ms/iter
+Iter  3570 | loss 4.2756 | ppl   71.92 | lr 5.50e-04 | sparsity 17.5% | 3378.4ms/iter
+Iter  3580 | loss 4.2423 | ppl   69.57 | lr 5.50e-04 | sparsity 17.6% | 3360.0ms/iter
+Iter  3590 | loss 4.2637 | ppl   71.07 | lr 5.49e-04 | sparsity 17.6% | 3375.6ms/iter
+Iter  3600 | loss 4.2447 | ppl   69.73 | lr 5.48e-04 | sparsity 17.7% | 3343.1ms/iter
+Iter  3610 | loss 4.2353 | ppl   69.08 | lr 5.48e-04 | sparsity 17.7% | 3329.7ms/iter
+Iter  3620 | loss 4.2254 | ppl   68.40 | lr 5.47e-04 | sparsity 17.8% | 3311.9ms/iter
+Iter  3630 | loss 4.2412 | ppl   69.49 | lr 5.47e-04 | sparsity 17.8% | 3296.0ms/iter
+Iter  3640 | loss 4.2207 | ppl   68.08 | lr 5.46e-04 | sparsity 17.9% | 3312.9ms/iter
+Iter  3650 | loss 4.2261 | ppl   68.45 | lr 5.45e-04 | sparsity 17.9% | 3307.2ms/iter
+Iter  3660 | loss 4.2129 | ppl   67.55 | lr 5.45e-04 | sparsity 18.0% | 3279.6ms/iter
+Iter  3670 | loss 4.2003 | ppl   66.70 | lr 5.44e-04 | sparsity 18.0% | 3280.4ms/iter
+Iter  3680 | loss 4.2149 | ppl   67.69 | lr 5.43e-04 | sparsity 18.1% | 3299.7ms/iter
+Iter  3690 | loss 4.1973 | ppl   66.51 | lr 5.43e-04 | sparsity 18.1% | 3291.6ms/iter
+Iter  3700 | loss 4.2045 | ppl   66.99 | lr 5.42e-04 | sparsity 18.2% | 3298.8ms/iter
+Iter  3710 | loss 4.2059 | ppl   67.08 | lr 5.41e-04 | sparsity 18.2% | 3318.9ms/iter
+Iter  3720 | loss 4.2132 | ppl   67.57 | lr 5.41e-04 | sparsity 18.3% | 3283.9ms/iter
+Iter  3730 | loss 4.1964 | ppl   66.45 | lr 5.40e-04 | sparsity 18.3% | 3326.8ms/iter
+Iter  3740 | loss 4.1907 | ppl   66.07 | lr 5.39e-04 | sparsity 18.4% | 3306.5ms/iter
+Iter  3750 | loss 4.2114 | ppl   67.45 | lr 5.39e-04 | sparsity 18.4% | 3298.7ms/iter
+Iter  3760 | loss 4.2081 | ppl   67.23 | lr 5.38e-04 | sparsity 18.5% | 3314.7ms/iter
+Iter  3770 | loss 4.2184 | ppl   67.92 | lr 5.37e-04 | sparsity 18.5% | 3279.4ms/iter
+Iter  3780 | loss 4.1918 | ppl   66.14 | lr 5.37e-04 | sparsity 18.6% | 3300.5ms/iter
+Iter  3790 | loss 4.1981 | ppl   66.56 | lr 5.36e-04 | sparsity 18.6% | 3303.1ms/iter
+Iter  3800 | loss 4.1983 | ppl   66.57 | lr 5.35e-04 | sparsity 18.7% | 3290.2ms/iter
+Iter  3810 | loss 4.2136 | ppl   67.60 | lr 5.35e-04 | sparsity 18.7% | 3295.1ms/iter
+Iter  3820 | loss 4.2055 | ppl   67.05 | lr 5.34e-04 | sparsity 18.8% | 3287.9ms/iter
+Iter  3830 | loss 4.2145 | ppl   67.66 | lr 5.33e-04 | sparsity 18.8% | 3304.9ms/iter
+Iter  3840 | loss 4.2078 | ppl   67.21 | lr 5.33e-04 | sparsity 18.9% | 3322.6ms/iter
+Iter  3850 | loss 4.2282 | ppl   68.60 | lr 5.32e-04 | sparsity 18.9% | 3308.1ms/iter
+Iter  3860 | loss 4.2193 | ppl   67.98 | lr 5.31e-04 | sparsity 19.0% | 3289.1ms/iter
+Iter  3870 | loss 4.2247 | ppl   68.36 | lr 5.30e-04 | sparsity 19.0% | 3300.3ms/iter
+Iter  3880 | loss 4.2118 | ppl   67.48 | lr 5.30e-04 | sparsity 19.1% | 3299.5ms/iter
+Iter  3890 | loss 4.2334 | ppl   68.95 | lr 5.29e-04 | sparsity 19.1% | 3304.6ms/iter
+Iter  3900 | loss 4.2206 | ppl   68.07 | lr 5.28e-04 | sparsity 19.2% | 3305.8ms/iter
+Iter  3910 | loss 4.2319 | ppl   68.85 | lr 5.28e-04 | sparsity 19.2% | 3285.9ms/iter
+Iter  3920 | loss 4.2168 | ppl   67.82 | lr 5.27e-04 | sparsity 19.3% | 3294.7ms/iter
+Iter  3930 | loss 4.2250 | ppl   68.37 | lr 5.26e-04 | sparsity 19.3% | 3278.9ms/iter
+Iter  3940 | loss 4.2308 | ppl   68.77 | lr 5.25e-04 | sparsity 19.4% | 3291.3ms/iter
+Iter  3950 | loss 4.2238 | ppl   68.29 | lr 5.25e-04 | sparsity 19.4% | 3278.1ms/iter
+Iter  3960 | loss 4.2156 | ppl   67.73 | lr 5.24e-04 | sparsity 19.5% | 3291.5ms/iter
+Iter  3970 | loss 4.2418 | ppl   69.54 | lr 5.23e-04 | sparsity 19.5% | 3295.4ms/iter
+Iter  3980 | loss 4.2502 | ppl   70.12 | lr 5.22e-04 | sparsity 19.6% | 3301.2ms/iter
+Iter  3990 | loss 4.2230 | ppl   68.24 | lr 5.22e-04 | sparsity 19.6% | 3303.4ms/iter
+Iter  4000 | loss 4.2268 | ppl   68.50 | lr 5.21e-04 | sparsity 19.7% | 3286.2ms/iter
+Validation loss: 4.1364 | ppl: 62.58
+Saved best model (val_loss: 4.1364)
+Iter  4010 | loss 4.2279 | ppl   68.57 | lr 5.20e-04 | sparsity 19.7% | 7748.4ms/iter
+Iter  4020 | loss 4.1933 | ppl   66.24 | lr 5.19e-04 | sparsity 19.8% | 3350.1ms/iter
+Iter  4030 | loss 4.2046 | ppl   66.99 | lr 5.19e-04 | sparsity 19.8% | 3381.8ms/iter
+Iter  4040 | loss 4.1944 | ppl   66.31 | lr 5.18e-04 | sparsity 19.9% | 3385.4ms/iter
+Iter  4050 | loss 4.1778 | ppl   65.22 | lr 5.17e-04 | sparsity 19.9% | 3377.7ms/iter
+Iter  4060 | loss 4.1752 | ppl   65.05 | lr 5.16e-04 | sparsity 20.0% | 3408.1ms/iter
+Iter  4070 | loss 4.1718 | ppl   64.83 | lr 5.16e-04 | sparsity 20.1% | 3366.6ms/iter
+Iter  4080 | loss 4.1602 | ppl   64.08 | lr 5.15e-04 | sparsity 20.1% | 3365.5ms/iter
+Iter  4090 | loss 4.1501 | ppl   63.44 | lr 5.14e-04 | sparsity 20.2% | 3367.9ms/iter
+Iter  4100 | loss 4.1416 | ppl   62.91 | lr 5.13e-04 | sparsity 20.2% | 3356.6ms/iter
+Iter  4110 | loss 4.1667 | ppl   64.50 | lr 5.12e-04 | sparsity 20.3% | 3389.5ms/iter
+Iter  4120 | loss 4.1420 | ppl   62.93 | lr 5.12e-04 | sparsity 20.3% | 3398.8ms/iter
+Iter  4130 | loss 4.1466 | ppl   63.22 | lr 5.11e-04 | sparsity 20.4% | 3374.5ms/iter
+Iter  4140 | loss 4.1321 | ppl   62.31 | lr 5.10e-04 | sparsity 20.4% | 3340.3ms/iter
+Iter  4150 | loss 4.1333 | ppl   62.38 | lr 5.09e-04 | sparsity 20.5% | 3310.2ms/iter
+Iter  4160 | loss 4.1299 | ppl   62.17 | lr 5.09e-04 | sparsity 20.5% | 3278.9ms/iter
+Iter  4170 | loss 4.1321 | ppl   62.31 | lr 5.08e-04 | sparsity 20.6% | 3294.1ms/iter
+Iter  4180 | loss 4.1278 | ppl   62.04 | lr 5.07e-04 | sparsity 20.6% | 3301.0ms/iter
+Iter  4190 | loss 4.1258 | ppl   61.92 | lr 5.06e-04 | sparsity 20.7% | 3303.9ms/iter
+Iter  4200 | loss 4.1080 | ppl   60.82 | lr 5.05e-04 | sparsity 20.7% | 3302.1ms/iter
+Iter  4210 | loss 4.1203 | ppl   61.58 | lr 5.05e-04 | sparsity 20.8% | 3270.2ms/iter
+Iter  4220 | loss 4.1068 | ppl   60.75 | lr 5.04e-04 | sparsity 20.8% | 3280.7ms/iter
+Iter  4230 | loss 4.1100 | ppl   60.95 | lr 5.03e-04 | sparsity 20.9% | 3295.5ms/iter
+Iter  4240 | loss 4.1245 | ppl   61.83 | lr 5.02e-04 | sparsity 20.9% | 3280.4ms/iter
+Iter  4250 | loss 4.1216 | ppl   61.66 | lr 5.01e-04 | sparsity 21.0% | 3313.8ms/iter
+Iter  4260 | loss 4.1282 | ppl   62.07 | lr 5.00e-04 | sparsity 21.0% | 3283.3ms/iter
+Iter  4270 | loss 4.1292 | ppl   62.13 | lr 5.00e-04 | sparsity 21.1% | 3303.9ms/iter
+Iter  4280 | loss 4.1276 | ppl   62.03 | lr 4.99e-04 | sparsity 21.1% | 3297.9ms/iter
+Iter  4290 | loss 4.1132 | ppl   61.14 | lr 4.98e-04 | sparsity 21.2% | 3300.5ms/iter
+Iter  4300 | loss 4.1368 | ppl   62.60 | lr 4.97e-04 | sparsity 21.2% | 3284.7ms/iter
+Iter  4310 | loss 4.1266 | ppl   61.97 | lr 4.96e-04 | sparsity 21.3% | 3301.6ms/iter
+Iter  4320 | loss 4.1186 | ppl   61.48 | lr 4.95e-04 | sparsity 21.3% | 3287.1ms/iter
+Iter  4330 | loss 4.1553 | ppl   63.77 | lr 4.95e-04 | sparsity 21.4% | 3320.0ms/iter
+Iter  4340 | loss 4.1165 | ppl   61.34 | lr 4.94e-04 | sparsity 21.4% | 3280.6ms/iter
+Iter  4350 | loss 4.1339 | ppl   62.42 | lr 4.93e-04 | sparsity 21.5% | 3307.1ms/iter
+Iter  4360 | loss 4.1485 | ppl   63.34 | lr 4.92e-04 | sparsity 21.5% | 3313.3ms/iter
+Iter  4370 | loss 4.1473 | ppl   63.26 | lr 4.91e-04 | sparsity 21.6% | 3283.5ms/iter
+Iter  4380 | loss 4.1721 | ppl   64.85 | lr 4.90e-04 | sparsity 21.6% | 3276.7ms/iter
+Iter  4390 | loss 4.1408 | ppl   62.85 | lr 4.90e-04 | sparsity 21.7% | 3319.8ms/iter
+Iter  4400 | loss 4.1542 | ppl   63.70 | lr 4.89e-04 | sparsity 21.7% | 3279.5ms/iter
+Iter  4410 | loss 4.1702 | ppl   64.73 | lr 4.88e-04 | sparsity 21.8% | 3316.9ms/iter
+Iter  4420 | loss 4.1535 | ppl   63.66 | lr 4.87e-04 | sparsity 21.8% | 3273.0ms/iter
+Iter  4430 | loss 4.1700 | ppl   64.71 | lr 4.86e-04 | sparsity 21.9% | 3306.8ms/iter
+Iter  4440 | loss 4.1478 | ppl   63.30 | lr 4.85e-04 | sparsity 21.9% | 3314.4ms/iter
+Iter  4450 | loss 4.1781 | ppl   65.24 | lr 4.84e-04 | sparsity 22.0% | 3306.4ms/iter
+Iter  4460 | loss 4.1857 | ppl   65.74 | lr 4.84e-04 | sparsity 22.0% | 3309.0ms/iter
+Iter  4470 | loss 4.1480 | ppl   63.31 | lr 4.83e-04 | sparsity 22.1% | 3292.1ms/iter
+Iter  4480 | loss 4.1759 | ppl   65.10 | lr 4.82e-04 | sparsity 22.1% | 3282.1ms/iter
+Iter  4490 | loss 4.1676 | ppl   64.56 | lr 4.81e-04 | sparsity 22.2% | 3299.6ms/iter
+Iter  4500 | loss 4.1665 | ppl   64.49 | lr 4.80e-04 | sparsity 22.2% | 3276.0ms/iter
+Validation loss: 4.0797 | ppl: 59.13
+Saved best model (val_loss: 4.0797)
+Iter  4510 | loss 4.1485 | ppl   63.34 | lr 4.79e-04 | sparsity 22.3% | 7737.9ms/iter
+Iter  4520 | loss 4.1477 | ppl   63.29 | lr 4.78e-04 | sparsity 22.3% | 3368.6ms/iter
+Iter  4530 | loss 4.1318 | ppl   62.29 | lr 4.77e-04 | sparsity 22.4% | 3383.2ms/iter
+Iter  4540 | loss 4.1186 | ppl   61.47 | lr 4.76e-04 | sparsity 22.4% | 3381.0ms/iter
+Iter  4550 | loss 4.1230 | ppl   61.75 | lr 4.76e-04 | sparsity 22.5% | 3389.5ms/iter
+Iter  4560 | loss 4.1042 | ppl   60.59 | lr 4.75e-04 | sparsity 22.5% | 3411.2ms/iter
+Iter  4570 | loss 4.0875 | ppl   59.59 | lr 4.74e-04 | sparsity 22.6% | 3381.7ms/iter
+Iter  4580 | loss 4.0931 | ppl   59.93 | lr 4.73e-04 | sparsity 22.6% | 3411.8ms/iter
+Iter  4590 | loss 4.0913 | ppl   59.82 | lr 4.72e-04 | sparsity 22.7% | 3399.1ms/iter
+Iter  4600 | loss 4.0733 | ppl   58.75 | lr 4.71e-04 | sparsity 22.7% | 3413.7ms/iter
+Iter  4610 | loss 4.0727 | ppl   58.72 | lr 4.70e-04 | sparsity 22.8% | 3395.2ms/iter
+Iter  4620 | loss 4.0609 | ppl   58.02 | lr 4.69e-04 | sparsity 22.8% | 3407.1ms/iter
+Iter  4630 | loss 4.0694 | ppl   58.52 | lr 4.68e-04 | sparsity 22.9% | 3378.3ms/iter
+Iter  4640 | loss 4.0679 | ppl   58.43 | lr 4.67e-04 | sparsity 22.9% | 3359.6ms/iter
+Iter  4650 | loss 4.0621 | ppl   58.09 | lr 4.67e-04 | sparsity 23.0% | 3350.8ms/iter
+Iter  4660 | loss 4.0682 | ppl   58.45 | lr 4.66e-04 | sparsity 23.0% | 3388.1ms/iter
+Iter  4670 | loss 4.0548 | ppl   57.68 | lr 4.65e-04 | sparsity 23.1% | 3367.0ms/iter
+Iter  4680 | loss 4.0555 | ppl   57.71 | lr 4.64e-04 | sparsity 23.1% | 3354.1ms/iter
+Iter  4690 | loss 4.0534 | ppl   57.59 | lr 4.63e-04 | sparsity 23.2% | 3350.1ms/iter
+Iter  4700 | loss 4.0601 | ppl   57.98 | lr 4.62e-04 | sparsity 23.2% | 3312.9ms/iter
+Iter  4710 | loss 4.0534 | ppl   57.59 | lr 4.61e-04 | sparsity 23.3% | 3292.1ms/iter
+Iter  4720 | loss 4.0690 | ppl   58.50 | lr 4.60e-04 | sparsity 23.3% | 3299.5ms/iter
+Iter  4730 | loss 4.0448 | ppl   57.10 | lr 4.59e-04 | sparsity 23.4% | 3286.2ms/iter
+Iter  4740 | loss 4.0449 | ppl   57.11 | lr 4.58e-04 | sparsity 23.4% | 3324.3ms/iter
+Iter  4750 | loss 4.0648 | ppl   58.26 | lr 4.57e-04 | sparsity 23.5% | 3293.9ms/iter
+Iter  4760 | loss 4.0541 | ppl   57.63 | lr 4.56e-04 | sparsity 23.5% | 3314.8ms/iter
+Iter  4770 | loss 4.0791 | ppl   59.09 | lr 4.55e-04 | sparsity 23.6% | 3284.9ms/iter
+Iter  4780 | loss 4.0591 | ppl   57.92 | lr 4.54e-04 | sparsity 23.6% | 3297.6ms/iter
+Iter  4790 | loss 4.0688 | ppl   58.49 | lr 4.54e-04 | sparsity 23.7% | 3268.5ms/iter
+Iter  4800 | loss 4.0684 | ppl   58.47 | lr 4.53e-04 | sparsity 23.7% | 3283.1ms/iter
+Iter  4810 | loss 4.0635 | ppl   58.18 | lr 4.52e-04 | sparsity 23.8% | 3289.0ms/iter
+Iter  4820 | loss 4.0585 | ppl   57.89 | lr 4.51e-04 | sparsity 23.8% | 3284.3ms/iter
+Iter  4830 | loss 4.0729 | ppl   58.72 | lr 4.50e-04 | sparsity 23.9% | 3293.9ms/iter
+Iter  4840 | loss 4.0630 | ppl   58.15 | lr 4.49e-04 | sparsity 23.9% | 3297.7ms/iter
+Iter  4850 | loss 4.0601 | ppl   57.98 | lr 4.48e-04 | sparsity 24.0% | 3292.2ms/iter
+Iter  4860 | loss 4.0557 | ppl   57.73 | lr 4.47e-04 | sparsity 24.0% | 3319.4ms/iter
+Iter  4870 | loss 4.0766 | ppl   58.94 | lr 4.46e-04 | sparsity 24.1% | 3317.0ms/iter
+Iter  4880 | loss 4.0730 | ppl   58.73 | lr 4.45e-04 | sparsity 24.1% | 3304.1ms/iter
+Iter  4890 | loss 4.0683 | ppl   58.46 | lr 4.44e-04 | sparsity 24.2% | 3294.5ms/iter
+Iter  4900 | loss 4.0777 | ppl   59.01 | lr 4.43e-04 | sparsity 24.2% | 3300.1ms/iter
+Iter  4910 | loss 4.0708 | ppl   58.61 | lr 4.42e-04 | sparsity 24.3% | 3293.0ms/iter
+Iter  4920 | loss 4.0702 | ppl   58.57 | lr 4.41e-04 | sparsity 24.3% | 3289.2ms/iter
+Iter  4930 | loss 4.1042 | ppl   60.59 | lr 4.40e-04 | sparsity 24.4% | 3289.4ms/iter
+Iter  4940 | loss 4.0780 | ppl   59.03 | lr 4.39e-04 | sparsity 24.4% | 3275.0ms/iter
+Iter  4950 | loss 4.1064 | ppl   60.73 | lr 4.38e-04 | sparsity 24.5% | 3291.1ms/iter
+Iter  4960 | loss 4.0969 | ppl   60.15 | lr 4.37e-04 | sparsity 24.5% | 3300.3ms/iter
+Iter  4970 | loss 4.0723 | ppl   58.69 | lr 4.36e-04 | sparsity 24.6% | 3297.2ms/iter
+Iter  4980 | loss 4.1003 | ppl   60.36 | lr 4.35e-04 | sparsity 24.6% | 3292.8ms/iter
+Iter  4990 | loss 4.1106 | ppl   60.99 | lr 4.34e-04 | sparsity 24.7% | 3289.2ms/iter
+Iter  5000 | loss 4.1072 | ppl   60.78 | lr 4.33e-04 | sparsity 24.7% | 3296.2ms/iter
+Validation loss: 4.0464 | ppl: 57.19
+Saved best model (val_loss: 4.0464)
+Iter  5010 | loss 4.1011 | ppl   60.41 | lr 4.32e-04 | sparsity 24.8% | 7735.0ms/iter
+Iter  5020 | loss 4.1049 | ppl   60.64 | lr 4.31e-04 | sparsity 24.8% | 3374.2ms/iter
+Iter  5030 | loss 4.0910 | ppl   59.80 | lr 4.30e-04 | sparsity 24.9% | 3415.0ms/iter
+Iter  5040 | loss 4.0786 | ppl   59.06 | lr 4.29e-04 | sparsity 24.9% | 3408.2ms/iter
+Iter  5050 | loss 4.0855 | ppl   59.47 | lr 4.28e-04 | sparsity 25.0% | 3429.3ms/iter
+Iter  5060 | loss 4.0646 | ppl   58.24 | lr 4.27e-04 | sparsity 25.1% | 3409.0ms/iter
+Iter  5070 | loss 4.0617 | ppl   58.08 | lr 4.26e-04 | sparsity 25.1% | 3415.8ms/iter
+Iter  5080 | loss 4.0482 | ppl   57.29 | lr 4.25e-04 | sparsity 25.2% | 3401.6ms/iter
+Iter  5090 | loss 4.0354 | ppl   56.57 | lr 4.24e-04 | sparsity 25.2% | 3414.7ms/iter
+Iter  5100 | loss 4.0341 | ppl   56.49 | lr 4.23e-04 | sparsity 25.3% | 3422.8ms/iter
+Iter  5110 | loss 4.0150 | ppl   55.42 | lr 4.22e-04 | sparsity 25.3% | 3377.7ms/iter
+Iter  5120 | loss 4.0022 | ppl   54.72 | lr 4.21e-04 | sparsity 25.4% | 3394.3ms/iter
+Iter  5130 | loss 4.0219 | ppl   55.81 | lr 4.20e-04 | sparsity 25.4% | 3418.6ms/iter
+Iter  5140 | loss 4.0213 | ppl   55.77 | lr 4.19e-04 | sparsity 25.5% | 3379.6ms/iter
+Iter  5150 | loss 4.0084 | ppl   55.06 | lr 4.18e-04 | sparsity 25.5% | 3413.0ms/iter
+Iter  5160 | loss 4.0074 | ppl   55.01 | lr 4.17e-04 | sparsity 25.6% | 3391.8ms/iter
+Iter  5170 | loss 4.0032 | ppl   54.77 | lr 4.16e-04 | sparsity 25.6% | 3384.3ms/iter
+Iter  5180 | loss 4.0020 | ppl   54.70 | lr 4.15e-04 | sparsity 25.7% | 3364.3ms/iter
+Iter  5190 | loss 4.0087 | ppl   55.07 | lr 4.14e-04 | sparsity 25.7% | 3384.8ms/iter
+Iter  5200 | loss 3.9800 | ppl   53.52 | lr 4.13e-04 | sparsity 25.8% | 3371.6ms/iter
+Iter  5210 | loss 4.0006 | ppl   54.63 | lr 4.12e-04 | sparsity 25.8% | 3340.8ms/iter
+Iter  5220 | loss 4.0033 | ppl   54.78 | lr 4.11e-04 | sparsity 25.9% | 3344.7ms/iter
+Iter  5230 | loss 3.9945 | ppl   54.30 | lr 4.10e-04 | sparsity 25.9% | 3340.5ms/iter
+Iter  5240 | loss 4.0085 | ppl   55.06 | lr 4.09e-04 | sparsity 26.0% | 3363.2ms/iter
+Iter  5250 | loss 3.9966 | ppl   54.41 | lr 4.08e-04 | sparsity 26.0% | 3339.7ms/iter
+Iter  5260 | loss 4.0119 | ppl   55.25 | lr 4.07e-04 | sparsity 26.1% | 3322.4ms/iter
+Iter  5270 | loss 3.9962 | ppl   54.39 | lr 4.06e-04 | sparsity 26.1% | 3305.5ms/iter
+Iter  5280 | loss 3.9827 | ppl   53.66 | lr 4.05e-04 | sparsity 26.2% | 3315.7ms/iter
+Iter  5290 | loss 4.0140 | ppl   55.37 | lr 4.04e-04 | sparsity 26.2% | 3271.8ms/iter
+Iter  5300 | loss 3.9999 | ppl   54.59 | lr 4.03e-04 | sparsity 26.3% | 3305.6ms/iter
+Iter  5310 | loss 3.9946 | ppl   54.31 | lr 4.02e-04 | sparsity 26.3% | 3310.8ms/iter
+Iter  5320 | loss 4.0057 | ppl   54.91 | lr 4.01e-04 | sparsity 26.4% | 3303.1ms/iter
+Iter  5330 | loss 3.9988 | ppl   54.53 | lr 4.00e-04 | sparsity 26.4% | 3296.1ms/iter
+Iter  5340 | loss 4.0173 | ppl   55.55 | lr 3.99e-04 | sparsity 26.5% | 3301.0ms/iter
+Iter  5350 | loss 4.0083 | ppl   55.06 | lr 3.98e-04 | sparsity 26.5% | 3292.4ms/iter
+Iter  5360 | loss 3.9972 | ppl   54.45 | lr 3.97e-04 | sparsity 26.6% | 3320.6ms/iter
+Iter  5370 | loss 3.9946 | ppl   54.30 | lr 3.96e-04 | sparsity 26.6% | 3290.7ms/iter
+Iter  5380 | loss 4.0045 | ppl   54.84 | lr 3.95e-04 | sparsity 26.7% | 3294.6ms/iter
+Iter  5390 | loss 4.0249 | ppl   55.97 | lr 3.94e-04 | sparsity 26.7% | 3274.8ms/iter
+Iter  5400 | loss 4.0120 | ppl   55.26 | lr 3.93e-04 | sparsity 26.8% | 3289.1ms/iter
+Iter  5410 | loss 4.0148 | ppl   55.41 | lr 3.92e-04 | sparsity 26.8% | 3308.0ms/iter
+Iter  5420 | loss 4.0144 | ppl   55.39 | lr 3.91e-04 | sparsity 26.9% | 3300.6ms/iter
+Iter  5430 | loss 4.0117 | ppl   55.24 | lr 3.90e-04 | sparsity 26.9% | 3295.3ms/iter
+Iter  5440 | loss 4.0303 | ppl   56.28 | lr 3.89e-04 | sparsity 27.0% | 3289.2ms/iter
+Iter  5450 | loss 4.0076 | ppl   55.01 | lr 3.88e-04 | sparsity 27.0% | 3323.2ms/iter
+Iter  5460 | loss 4.0261 | ppl   56.04 | lr 3.87e-04 | sparsity 27.1% | 3273.2ms/iter
+Iter  5470 | loss 4.0244 | ppl   55.95 | lr 3.86e-04 | sparsity 27.1% | 3297.2ms/iter
+Iter  5480 | loss 4.0228 | ppl   55.86 | lr 3.85e-04 | sparsity 27.2% | 3313.9ms/iter
+Iter  5490 | loss 4.0327 | ppl   56.41 | lr 3.84e-04 | sparsity 27.2% | 3287.1ms/iter
+Iter  5500 | loss 4.0460 | ppl   57.17 | lr 3.83e-04 | sparsity 27.3% | 3278.4ms/iter
+Validation loss: 4.0008 | ppl: 54.64
+Saved best model (val_loss: 4.0008)
+Iter  5510 | loss 4.0322 | ppl   56.38 | lr 3.82e-04 | sparsity 27.3% | 7765.3ms/iter
+Iter  5520 | loss 4.0451 | ppl   57.11 | lr 3.81e-04 | sparsity 27.4% | 3360.2ms/iter
+Iter  5530 | loss 4.0410 | ppl   56.88 | lr 3.80e-04 | sparsity 27.4% | 3379.9ms/iter
+Iter  5540 | loss 4.0261 | ppl   56.04 | lr 3.79e-04 | sparsity 27.5% | 3384.4ms/iter
+Iter  5550 | loss 4.0098 | ppl   55.14 | lr 3.77e-04 | sparsity 27.5% | 3383.2ms/iter
+Iter  5560 | loss 4.0125 | ppl   55.28 | lr 3.76e-04 | sparsity 27.6% | 3418.9ms/iter
+Iter  5570 | loss 3.9966 | ppl   54.41 | lr 3.75e-04 | sparsity 27.6% | 3414.7ms/iter
+Iter  5580 | loss 3.9840 | ppl   53.73 | lr 3.74e-04 | sparsity 27.7% | 3426.9ms/iter
+Iter  5590 | loss 3.9936 | ppl   54.25 | lr 3.73e-04 | sparsity 27.7% | 3416.7ms/iter
+Iter  5600 | loss 3.9651 | ppl   52.73 | lr 3.72e-04 | sparsity 27.8% | 3416.5ms/iter
+Iter  5610 | loss 3.9747 | ppl   53.23 | lr 3.71e-04 | sparsity 27.8% | 3415.6ms/iter
+Iter  5620 | loss 3.9750 | ppl   53.25 | lr 3.70e-04 | sparsity 27.9% | 3407.5ms/iter
+Iter  5630 | loss 3.9557 | ppl   52.23 | lr 3.69e-04 | sparsity 27.9% | 3414.4ms/iter
+Iter  5640 | loss 3.9520 | ppl   52.04 | lr 3.68e-04 | sparsity 28.0% | 3403.7ms/iter
+Iter  5650 | loss 3.9533 | ppl   52.11 | lr 3.67e-04 | sparsity 28.0% | 3411.5ms/iter
+Iter  5660 | loss 3.9284 | ppl   50.83 | lr 3.66e-04 | sparsity 28.1% | 3394.0ms/iter
+Iter  5670 | loss 3.9439 | ppl   51.62 | lr 3.65e-04 | sparsity 28.1% | 3392.4ms/iter
+Iter  5680 | loss 3.9417 | ppl   51.51 | lr 3.64e-04 | sparsity 28.2% | 3386.5ms/iter
+Iter  5690 | loss 3.9302 | ppl   50.92 | lr 3.63e-04 | sparsity 28.2% | 3382.7ms/iter
+Iter  5700 | loss 3.9281 | ppl   50.81 | lr 3.62e-04 | sparsity 28.3% | 3388.7ms/iter
+Iter  5710 | loss 3.9495 | ppl   51.91 | lr 3.61e-04 | sparsity 28.3% | 3369.4ms/iter
+Iter  5720 | loss 3.9631 | ppl   52.62 | lr 3.60e-04 | sparsity 28.4% | 3385.4ms/iter
+Iter  5730 | loss 3.9560 | ppl   52.25 | lr 3.59e-04 | sparsity 28.4% | 3372.5ms/iter
+Iter  5740 | loss 3.9351 | ppl   51.17 | lr 3.58e-04 | sparsity 28.5% | 3365.0ms/iter
+Iter  5750 | loss 3.9543 | ppl   52.16 | lr 3.56e-04 | sparsity 28.5% | 3374.4ms/iter
+Iter  5760 | loss 3.9425 | ppl   51.55 | lr 3.55e-04 | sparsity 28.6% | 3371.5ms/iter
+Iter  5770 | loss 3.9315 | ppl   50.98 | lr 3.54e-04 | sparsity 28.6% | 3358.3ms/iter
+Iter  5780 | loss 3.9514 | ppl   52.01 | lr 3.53e-04 | sparsity 28.7% | 3363.3ms/iter
+Iter  5790 | loss 3.9535 | ppl   52.12 | lr 3.52e-04 | sparsity 28.7% | 3335.7ms/iter
+Iter  5800 | loss 3.9635 | ppl   52.64 | lr 3.51e-04 | sparsity 28.8% | 3343.5ms/iter
+Iter  5810 | loss 3.9270 | ppl   50.75 | lr 3.50e-04 | sparsity 28.8% | 3368.4ms/iter
+Iter  5820 | loss 3.9406 | ppl   51.45 | lr 3.49e-04 | sparsity 28.9% | 3347.9ms/iter
+Iter  5830 | loss 3.9378 | ppl   51.31 | lr 3.48e-04 | sparsity 28.9% | 3359.2ms/iter
+Iter  5840 | loss 3.9578 | ppl   52.34 | lr 3.47e-04 | sparsity 29.0% | 3302.0ms/iter
+Iter  5850 | loss 3.9556 | ppl   52.23 | lr 3.46e-04 | sparsity 29.0% | 3333.4ms/iter
+Iter  5860 | loss 3.9452 | ppl   51.69 | lr 3.45e-04 | sparsity 29.1% | 3320.1ms/iter
+Iter  5870 | loss 3.9496 | ppl   51.91 | lr 3.44e-04 | sparsity 29.1% | 3311.1ms/iter
+Iter  5880 | loss 3.9543 | ppl   52.16 | lr 3.43e-04 | sparsity 29.2% | 3319.0ms/iter
+Iter  5890 | loss 3.9517 | ppl   52.02 | lr 3.42e-04 | sparsity 29.2% | 3306.3ms/iter
+Iter  5900 | loss 3.9646 | ppl   52.70 | lr 3.41e-04 | sparsity 29.3% | 3329.0ms/iter
+Iter  5910 | loss 3.9658 | ppl   52.76 | lr 3.40e-04 | sparsity 29.3% | 3303.7ms/iter
+Iter  5920 | loss 3.9652 | ppl   52.73 | lr 3.38e-04 | sparsity 29.4% | 3304.1ms/iter
+Iter  5930 | loss 3.9713 | ppl   53.05 | lr 3.37e-04 | sparsity 29.4% | 3304.3ms/iter
+Iter  5940 | loss 3.9586 | ppl   52.39 | lr 3.36e-04 | sparsity 29.5% | 3274.5ms/iter
+Iter  5950 | loss 3.9703 | ppl   53.00 | lr 3.35e-04 | sparsity 29.5% | 3292.6ms/iter
+Iter  5960 | loss 3.9889 | ppl   53.99 | lr 3.34e-04 | sparsity 29.6% | 3312.2ms/iter
+Iter  5970 | loss 3.9712 | ppl   53.05 | lr 3.33e-04 | sparsity 29.6% | 3275.5ms/iter
+Iter  5980 | loss 3.9656 | ppl   52.75 | lr 3.32e-04 | sparsity 29.7% | 3294.8ms/iter
+Iter  5990 | loss 3.9883 | ppl   53.96 | lr 3.31e-04 | sparsity 29.7% | 3271.3ms/iter
+Iter  6000 | loss 3.9922 | ppl   54.17 | lr 3.30e-04 | sparsity 29.8% | 3309.8ms/iter
+Validation loss: 3.9322 | ppl: 51.02
+Saved best model (val_loss: 3.9322)
+Iter  6010 | loss 3.9683 | ppl   52.89 | lr 3.29e-04 | sparsity 29.8% | 7738.8ms/iter
+Iter  6020 | loss 3.9612 | ppl   52.52 | lr 3.28e-04 | sparsity 29.9% | 3385.0ms/iter
+Iter  6030 | loss 3.9632 | ppl   52.62 | lr 3.27e-04 | sparsity 29.9% | 3389.2ms/iter
+Iter  6040 | loss 3.9680 | ppl   52.88 | lr 3.26e-04 | sparsity 30.0% | 3381.2ms/iter
+Iter  6050 | loss 3.9689 | ppl   52.92 | lr 3.25e-04 | sparsity 30.1% | 3398.8ms/iter
+Iter  6060 | loss 3.9540 | ppl   52.14 | lr 3.24e-04 | sparsity 30.1% | 3417.7ms/iter
+Iter  6070 | loss 3.9414 | ppl   51.49 | lr 3.23e-04 | sparsity 30.2% | 3428.2ms/iter
+Iter  6080 | loss 3.9334 | ppl   51.08 | lr 3.22e-04 | sparsity 30.2% | 3423.7ms/iter
+Iter  6090 | loss 3.9238 | ppl   50.59 | lr 3.20e-04 | sparsity 30.3% | 3421.7ms/iter
+Iter  6100 | loss 3.9334 | ppl   51.08 | lr 3.19e-04 | sparsity 30.3% | 3399.9ms/iter
+Iter  6110 | loss 3.9268 | ppl   50.75 | lr 3.18e-04 | sparsity 30.4% | 3440.3ms/iter
+Iter  6120 | loss 3.9128 | ppl   50.04 | lr 3.17e-04 | sparsity 30.4% | 3419.1ms/iter
+Iter  6130 | loss 3.9108 | ppl   49.94 | lr 3.16e-04 | sparsity 30.5% | 3433.0ms/iter
+Iter  6140 | loss 3.8997 | ppl   49.39 | lr 3.15e-04 | sparsity 30.5% | 3440.0ms/iter
+Iter  6150 | loss 3.9107 | ppl   49.93 | lr 3.14e-04 | sparsity 30.6% | 3432.9ms/iter
+Iter  6160 | loss 3.9039 | ppl   49.59 | lr 3.13e-04 | sparsity 30.6% | 3434.9ms/iter
+Iter  6170 | loss 3.8994 | ppl   49.37 | lr 3.12e-04 | sparsity 30.7% | 3446.0ms/iter
+Iter  6180 | loss 3.9238 | ppl   50.59 | lr 3.11e-04 | sparsity 30.7% | 3401.2ms/iter
+Iter  6190 | loss 3.9221 | ppl   50.51 | lr 3.10e-04 | sparsity 30.8% | 3429.3ms/iter
+Iter  6200 | loss 3.8951 | ppl   49.16 | lr 3.09e-04 | sparsity 30.8% | 3411.1ms/iter
+Iter  6210 | loss 3.8936 | ppl   49.09 | lr 3.08e-04 | sparsity 30.9% | 3410.3ms/iter
+Iter  6220 | loss 3.8906 | ppl   48.94 | lr 3.07e-04 | sparsity 30.9% | 3396.6ms/iter
+Iter  6230 | loss 3.9044 | ppl   49.62 | lr 3.06e-04 | sparsity 31.0% | 3409.8ms/iter
+Iter  6240 | loss 3.8822 | ppl   48.53 | lr 3.05e-04 | sparsity 31.0% | 3427.2ms/iter
+Iter  6250 | loss 3.8956 | ppl   49.19 | lr 3.04e-04 | sparsity 31.1% | 3413.5ms/iter
+Iter  6260 | loss 3.8986 | ppl   49.33 | lr 3.02e-04 | sparsity 31.1% | 3407.8ms/iter
+Iter  6270 | loss 3.8748 | ppl   48.17 | lr 3.01e-04 | sparsity 31.2% | 3409.9ms/iter
+Iter  6280 | loss 3.8898 | ppl   48.90 | lr 3.00e-04 | sparsity 31.2% | 3411.3ms/iter
+Iter  6290 | loss 3.8807 | ppl   48.46 | lr 2.99e-04 | sparsity 31.3% | 3399.5ms/iter
+Iter  6300 | loss 3.9015 | ppl   49.48 | lr 2.98e-04 | sparsity 31.3% | 3398.3ms/iter
+Iter  6310 | loss 3.9029 | ppl   49.55 | lr 2.97e-04 | sparsity 31.4% | 3391.0ms/iter
+Iter  6320 | loss 3.8970 | ppl   49.25 | lr 2.96e-04 | sparsity 31.4% | 3418.7ms/iter
+Iter  6330 | loss 3.8911 | ppl   48.96 | lr 2.95e-04 | sparsity 31.5% | 3391.9ms/iter
+Iter  6340 | loss 3.8963 | ppl   49.22 | lr 2.94e-04 | sparsity 31.5% | 3379.0ms/iter
+Iter  6350 | loss 3.8827 | ppl   48.56 | lr 2.93e-04 | sparsity 31.6% | 3415.0ms/iter
+Iter  6360 | loss 3.8940 | ppl   49.11 | lr 2.92e-04 | sparsity 31.6% | 3390.8ms/iter
+Iter  6370 | loss 3.8789 | ppl   48.37 | lr 2.91e-04 | sparsity 31.7% | 3408.0ms/iter
+Iter  6380 | loss 3.8914 | ppl   48.98 | lr 2.90e-04 | sparsity 31.7% | 3389.6ms/iter
+Iter  6390 | loss 3.9117 | ppl   49.98 | lr 2.89e-04 | sparsity 31.8% | 3376.1ms/iter
+Iter  6400 | loss 3.9052 | ppl   49.66 | lr 2.88e-04 | sparsity 31.8% | 3379.5ms/iter
+Iter  6410 | loss 3.9044 | ppl   49.62 | lr 2.87e-04 | sparsity 31.9% | 3333.4ms/iter
+Iter  6420 | loss 3.9224 | ppl   50.52 | lr 2.86e-04 | sparsity 31.9% | 3331.1ms/iter
+Iter  6430 | loss 3.9178 | ppl   50.29 | lr 2.85e-04 | sparsity 32.0% | 3352.8ms/iter
+Iter  6440 | loss 3.9172 | ppl   50.26 | lr 2.84e-04 | sparsity 32.0% | 3343.3ms/iter
+Iter  6450 | loss 3.9055 | ppl   49.67 | lr 2.83e-04 | sparsity 32.1% | 3330.1ms/iter
+Iter  6460 | loss 3.9340 | ppl   51.11 | lr 2.81e-04 | sparsity 32.1% | 3335.1ms/iter
+Iter  6470 | loss 3.9297 | ppl   50.89 | lr 2.80e-04 | sparsity 32.2% | 3290.2ms/iter
+Iter  6480 | loss 3.9130 | ppl   50.05 | lr 2.79e-04 | sparsity 32.2% | 3342.0ms/iter
+Iter  6490 | loss 3.9114 | ppl   49.97 | lr 2.78e-04 | sparsity 32.3% | 3311.3ms/iter
+Iter  6500 | loss 3.9060 | ppl   49.70 | lr 2.77e-04 | sparsity 32.3% | 3338.6ms/iter
+Validation loss: 3.8782 | ppl: 48.34
+Saved best model (val_loss: 3.8782)
+Iter  6510 | loss 3.8880 | ppl   48.81 | lr 2.76e-04 | sparsity 32.4% | 7761.4ms/iter
+Iter  6520 | loss 3.9064 | ppl   49.72 | lr 2.75e-04 | sparsity 32.4% | 3364.8ms/iter
+Iter  6530 | loss 3.8917 | ppl   48.99 | lr 2.74e-04 | sparsity 32.5% | 3413.8ms/iter
+Iter  6540 | loss 3.8788 | ppl   48.36 | lr 2.73e-04 | sparsity 32.5% | 3397.9ms/iter
+Iter  6550 | loss 3.8783 | ppl   48.34 | lr 2.72e-04 | sparsity 32.6% | 3438.9ms/iter
+Iter  6560 | loss 3.8802 | ppl   48.44 | lr 2.71e-04 | sparsity 32.6% | 3400.8ms/iter
+Iter  6570 | loss 3.8871 | ppl   48.77 | lr 2.70e-04 | sparsity 32.7% | 3415.7ms/iter
+Iter  6580 | loss 3.8865 | ppl   48.74 | lr 2.69e-04 | sparsity 32.7% | 3420.1ms/iter
+Iter  6590 | loss 3.8739 | ppl   48.13 | lr 2.68e-04 | sparsity 32.8% | 3421.4ms/iter
+Iter  6600 | loss 3.8596 | ppl   47.45 | lr 2.67e-04 | sparsity 32.8% | 3422.3ms/iter
+Iter  6610 | loss 3.8674 | ppl   47.82 | lr 2.66e-04 | sparsity 32.9% | 3419.1ms/iter
+Iter  6620 | loss 3.8700 | ppl   47.94 | lr 2.65e-04 | sparsity 32.9% | 3452.3ms/iter
+Iter  6630 | loss 3.8490 | ppl   46.95 | lr 2.64e-04 | sparsity 33.0% | 3449.5ms/iter
+Iter  6640 | loss 3.8639 | ppl   47.65 | lr 2.63e-04 | sparsity 33.0% | 3459.2ms/iter
+Iter  6650 | loss 3.8536 | ppl   47.16 | lr 2.62e-04 | sparsity 33.1% | 3438.7ms/iter
+Iter  6660 | loss 3.8568 | ppl   47.31 | lr 2.61e-04 | sparsity 33.1% | 3450.5ms/iter
+Iter  6670 | loss 3.8598 | ppl   47.46 | lr 2.60e-04 | sparsity 33.2% | 3449.8ms/iter
+Iter  6680 | loss 3.8547 | ppl   47.21 | lr 2.59e-04 | sparsity 33.2% | 3434.0ms/iter
+Iter  6690 | loss 3.8522 | ppl   47.10 | lr 2.58e-04 | sparsity 33.3% | 3433.7ms/iter
+Iter  6700 | loss 3.8644 | ppl   47.67 | lr 2.57e-04 | sparsity 33.3% | 3432.4ms/iter
+Iter  6710 | loss 3.8565 | ppl   47.30 | lr 2.56e-04 | sparsity 33.4% | 3442.3ms/iter
+Iter  6720 | loss 3.8509 | ppl   47.03 | lr 2.55e-04 | sparsity 33.4% | 3431.1ms/iter
+Iter  6730 | loss 3.8423 | ppl   46.63 | lr 2.54e-04 | sparsity 33.5% | 3448.5ms/iter
+Iter  6740 | loss 3.8558 | ppl   47.27 | lr 2.53e-04 | sparsity 33.5% | 3443.5ms/iter
+Iter  6750 | loss 3.8546 | ppl   47.21 | lr 2.52e-04 | sparsity 33.6% | 3426.6ms/iter
+Iter  6760 | loss 3.8361 | ppl   46.34 | lr 2.51e-04 | sparsity 33.6% | 3433.1ms/iter
+Iter  6770 | loss 3.8442 | ppl   46.72 | lr 2.50e-04 | sparsity 33.7% | 3421.8ms/iter
+Iter  6780 | loss 3.8366 | ppl   46.37 | lr 2.49e-04 | sparsity 33.7% | 3426.7ms/iter
+Iter  6790 | loss 3.8399 | ppl   46.52 | lr 2.48e-04 | sparsity 33.8% | 3422.6ms/iter
+Iter  6800 | loss 3.8551 | ppl   47.23 | lr 2.47e-04 | sparsity 33.8% | 3425.0ms/iter
+Iter  6810 | loss 3.8384 | ppl   46.45 | lr 2.46e-04 | sparsity 33.9% | 3415.8ms/iter
+Iter  6820 | loss 3.8523 | ppl   47.10 | lr 2.45e-04 | sparsity 33.9% | 3400.5ms/iter
+Iter  6830 | loss 3.8494 | ppl   46.97 | lr 2.44e-04 | sparsity 34.0% | 3415.9ms/iter
+Iter  6840 | loss 3.8486 | ppl   46.93 | lr 2.43e-04 | sparsity 34.0% | 3415.9ms/iter
+Iter  6850 | loss 3.8561 | ppl   47.28 | lr 2.42e-04 | sparsity 34.1% | 3420.5ms/iter
+Iter  6860 | loss 3.8488 | ppl   46.93 | lr 2.41e-04 | sparsity 34.1% | 3403.1ms/iter
+Iter  6870 | loss 3.8567 | ppl   47.31 | lr 2.40e-04 | sparsity 34.2% | 3423.9ms/iter
+Iter  6880 | loss 3.8491 | ppl   46.95 | lr 2.39e-04 | sparsity 34.2% | 3437.7ms/iter
+Iter  6890 | loss 3.8441 | ppl   46.71 | lr 2.38e-04 | sparsity 34.3% | 3424.0ms/iter
+Iter  6900 | loss 3.8506 | ppl   47.02 | lr 2.37e-04 | sparsity 34.3% | 3396.2ms/iter
+Iter  6910 | loss 3.8429 | ppl   46.66 | lr 2.36e-04 | sparsity 34.4% | 3403.9ms/iter
+Iter  6920 | loss 3.8402 | ppl   46.53 | lr 2.35e-04 | sparsity 34.4% | 3386.6ms/iter
+Iter  6930 | loss 3.8351 | ppl   46.30 | lr 2.34e-04 | sparsity 34.5% | 3396.8ms/iter
+Iter  6940 | loss 3.8618 | ppl   47.55 | lr 2.33e-04 | sparsity 34.5% | 3382.0ms/iter
+Iter  6950 | loss 3.8624 | ppl   47.58 | lr 2.32e-04 | sparsity 34.6% | 3384.9ms/iter
+Iter  6960 | loss 3.8618 | ppl   47.55 | lr 2.31e-04 | sparsity 34.6% | 3396.8ms/iter
+Iter  6970 | loss 3.8741 | ppl   48.14 | lr 2.30e-04 | sparsity 34.7% | 3356.8ms/iter
+Iter  6980 | loss 3.8589 | ppl   47.41 | lr 2.29e-04 | sparsity 34.7% | 3371.2ms/iter
+Iter  6990 | loss 3.8726 | ppl   48.07 | lr 2.28e-04 | sparsity 34.8% | 3386.4ms/iter
+Iter  7000 | loss 3.8598 | ppl   47.46 | lr 2.27e-04 | sparsity 34.8% | 3396.7ms/iter
+Validation loss: 3.8372 | ppl: 46.40
+Saved best model (val_loss: 3.8372)
+Iter  7010 | loss 3.8473 | ppl   46.87 | lr 2.26e-04 | sparsity 34.9% | 7796.7ms/iter
+Iter  7020 | loss 3.8529 | ppl   47.13 | lr 2.25e-04 | sparsity 34.9% | 3406.9ms/iter
+Iter  7030 | loss 3.8473 | ppl   46.87 | lr 2.24e-04 | sparsity 35.0% | 3421.9ms/iter
+Iter  7040 | loss 3.8526 | ppl   47.11 | lr 2.23e-04 | sparsity 35.1% | 3436.4ms/iter
+Iter  7050 | loss 3.8446 | ppl   46.74 | lr 2.22e-04 | sparsity 35.1% | 3431.4ms/iter
+Iter  7060 | loss 3.8222 | ppl   45.70 | lr 2.21e-04 | sparsity 35.2% | 3435.1ms/iter
+Iter  7070 | loss 3.8289 | ppl   46.01 | lr 2.20e-04 | sparsity 35.2% | 3431.7ms/iter
+Iter  7080 | loss 3.8471 | ppl   46.86 | lr 2.19e-04 | sparsity 35.3% | 3445.0ms/iter
+Iter  7090 | loss 3.8208 | ppl   45.64 | lr 2.18e-04 | sparsity 35.3% | 3428.6ms/iter
+Iter  7100 | loss 3.8239 | ppl   45.78 | lr 2.17e-04 | sparsity 35.4% | 3452.4ms/iter
+Iter  7110 | loss 3.8272 | ppl   45.93 | lr 2.16e-04 | sparsity 35.4% | 3449.6ms/iter
+Iter  7120 | loss 3.8357 | ppl   46.33 | lr 2.15e-04 | sparsity 35.5% | 3431.0ms/iter
+Iter  7130 | loss 3.8103 | ppl   45.16 | lr 2.14e-04 | sparsity 35.5% | 3442.5ms/iter
+Iter  7140 | loss 3.8065 | ppl   44.99 | lr 2.13e-04 | sparsity 35.6% | 3442.2ms/iter
+Iter  7150 | loss 3.8341 | ppl   46.25 | lr 2.12e-04 | sparsity 35.6% | 3439.0ms/iter
+Iter  7160 | loss 3.8154 | ppl   45.40 | lr 2.11e-04 | sparsity 35.7% | 3441.5ms/iter
+Iter  7170 | loss 3.8099 | ppl   45.15 | lr 2.10e-04 | sparsity 35.7% | 3428.3ms/iter
+Iter  7180 | loss 3.8173 | ppl   45.48 | lr 2.09e-04 | sparsity 35.8% | 3422.4ms/iter
+Iter  7190 | loss 3.8132 | ppl   45.29 | lr 2.08e-04 | sparsity 35.8% | 3446.7ms/iter
+Iter  7200 | loss 3.8042 | ppl   44.89 | lr 2.07e-04 | sparsity 35.9% | 3441.1ms/iter
+Iter  7210 | loss 3.8217 | ppl   45.68 | lr 2.06e-04 | sparsity 35.9% | 3456.2ms/iter
+Iter  7220 | loss 3.8345 | ppl   46.27 | lr 2.06e-04 | sparsity 36.0% | 3435.1ms/iter
+Iter  7230 | loss 3.7967 | ppl   44.56 | lr 2.05e-04 | sparsity 36.0% | 3425.1ms/iter
+Iter  7240 | loss 3.8022 | ppl   44.80 | lr 2.04e-04 | sparsity 36.1% | 3442.4ms/iter
+Iter  7250 | loss 3.8057 | ppl   44.96 | lr 2.03e-04 | sparsity 36.1% | 3450.8ms/iter
+Iter  7260 | loss 3.8065 | ppl   44.99 | lr 2.02e-04 | sparsity 36.2% | 3422.1ms/iter
+Iter  7270 | loss 3.8001 | ppl   44.70 | lr 2.01e-04 | sparsity 36.2% | 3441.8ms/iter
+Iter  7280 | loss 3.7957 | ppl   44.51 | lr 2.00e-04 | sparsity 36.3% | 3416.3ms/iter
+Iter  7290 | loss 3.8021 | ppl   44.79 | lr 1.99e-04 | sparsity 36.3% | 3440.2ms/iter
+Iter  7300 | loss 3.8121 | ppl   45.25 | lr 1.98e-04 | sparsity 36.4% | 3442.7ms/iter
+Iter  7310 | loss 3.7979 | ppl   44.61 | lr 1.97e-04 | sparsity 36.4% | 3437.5ms/iter
+Iter  7320 | loss 3.8172 | ppl   45.48 | lr 1.96e-04 | sparsity 36.5% | 3419.4ms/iter
+Iter  7330 | loss 3.7976 | ppl   44.59 | lr 1.95e-04 | sparsity 36.5% | 3403.8ms/iter
+Iter  7340 | loss 3.8067 | ppl   45.00 | lr 1.94e-04 | sparsity 36.6% | 3426.4ms/iter
+Iter  7350 | loss 3.8172 | ppl   45.48 | lr 1.93e-04 | sparsity 36.6% | 3417.4ms/iter
+Iter  7360 | loss 3.7997 | ppl   44.69 | lr 1.93e-04 | sparsity 36.7% | 3404.3ms/iter
+Iter  7370 | loss 3.8237 | ppl   45.77 | lr 1.92e-04 | sparsity 36.7% | 3407.8ms/iter
+Iter  7380 | loss 3.8039 | ppl   44.88 | lr 1.91e-04 | sparsity 36.8% | 3399.0ms/iter
+Iter  7390 | loss 3.8170 | ppl   45.47 | lr 1.90e-04 | sparsity 36.8% | 3407.2ms/iter
+Iter  7400 | loss 3.8205 | ppl   45.63 | lr 1.89e-04 | sparsity 36.9% | 3408.7ms/iter
+Iter  7410 | loss 3.8165 | ppl   45.45 | lr 1.88e-04 | sparsity 36.9% | 3422.8ms/iter
+Iter  7420 | loss 3.8252 | ppl   45.84 | lr 1.87e-04 | sparsity 37.0% | 3406.2ms/iter
+Iter  7430 | loss 3.8053 | ppl   44.94 | lr 1.86e-04 | sparsity 37.0% | 3398.9ms/iter
+Iter  7440 | loss 3.8094 | ppl   45.12 | lr 1.85e-04 | sparsity 37.1% | 3416.7ms/iter
+Iter  7450 | loss 3.8435 | ppl   46.69 | lr 1.84e-04 | sparsity 37.1% | 3389.7ms/iter
+Iter  7460 | loss 3.8214 | ppl   45.67 | lr 1.84e-04 | sparsity 37.2% | 3419.8ms/iter
+Iter  7470 | loss 3.8049 | ppl   44.92 | lr 1.83e-04 | sparsity 37.2% | 3401.9ms/iter
+Iter  7480 | loss 3.8007 | ppl   44.73 | lr 1.82e-04 | sparsity 37.3% | 3417.9ms/iter
+Iter  7490 | loss 3.8181 | ppl   45.52 | lr 1.81e-04 | sparsity 37.3% | 3416.0ms/iter
+Iter  7500 | loss 3.8153 | ppl   45.39 | lr 1.80e-04 | sparsity 37.4% | 3393.1ms/iter
+Validation loss: 3.8210 | ppl: 45.65
+Saved best model (val_loss: 3.8210)
+Iter  7510 | loss 3.8004 | ppl   44.72 | lr 1.79e-04 | sparsity 37.4% | 7814.0ms/iter
+Iter  7520 | loss 3.8385 | ppl   46.46 | lr 1.78e-04 | sparsity 37.5% | 3446.2ms/iter
+Iter  7530 | loss 3.8058 | ppl   44.96 | lr 1.77e-04 | sparsity 37.5% | 3454.0ms/iter
+Iter  7540 | loss 3.8207 | ppl   45.64 | lr 1.76e-04 | sparsity 37.6% | 3455.4ms/iter
+Iter  7550 | loss 3.8167 | ppl   45.46 | lr 1.76e-04 | sparsity 37.6% | 3458.3ms/iter
+Iter  7560 | loss 3.8126 | ppl   45.27 | lr 1.75e-04 | sparsity 37.7% | 3453.2ms/iter
+Iter  7570 | loss 3.8159 | ppl   45.42 | lr 1.74e-04 | sparsity 37.7% | 3461.5ms/iter
+Iter  7580 | loss 3.8109 | ppl   45.19 | lr 1.73e-04 | sparsity 37.8% | 3464.9ms/iter
+Iter  7590 | loss 3.8022 | ppl   44.80 | lr 1.72e-04 | sparsity 37.8% | 3483.4ms/iter
+Iter  7600 | loss 3.8064 | ppl   44.99 | lr 1.71e-04 | sparsity 37.9% | 3458.0ms/iter
+Iter  7610 | loss 3.7807 | ppl   43.84 | lr 1.70e-04 | sparsity 37.9% | 3468.5ms/iter
+Iter  7620 | loss 3.7850 | ppl   44.04 | lr 1.70e-04 | sparsity 38.0% | 3452.6ms/iter
+Iter  7630 | loss 3.7787 | ppl   43.76 | lr 1.69e-04 | sparsity 38.0% | 3457.5ms/iter
+Iter  7640 | loss 3.7841 | ppl   44.00 | lr 1.68e-04 | sparsity 38.1% | 3450.7ms/iter
+Iter  7650 | loss 3.7843 | ppl   44.00 | lr 1.67e-04 | sparsity 38.1% | 3462.3ms/iter
+Iter  7660 | loss 3.7813 | ppl   43.88 | lr 1.66e-04 | sparsity 38.2% | 3454.0ms/iter
+Iter  7670 | loss 3.7849 | ppl   44.03 | lr 1.65e-04 | sparsity 38.2% | 3452.3ms/iter
+Iter  7680 | loss 3.7948 | ppl   44.47 | lr 1.65e-04 | sparsity 38.3% | 3448.0ms/iter
+Iter  7690 | loss 3.7854 | ppl   44.05 | lr 1.64e-04 | sparsity 38.3% | 3455.2ms/iter
+Iter  7700 | loss 3.7804 | ppl   43.83 | lr 1.63e-04 | sparsity 38.4% | 3441.3ms/iter
+Iter  7710 | loss 3.7932 | ppl   44.40 | lr 1.62e-04 | sparsity 38.4% | 3438.1ms/iter
+Iter  7720 | loss 3.7767 | ppl   43.67 | lr 1.61e-04 | sparsity 38.5% | 3458.3ms/iter
+Iter  7730 | loss 3.7935 | ppl   44.41 | lr 1.60e-04 | sparsity 38.5% | 3441.2ms/iter
+Iter  7740 | loss 3.7927 | ppl   44.37 | lr 1.60e-04 | sparsity 38.6% | 3449.6ms/iter
+Iter  7750 | loss 3.7969 | ppl   44.56 | lr 1.59e-04 | sparsity 38.6% | 3446.7ms/iter
+Iter  7760 | loss 3.7825 | ppl   43.92 | lr 1.58e-04 | sparsity 38.7% | 3426.3ms/iter
+Iter  7770 | loss 3.7807 | ppl   43.85 | lr 1.57e-04 | sparsity 38.7% | 3456.9ms/iter
+Iter  7780 | loss 3.7929 | ppl   44.39 | lr 1.56e-04 | sparsity 38.8% | 3448.9ms/iter
+Iter  7790 | loss 3.7828 | ppl   43.94 | lr 1.55e-04 | sparsity 38.8% | 3443.9ms/iter
+Iter  7800 | loss 3.7749 | ppl   43.59 | lr 1.55e-04 | sparsity 38.9% | 3451.8ms/iter
+Iter  7810 | loss 3.7709 | ppl   43.42 | lr 1.54e-04 | sparsity 38.9% | 3441.4ms/iter
+Iter  7820 | loss 3.7891 | ppl   44.22 | lr 1.53e-04 | sparsity 39.0% | 3448.2ms/iter
+Iter  7830 | loss 3.7724 | ppl   43.48 | lr 1.52e-04 | sparsity 39.0% | 3441.4ms/iter
+Iter  7840 | loss 3.7978 | ppl   44.60 | lr 1.51e-04 | sparsity 39.1% | 3438.4ms/iter
+Iter  7850 | loss 3.7832 | ppl   43.96 | lr 1.51e-04 | sparsity 39.1% | 3450.2ms/iter
+Iter  7860 | loss 3.7686 | ppl   43.32 | lr 1.50e-04 | sparsity 39.2% | 3427.6ms/iter
+Iter  7870 | loss 3.7931 | ppl   44.40 | lr 1.49e-04 | sparsity 39.2% | 3424.8ms/iter
+Iter  7880 | loss 3.7766 | ppl   43.67 | lr 1.48e-04 | sparsity 39.3% | 3421.7ms/iter
+Iter  7890 | loss 3.7834 | ppl   43.96 | lr 1.48e-04 | sparsity 39.3% | 3431.4ms/iter
+Iter  7900 | loss 3.7674 | ppl   43.27 | lr 1.47e-04 | sparsity 39.4% | 3442.6ms/iter
+Iter  7910 | loss 3.7678 | ppl   43.28 | lr 1.46e-04 | sparsity 39.4% | 3436.0ms/iter
+Iter  7920 | loss 3.7858 | ppl   44.07 | lr 1.45e-04 | sparsity 39.5% | 3420.3ms/iter
+Iter  7930 | loss 3.7859 | ppl   44.07 | lr 1.44e-04 | sparsity 39.5% | 3424.3ms/iter
+Iter  7940 | loss 3.7889 | ppl   44.21 | lr 1.44e-04 | sparsity 39.6% | 3421.6ms/iter
+Iter  7950 | loss 3.7793 | ppl   43.78 | lr 1.43e-04 | sparsity 39.6% | 3424.7ms/iter
+Iter  7960 | loss 3.7942 | ppl   44.44 | lr 1.42e-04 | sparsity 39.7% | 3427.7ms/iter
+Iter  7970 | loss 3.7901 | ppl   44.26 | lr 1.41e-04 | sparsity 39.7% | 3434.2ms/iter
+Iter  7980 | loss 3.7897 | ppl   44.24 | lr 1.41e-04 | sparsity 39.8% | 3430.5ms/iter
+Iter  7990 | loss 3.7833 | ppl   43.96 | lr 1.40e-04 | sparsity 39.8% | 3432.8ms/iter
+Iter  8000 | loss 3.7778 | ppl   43.72 | lr 1.39e-04 | sparsity 39.9% | 3440.7ms/iter
+Validation loss: 3.7927 | ppl: 44.38
+Saved best model (val_loss: 3.7927)
+Iter  8010 | loss 3.7884 | ppl   44.19 | lr 1.38e-04 | sparsity 39.9% | 7819.2ms/iter
+Iter  8020 | loss 3.7755 | ppl   43.62 | lr 1.38e-04 | sparsity 40.0% | 3442.2ms/iter
+Iter  8030 | loss 3.7658 | ppl   43.20 | lr 1.37e-04 | sparsity 40.1% | 3442.2ms/iter
+Iter  8040 | loss 3.7806 | ppl   43.84 | lr 1.36e-04 | sparsity 40.1% | 3440.4ms/iter
+Iter  8050 | loss 3.7882 | ppl   44.18 | lr 1.35e-04 | sparsity 40.2% | 3450.9ms/iter
+Iter  8060 | loss 3.7928 | ppl   44.38 | lr 1.35e-04 | sparsity 40.2% | 3454.5ms/iter
+Iter  8070 | loss 3.7721 | ppl   43.47 | lr 1.34e-04 | sparsity 40.3% | 3457.5ms/iter
+Iter  8080 | loss 3.7606 | ppl   42.97 | lr 1.33e-04 | sparsity 40.3% | 3447.5ms/iter
+Iter  8090 | loss 3.7774 | ppl   43.70 | lr 1.32e-04 | sparsity 40.4% | 3442.2ms/iter
+Iter  8100 | loss 3.7766 | ppl   43.67 | lr 1.32e-04 | sparsity 40.4% | 3452.5ms/iter
+Iter  8110 | loss 3.7628 | ppl   43.07 | lr 1.31e-04 | sparsity 40.5% | 3448.8ms/iter
+Iter  8120 | loss 3.7591 | ppl   42.91 | lr 1.30e-04 | sparsity 40.5% | 3444.8ms/iter
+Iter  8130 | loss 3.7645 | ppl   43.14 | lr 1.30e-04 | sparsity 40.6% | 3454.7ms/iter
+Iter  8140 | loss 3.7668 | ppl   43.24 | lr 1.29e-04 | sparsity 40.6% | 3459.9ms/iter
+Iter  8150 | loss 3.7590 | ppl   42.91 | lr 1.28e-04 | sparsity 40.7% | 3453.6ms/iter
+Iter  8160 | loss 3.7503 | ppl   42.54 | lr 1.27e-04 | sparsity 40.7% | 3463.5ms/iter
+Iter  8170 | loss 3.7730 | ppl   43.51 | lr 1.27e-04 | sparsity 40.8% | 3455.2ms/iter
+Iter  8180 | loss 3.7668 | ppl   43.24 | lr 1.26e-04 | sparsity 40.8% | 3450.9ms/iter
+Iter  8190 | loss 3.7957 | ppl   44.51 | lr 1.25e-04 | sparsity 40.9% | 3448.5ms/iter
+Iter  8200 | loss 3.7545 | ppl   42.71 | lr 1.25e-04 | sparsity 40.9% | 3453.1ms/iter
+Iter  8210 | loss 3.7440 | ppl   42.27 | lr 1.24e-04 | sparsity 41.0% | 3454.6ms/iter
+Iter  8220 | loss 3.7639 | ppl   43.12 | lr 1.23e-04 | sparsity 41.0% | 3439.7ms/iter
+Iter  8230 | loss 3.7503 | ppl   42.53 | lr 1.23e-04 | sparsity 41.1% | 3447.6ms/iter
+Iter  8240 | loss 3.7843 | ppl   44.00 | lr 1.22e-04 | sparsity 41.1% | 3447.1ms/iter
+Iter  8250 | loss 3.7600 | ppl   42.95 | lr 1.21e-04 | sparsity 41.2% | 3446.6ms/iter
+Iter  8260 | loss 3.7607 | ppl   42.98 | lr 1.21e-04 | sparsity 41.2% | 3437.7ms/iter
+Iter  8270 | loss 3.7508 | ppl   42.56 | lr 1.20e-04 | sparsity 41.3% | 3441.2ms/iter
+Iter  8280 | loss 3.7598 | ppl   42.94 | lr 1.19e-04 | sparsity 41.3% | 3443.6ms/iter
+Iter  8290 | loss 3.7644 | ppl   43.14 | lr 1.19e-04 | sparsity 41.4% | 3439.9ms/iter
+Iter  8300 | loss 3.7506 | ppl   42.55 | lr 1.18e-04 | sparsity 41.4% | 3439.2ms/iter
+Iter  8310 | loss 3.7446 | ppl   42.29 | lr 1.17e-04 | sparsity 41.5% | 3446.9ms/iter
+Iter  8320 | loss 3.7564 | ppl   42.79 | lr 1.17e-04 | sparsity 41.5% | 3434.6ms/iter
+Iter  8330 | loss 3.7518 | ppl   42.60 | lr 1.16e-04 | sparsity 41.6% | 3440.2ms/iter
+Iter  8340 | loss 3.7436 | ppl   42.25 | lr 1.15e-04 | sparsity 41.6% | 3434.5ms/iter
+Iter  8350 | loss 3.7643 | ppl   43.13 | lr 1.15e-04 | sparsity 41.7% | 3441.7ms/iter
+Iter  8360 | loss 3.7654 | ppl   43.18 | lr 1.14e-04 | sparsity 41.7% | 3448.3ms/iter
+Iter  8370 | loss 3.7536 | ppl   42.67 | lr 1.13e-04 | sparsity 41.8% | 3437.3ms/iter
+Iter  8380 | loss 3.7618 | ppl   43.03 | lr 1.13e-04 | sparsity 41.8% | 3455.3ms/iter
+Iter  8390 | loss 3.7617 | ppl   43.02 | lr 1.12e-04 | sparsity 41.9% | 3420.7ms/iter
+Iter  8400 | loss 3.7637 | ppl   43.11 | lr 1.12e-04 | sparsity 41.9% | 3427.8ms/iter
+Iter  8410 | loss 3.7656 | ppl   43.19 | lr 1.11e-04 | sparsity 42.0% | 3435.2ms/iter
+Iter  8420 | loss 3.7382 | ppl   42.02 | lr 1.10e-04 | sparsity 42.0% | 3434.9ms/iter
+Iter  8430 | loss 3.7544 | ppl   42.71 | lr 1.10e-04 | sparsity 42.1% | 3444.2ms/iter
+Iter  8440 | loss 3.7559 | ppl   42.77 | lr 1.09e-04 | sparsity 42.1% | 3439.5ms/iter
+Iter  8450 | loss 3.7690 | ppl   43.34 | lr 1.08e-04 | sparsity 42.2% | 3435.4ms/iter
+Iter  8460 | loss 3.7777 | ppl   43.72 | lr 1.08e-04 | sparsity 42.2% | 3438.1ms/iter
+Iter  8470 | loss 3.7404 | ppl   42.12 | lr 1.07e-04 | sparsity 42.3% | 3422.2ms/iter
+Iter  8480 | loss 3.7738 | ppl   43.55 | lr 1.07e-04 | sparsity 42.3% | 3436.6ms/iter
+Iter  8490 | loss 3.7668 | ppl   43.24 | lr 1.06e-04 | sparsity 42.4% | 3449.6ms/iter
+Iter  8500 | loss 3.7638 | ppl   43.11 | lr 1.06e-04 | sparsity 42.4% | 3421.0ms/iter
+Validation loss: 3.7702 | ppl: 43.39
+Saved best model (val_loss: 3.7702)
+Iter  8510 | loss 3.7630 | ppl   43.08 | lr 1.05e-04 | sparsity 42.5% | 7825.9ms/iter
+Iter  8520 | loss 3.7663 | ppl   43.22 | lr 1.04e-04 | sparsity 42.5% | 3439.9ms/iter
+Iter  8530 | loss 3.7798 | ppl   43.81 | lr 1.04e-04 | sparsity 42.6% | 3438.9ms/iter
+Iter  8540 | loss 3.7495 | ppl   42.50 | lr 1.03e-04 | sparsity 42.6% | 3454.2ms/iter
+Iter  8550 | loss 3.7722 | ppl   43.48 | lr 1.03e-04 | sparsity 42.7% | 3445.8ms/iter
+Iter  8560 | loss 3.7817 | ppl   43.89 | lr 1.02e-04 | sparsity 42.7% | 3451.5ms/iter
+Iter  8570 | loss 3.7593 | ppl   42.92 | lr 1.01e-04 | sparsity 42.8% | 3442.5ms/iter
+Iter  8580 | loss 3.7627 | ppl   43.07 | lr 1.01e-04 | sparsity 42.8% | 3458.5ms/iter
+Iter  8590 | loss 3.7665 | ppl   43.23 | lr 1.00e-04 | sparsity 42.9% | 3467.4ms/iter
+Iter  8600 | loss 3.7528 | ppl   42.64 | lr 9.98e-05 | sparsity 42.9% | 3456.5ms/iter
+Iter  8610 | loss 3.7527 | ppl   42.64 | lr 9.92e-05 | sparsity 43.0% | 3460.1ms/iter
+Iter  8620 | loss 3.7543 | ppl   42.70 | lr 9.87e-05 | sparsity 43.0% | 3443.2ms/iter
+Iter  8630 | loss 3.7499 | ppl   42.52 | lr 9.81e-05 | sparsity 43.1% | 3460.1ms/iter
+Iter  8640 | loss 3.7572 | ppl   42.83 | lr 9.76e-05 | sparsity 43.1% | 3462.0ms/iter
+Iter  8650 | loss 3.7503 | ppl   42.53 | lr 9.71e-05 | sparsity 43.2% | 3462.2ms/iter
+Iter  8660 | loss 3.7572 | ppl   42.83 | lr 9.65e-05 | sparsity 43.2% | 3459.6ms/iter
+Iter  8670 | loss 3.7466 | ppl   42.38 | lr 9.60e-05 | sparsity 43.3% | 3462.7ms/iter
+Iter  8680 | loss 3.7577 | ppl   42.85 | lr 9.55e-05 | sparsity 43.3% | 3452.9ms/iter
+Iter  8690 | loss 3.7540 | ppl   42.69 | lr 9.49e-05 | sparsity 43.4% | 3458.6ms/iter
+Iter  8700 | loss 3.7529 | ppl   42.65 | lr 9.44e-05 | sparsity 43.4% | 3459.4ms/iter
+Iter  8710 | loss 3.7534 | ppl   42.67 | lr 9.39e-05 | sparsity 43.5% | 3463.8ms/iter
+Iter  8720 | loss 3.7328 | ppl   41.80 | lr 9.34e-05 | sparsity 43.5% | 3469.5ms/iter
+Iter  8730 | loss 3.7370 | ppl   41.97 | lr 9.29e-05 | sparsity 43.6% | 3466.3ms/iter
+Iter  8740 | loss 3.7536 | ppl   42.67 | lr 9.24e-05 | sparsity 43.6% | 3458.4ms/iter
+Iter  8750 | loss 3.7412 | ppl   42.15 | lr 9.19e-05 | sparsity 43.7% | 3447.3ms/iter
+Iter  8760 | loss 3.7364 | ppl   41.95 | lr 9.14e-05 | sparsity 43.7% | 3444.3ms/iter
+Iter  8770 | loss 3.7420 | ppl   42.18 | lr 9.09e-05 | sparsity 43.8% | 3463.1ms/iter
+Iter  8780 | loss 3.7513 | ppl   42.58 | lr 9.04e-05 | sparsity 43.8% | 3454.9ms/iter
+Iter  8790 | loss 3.7189 | ppl   41.22 | lr 8.99e-05 | sparsity 43.9% | 3459.5ms/iter
+Iter  8800 | loss 3.7265 | ppl   41.53 | lr 8.94e-05 | sparsity 43.9% | 3451.2ms/iter
+Iter  8810 | loss 3.7460 | ppl   42.35 | lr 8.89e-05 | sparsity 44.0% | 3464.1ms/iter
+Iter  8820 | loss 3.7493 | ppl   42.49 | lr 8.85e-05 | sparsity 44.0% | 3452.2ms/iter
+Iter  8830 | loss 3.7672 | ppl   43.26 | lr 8.80e-05 | sparsity 44.1% | 3450.7ms/iter
+Iter  8840 | loss 3.7284 | ppl   41.61 | lr 8.75e-05 | sparsity 44.1% | 3452.3ms/iter
+Iter  8850 | loss 3.7436 | ppl   42.25 | lr 8.71e-05 | sparsity 44.2% | 3454.3ms/iter
+Iter  8860 | loss 3.7401 | ppl   42.10 | lr 8.66e-05 | sparsity 44.2% | 3457.4ms/iter
+Iter  8870 | loss 3.7332 | ppl   41.81 | lr 8.62e-05 | sparsity 44.3% | 3439.6ms/iter
+Iter  8880 | loss 3.7583 | ppl   42.88 | lr 8.57e-05 | sparsity 44.3% | 3464.6ms/iter
+Iter  8890 | loss 3.7495 | ppl   42.50 | lr 8.52e-05 | sparsity 44.4% | 3461.6ms/iter
+Iter  8900 | loss 3.7345 | ppl   41.87 | lr 8.48e-05 | sparsity 44.4% | 3457.5ms/iter
+Iter  8910 | loss 3.7465 | ppl   42.37 | lr 8.44e-05 | sparsity 44.5% | 3463.5ms/iter
+Iter  8920 | loss 3.7316 | ppl   41.75 | lr 8.39e-05 | sparsity 44.5% | 3437.4ms/iter
+Iter  8930 | loss 3.7495 | ppl   42.50 | lr 8.35e-05 | sparsity 44.6% | 3458.9ms/iter
+Iter  8940 | loss 3.7571 | ppl   42.83 | lr 8.31e-05 | sparsity 44.6% | 3462.3ms/iter
+Iter  8950 | loss 3.7512 | ppl   42.57 | lr 8.26e-05 | sparsity 44.7% | 3452.4ms/iter
+Iter  8960 | loss 3.7337 | ppl   41.83 | lr 8.22e-05 | sparsity 44.7% | 3453.9ms/iter
+Iter  8970 | loss 3.7344 | ppl   41.86 | lr 8.18e-05 | sparsity 44.8% | 3454.5ms/iter
+Iter  8980 | loss 3.7447 | ppl   42.30 | lr 8.14e-05 | sparsity 44.8% | 3461.4ms/iter
+Iter  8990 | loss 3.7403 | ppl   42.11 | lr 8.10e-05 | sparsity 44.9% | 3463.2ms/iter
+Iter  9000 | loss 3.7346 | ppl   41.87 | lr 8.06e-05 | sparsity 44.9% | 3466.9ms/iter
+Validation loss: 3.7606 | ppl: 42.97
+Saved best model (val_loss: 3.7606)
+Iter  9010 | loss 3.7466 | ppl   42.38 | lr 8.01e-05 | sparsity 45.0% | 7818.4ms/iter
+Iter  9020 | loss 3.7472 | ppl   42.40 | lr 7.97e-05 | sparsity 45.1% | 3443.2ms/iter
+Iter  9030 | loss 3.7550 | ppl   42.73 | lr 7.94e-05 | sparsity 45.1% | 3440.2ms/iter
+Iter  9040 | loss 3.7477 | ppl   42.42 | lr 7.90e-05 | sparsity 45.2% | 3440.0ms/iter
+Iter  9050 | loss 3.7625 | ppl   43.06 | lr 7.86e-05 | sparsity 45.2% | 3446.4ms/iter
+Iter  9060 | loss 3.7453 | ppl   42.32 | lr 7.82e-05 | sparsity 45.3% | 3441.9ms/iter
+Iter  9070 | loss 3.7267 | ppl   41.54 | lr 7.78e-05 | sparsity 45.3% | 3447.7ms/iter
+Iter  9080 | loss 3.7502 | ppl   42.53 | lr 7.74e-05 | sparsity 45.4% | 3455.7ms/iter
+Iter  9090 | loss 3.7451 | ppl   42.31 | lr 7.71e-05 | sparsity 45.4% | 3447.2ms/iter
+Iter  9100 | loss 3.7486 | ppl   42.46 | lr 7.67e-05 | sparsity 45.5% | 3447.1ms/iter
+Iter  9110 | loss 3.7425 | ppl   42.20 | lr 7.63e-05 | sparsity 45.5% | 3452.6ms/iter
+Iter  9120 | loss 3.7449 | ppl   42.31 | lr 7.60e-05 | sparsity 45.6% | 3456.2ms/iter
+Iter  9130 | loss 3.7388 | ppl   42.05 | lr 7.56e-05 | sparsity 45.6% | 3454.1ms/iter
+Iter  9140 | loss 3.7227 | ppl   41.37 | lr 7.53e-05 | sparsity 45.7% | 3457.9ms/iter
+Iter  9150 | loss 3.7406 | ppl   42.12 | lr 7.49e-05 | sparsity 45.7% | 3454.8ms/iter
+Iter  9160 | loss 3.7410 | ppl   42.14 | lr 7.46e-05 | sparsity 45.8% | 3446.0ms/iter
+Iter  9170 | loss 3.7344 | ppl   41.86 | lr 7.42e-05 | sparsity 45.8% | 3459.8ms/iter
+Iter  9180 | loss 3.7422 | ppl   42.19 | lr 7.39e-05 | sparsity 45.9% | 3458.7ms/iter
+Iter  9190 | loss 3.7290 | ppl   41.64 | lr 7.35e-05 | sparsity 45.9% | 3456.2ms/iter
+Iter  9200 | loss 3.7266 | ppl   41.54 | lr 7.32e-05 | sparsity 46.0% | 3462.8ms/iter
+Iter  9210 | loss 3.7413 | ppl   42.15 | lr 7.29e-05 | sparsity 46.0% | 3446.0ms/iter
+Iter  9220 | loss 3.7421 | ppl   42.19 | lr 7.26e-05 | sparsity 46.1% | 3459.6ms/iter
+Iter  9230 | loss 3.7421 | ppl   42.18 | lr 7.22e-05 | sparsity 46.1% | 3459.0ms/iter
+Iter  9240 | loss 3.7269 | ppl   41.55 | lr 7.19e-05 | sparsity 46.2% | 3452.0ms/iter
+Iter  9250 | loss 3.7341 | ppl   41.85 | lr 7.16e-05 | sparsity 46.2% | 3462.5ms/iter
+Iter  9260 | loss 3.7408 | ppl   42.13 | lr 7.13e-05 | sparsity 46.3% | 3454.5ms/iter
+Iter  9270 | loss 3.7513 | ppl   42.58 | lr 7.10e-05 | sparsity 46.3% | 3455.2ms/iter
+Iter  9280 | loss 3.7274 | ppl   41.57 | lr 7.07e-05 | sparsity 46.4% | 3454.7ms/iter
+Iter  9290 | loss 3.7162 | ppl   41.11 | lr 7.04e-05 | sparsity 46.4% | 3451.4ms/iter
+Iter  9300 | loss 3.7164 | ppl   41.12 | lr 7.01e-05 | sparsity 46.5% | 3457.8ms/iter
+Iter  9310 | loss 3.7271 | ppl   41.56 | lr 6.99e-05 | sparsity 46.5% | 3460.6ms/iter
+Iter  9320 | loss 3.7484 | ppl   42.46 | lr 6.96e-05 | sparsity 46.6% | 3453.1ms/iter
+Iter  9330 | loss 3.7273 | ppl   41.57 | lr 6.93e-05 | sparsity 46.6% | 3450.0ms/iter
+Iter  9340 | loss 3.7218 | ppl   41.34 | lr 6.90e-05 | sparsity 46.7% | 3451.8ms/iter
+Iter  9350 | loss 3.7292 | ppl   41.65 | lr 6.87e-05 | sparsity 46.7% | 3447.6ms/iter
+Iter  9360 | loss 3.7270 | ppl   41.55 | lr 6.85e-05 | sparsity 46.8% | 3447.2ms/iter
+Iter  9370 | loss 3.7458 | ppl   42.34 | lr 6.82e-05 | sparsity 46.8% | 3439.5ms/iter
+Iter  9380 | loss 3.7377 | ppl   42.00 | lr 6.80e-05 | sparsity 46.9% | 3451.2ms/iter
+Iter  9390 | loss 3.7197 | ppl   41.25 | lr 6.77e-05 | sparsity 46.9% | 3461.2ms/iter
+Iter  9400 | loss 3.7483 | ppl   42.45 | lr 6.75e-05 | sparsity 47.0% | 3459.2ms/iter
+Iter  9410 | loss 3.7401 | ppl   42.10 | lr 6.72e-05 | sparsity 47.0% | 3443.0ms/iter
+Iter  9420 | loss 3.7310 | ppl   41.72 | lr 6.70e-05 | sparsity 47.1% | 3454.8ms/iter
+Iter  9430 | loss 3.7500 | ppl   42.52 | lr 6.67e-05 | sparsity 47.1% | 3455.8ms/iter
+Iter  9440 | loss 3.7369 | ppl   41.97 | lr 6.65e-05 | sparsity 47.2% | 3440.6ms/iter
+Iter  9450 | loss 3.7220 | ppl   41.35 | lr 6.63e-05 | sparsity 47.2% | 3468.9ms/iter
+Iter  9460 | loss 3.7420 | ppl   42.18 | lr 6.60e-05 | sparsity 47.3% | 3453.1ms/iter
+Iter  9470 | loss 3.7176 | ppl   41.17 | lr 6.58e-05 | sparsity 47.3% | 3452.5ms/iter
+Iter  9480 | loss 3.7179 | ppl   41.18 | lr 6.56e-05 | sparsity 47.4% | 3455.6ms/iter
+Iter  9490 | loss 3.7324 | ppl   41.78 | lr 6.54e-05 | sparsity 47.4% | 3474.3ms/iter
+Iter  9500 | loss 3.7285 | ppl   41.62 | lr 6.52e-05 | sparsity 47.5% | 3450.6ms/iter
+Validation loss: 3.7569 | ppl: 42.82
+Saved best model (val_loss: 3.7569)
+Iter  9510 | loss 3.7484 | ppl   42.45 | lr 6.50e-05 | sparsity 47.5% | 7805.6ms/iter
+Iter  9520 | loss 3.7312 | ppl   41.73 | lr 6.48e-05 | sparsity 47.6% | 3444.1ms/iter
+Iter  9530 | loss 3.7355 | ppl   41.91 | lr 6.46e-05 | sparsity 47.6% | 3444.4ms/iter
+Iter  9540 | loss 3.7222 | ppl   41.35 | lr 6.44e-05 | sparsity 47.7% | 3447.4ms/iter
+Iter  9550 | loss 3.7522 | ppl   42.62 | lr 6.42e-05 | sparsity 47.7% | 3449.3ms/iter
+Iter  9560 | loss 3.7361 | ppl   41.93 | lr 6.40e-05 | sparsity 47.8% | 3445.7ms/iter
+Iter  9570 | loss 3.7492 | ppl   42.49 | lr 6.38e-05 | sparsity 47.8% | 3450.7ms/iter
+Iter  9580 | loss 3.7280 | ppl   41.59 | lr 6.37e-05 | sparsity 47.9% | 3449.5ms/iter
+Iter  9590 | loss 3.7405 | ppl   42.12 | lr 6.35e-05 | sparsity 47.9% | 3444.3ms/iter
+Iter  9600 | loss 3.7513 | ppl   42.58 | lr 6.33e-05 | sparsity 48.0% | 3451.4ms/iter
+Iter  9610 | loss 3.7381 | ppl   42.02 | lr 6.32e-05 | sparsity 48.0% | 3458.5ms/iter
+Iter  9620 | loss 3.7371 | ppl   41.98 | lr 6.30e-05 | sparsity 48.1% | 3452.1ms/iter
+Iter  9630 | loss 3.7320 | ppl   41.76 | lr 6.28e-05 | sparsity 48.1% | 3458.7ms/iter
+Iter  9640 | loss 3.7280 | ppl   41.60 | lr 6.27e-05 | sparsity 48.2% | 3455.4ms/iter
+Iter  9650 | loss 3.7326 | ppl   41.79 | lr 6.25e-05 | sparsity 48.2% | 3457.2ms/iter
+Iter  9660 | loss 3.7250 | ppl   41.47 | lr 6.24e-05 | sparsity 48.3% | 3456.6ms/iter
+Iter  9670 | loss 3.7371 | ppl   41.98 | lr 6.23e-05 | sparsity 48.3% | 3464.3ms/iter
+Iter  9680 | loss 3.7284 | ppl   41.61 | lr 6.21e-05 | sparsity 48.4% | 3463.4ms/iter
+Iter  9690 | loss 3.7261 | ppl   41.52 | lr 6.20e-05 | sparsity 48.4% | 3452.1ms/iter
+Iter  9700 | loss 3.7312 | ppl   41.73 | lr 6.19e-05 | sparsity 48.5% | 3452.2ms/iter
+Iter  9710 | loss 3.7253 | ppl   41.49 | lr 6.17e-05 | sparsity 48.5% | 3455.5ms/iter
+Iter  9720 | loss 3.7252 | ppl   41.48 | lr 6.16e-05 | sparsity 48.6% | 3461.7ms/iter
+Iter  9730 | loss 3.7416 | ppl   42.17 | lr 6.15e-05 | sparsity 48.6% | 3455.4ms/iter
+Iter  9740 | loss 3.7328 | ppl   41.80 | lr 6.14e-05 | sparsity 48.7% | 3461.3ms/iter
+Iter  9750 | loss 3.7234 | ppl   41.40 | lr 6.13e-05 | sparsity 48.7% | 3453.9ms/iter
+Iter  9760 | loss 3.7032 | ppl   40.58 | lr 6.12e-05 | sparsity 48.8% | 3451.0ms/iter
+Iter  9770 | loss 3.7262 | ppl   41.52 | lr 6.11e-05 | sparsity 48.8% | 3458.6ms/iter
+Iter  9780 | loss 3.7266 | ppl   41.54 | lr 6.10e-05 | sparsity 48.9% | 3469.5ms/iter
+Iter  9790 | loss 3.7424 | ppl   42.20 | lr 6.09e-05 | sparsity 48.9% | 3487.3ms/iter
+Iter  9800 | loss 3.7395 | ppl   42.08 | lr 6.08e-05 | sparsity 49.0% | 3457.4ms/iter
+Iter  9810 | loss 3.7359 | ppl   41.93 | lr 6.08e-05 | sparsity 49.0% | 3460.1ms/iter
+Iter  9820 | loss 3.7250 | ppl   41.47 | lr 6.07e-05 | sparsity 49.1% | 3447.6ms/iter
+Iter  9830 | loss 3.7383 | ppl   42.03 | lr 6.06e-05 | sparsity 49.1% | 3469.9ms/iter
+Iter  9840 | loss 3.7284 | ppl   41.61 | lr 6.05e-05 | sparsity 49.2% | 3469.0ms/iter
+Iter  9850 | loss 3.7350 | ppl   41.89 | lr 6.05e-05 | sparsity 49.2% | 3456.0ms/iter
+Iter  9860 | loss 3.7258 | ppl   41.51 | lr 6.04e-05 | sparsity 49.3% | 3448.2ms/iter
+Iter  9870 | loss 3.7428 | ppl   42.22 | lr 6.04e-05 | sparsity 49.3% | 3453.6ms/iter
+Iter  9880 | loss 3.7150 | ppl   41.06 | lr 6.03e-05 | sparsity 49.4% | 3455.9ms/iter
+Iter  9890 | loss 3.7221 | ppl   41.35 | lr 6.03e-05 | sparsity 49.4% | 3439.9ms/iter
+Iter  9900 | loss 3.7388 | ppl   42.05 | lr 6.02e-05 | sparsity 49.5% | 3459.4ms/iter
+Iter  9910 | loss 3.7317 | ppl   41.75 | lr 6.02e-05 | sparsity 49.5% | 3457.0ms/iter
+Iter  9920 | loss 3.7289 | ppl   41.63 | lr 6.01e-05 | sparsity 49.6% | 3446.4ms/iter
+Iter  9930 | loss 3.7245 | ppl   41.45 | lr 6.01e-05 | sparsity 49.6% | 3442.7ms/iter
+Iter  9940 | loss 3.7491 | ppl   42.48 | lr 6.01e-05 | sparsity 49.7% | 3439.3ms/iter
+Iter  9950 | loss 3.7192 | ppl   41.23 | lr 6.01e-05 | sparsity 49.7% | 3463.6ms/iter
+Iter  9960 | loss 3.7446 | ppl   42.29 | lr 6.00e-05 | sparsity 49.8% | 3448.6ms/iter
+Iter  9970 | loss 3.7410 | ppl   42.14 | lr 6.00e-05 | sparsity 49.8% | 3464.8ms/iter
+Iter  9980 | loss 3.7348 | ppl   41.88 | lr 6.00e-05 | sparsity 49.9% | 3456.1ms/iter
+Iter  9990 | loss 3.7402 | ppl   42.11 | lr 6.00e-05 | sparsity 49.9% | 3460.3ms/iter
+
+==================================================
+Training complete!
+Final validation loss: 3.7479 | ppl: 42.43
+Best validation loss: 3.7569 | ppl: 42.82
+ΔPPL (improvement): -60149.52
+
+Measuring inference latency...
+  Seq 512: p50=4.34ms, p95=4.43ms
+  Seq 1024: p50=7.64ms, p95=7.80ms
+
+GPU Memory: 7010.1MB allocated, 28342.0MB reserved
+Saved metrics to /data/AdamWPrune/test_matrix_results_20250923_010926/gpt2_adamwspam_magnitude_50/training_metrics.json
+Saved detailed metrics to gpt2/outputs/training_metrics.json
+
+Training complete!
+* Run finished. Uploading logs to Trackio (please wait...)
+Trackio tracking finished. Run 'trackio show' to view results.
+wandb: updating run metadata
+wandb: 
+wandb: Run history:
+wandb:  best_val_loss ▁
+wandb: final_val_loss ▁
+wandb:      iteration ▁▁▁▂▂▂▂▂▂▂▃▃▃▃▃▃▃▄▄▄▅▅▅▅▆▆▆▆▆▆▆▆▆▆▇▇▇███
+wandb:  learning_rate ▁▁▄▅▆▇███████████▇▇▇▆▆▆▅▅▅▅▄▄▄▄▄▃▃▂▂▂▂▂▂
+wandb:       sparsity ▁▁▁▁▁▂▂▂▂▂▂▂▂▂▃▃▃▃▄▄▄▅▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇███
+wandb:     total_time ▁
+wandb:     train_loss █▇▅▄▄▄▃▃▃▃▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:       val_loss █▃▃▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁
+wandb: val_perplexity █▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb: 
+wandb: Run summary:
+wandb:  best_val_loss 3.75694
+wandb: final_val_loss 3.7479
+wandb:      iteration 9990
+wandb:  learning_rate 6e-05
+wandb:       sparsity 0.49949
+wandb:     total_time 34514.71311
+wandb:     train_loss 3.7402
+wandb:       val_loss 3.75694
+wandb: val_perplexity 42.81729
+wandb: 
+wandb: 🚀 View run gpt2_adamwspam_20250923_010956 at: https://wandb.ai/mcgrof-citizen/adamwprune-gpt2-20250922/runs/z2uhbnf6
+wandb: ⭐️ View project at: https://wandb.ai/mcgrof-citizen/adamwprune-gpt2-20250922
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250923_010956-z2uhbnf6/logs
+WandB tracking finished. Check your WandB dashboard for results.
+2025-09-23 10:45:35,634 - INFO - Training completed successfully
+2025-09-23 10:45:37,384 - INFO - Simple GPU monitoring completed
+2025-09-23 10:45:38,838 - INFO - GPU performance graphs generated: test_matrix_results_20250923_010926/gpt2_adamwspam_magnitude_50/gpu_stats_gpt2_adamwspam_magnitude_50_20250923_010952_plot.png
+2025-09-23 10:45:38,844 - INFO - GPU stats saved to: test_matrix_results_20250923_010926/gpt2_adamwspam_magnitude_50/gpu_stats_gpt2_adamwspam_magnitude_50_20250923_010952.json
+2025-09-23 10:45:38,844 - INFO - Generating performance graphs...
+2025-09-23 10:45:40,276 - INFO - GPU performance graphs saved to test_matrix_results_20250923_010926/gpt2_adamwspam_magnitude_50/gpu_stats_gpt2_adamwspam_magnitude_50_20250923_010952_plot.png
+2025-09-23 10:45:40,276 - INFO - Performance graphs saved to: test_matrix_results_20250923_010926/gpt2_adamwspam_magnitude_50/gpu_stats_gpt2_adamwspam_magnitude_50_20250923_010952_plot.png
+2025-09-23 10:45:40,276 - INFO - Training with monitoring completed successfully!
