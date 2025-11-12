@@ -1,0 +1,473 @@
+/opt/conda/envs/pytorch/lib/python3.11/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+2025-11-11 21:07:53,130 - INFO - Training configuration: gpt2_adamwspam_ramla_stepV17
+2025-11-11 21:07:53,131 - INFO - Ablation mode enabled - using train_ra_mla.py
+2025-11-11 21:07:53,131 - INFO - DDP not enabled in config - using single-GPU mode
+2025-11-11 21:07:53,131 - INFO - Starting training with GPU monitoring: gpt2_adamwspam_ramla_stepV17
+2025-11-11 21:07:53,184 - INFO - Started simple GPU monitoring - stats will be saved to test_matrix_results_20251111_170325/gpt2_adamwspam_ramla_stepV17/gpu_stats_gpt2_adamwspam_ramla_stepV17_20251111_210753.json
+2025-11-11 21:07:53,184 - INFO - Command: /opt/conda/envs/pytorch/bin/python3 /opt/dlami/nvme/AdamWPrune/gpt2/train_ra_mla.py --optimizer adamwspam --dataset finewebedu --batch-size 8 --block-size 1024 --gradient-accumulation 8 --compile --warmup-steps 200 --eval-interval 100 --eval-samples 200 --max-iters 10000 --max-time 7200 --decay-lr --min-lr 6e-5 --learning-rate 6e-4 --pruning-method none --spam-theta 50.0 --spam-interval 1000 --spam-warmup-steps 1000 --spam-enable-clip --ra-mla-ablation-step V17 --json-output /opt/dlami/nvme/AdamWPrune/test_matrix_results_20251111_170325/gpt2_adamwspam_ramla_stepV17/training_metrics.json --tracker wandb,trackio --tracker-project gpt2-kv-pruning --tracker-run-name gpt2_adamwspam_ramla_stepV17
+/opt/conda/envs/pytorch/lib/python3.11/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Time-based training enabled: max 7200 seconds (2.00 hours)
+Using device: cuda (NVIDIA A10G)
+  Enabled TensorFloat32 matmul precision (WMMA/Tensor Cores)
+  torch.compile enabled with scalar output capture
+Creating GPT-2 model: gpt2
+Number of parameters: 123.69M
+======================================================================
+Applying R-MLP standalone (baseline GPT-2 attention):
+  MLP R_ff value:       64
+  MLP expansion:        4.0x
+  Split: D_ff_std=3008, R_ff=64 (ratio 47.00:1)
+  R-MLP features:       basic (no mixer/gates)
+======================================================================
+Patching GPT-2 with KV cache pruning (k=391, recency=64)...
+  Layer 0: Standard Attention → KV-Pruned Attention
+  Layer 1: Standard Attention → KV-Pruned Attention
+  Layer 2: Standard Attention → KV-Pruned Attention
+  Layer 3: Standard Attention → KV-Pruned Attention
+  Layer 4: Standard Attention → KV-Pruned Attention
+  Layer 5: Standard Attention → KV-Pruned Attention
+  Layer 6: Standard Attention → KV-Pruned Attention
+  Layer 7: Standard Attention → KV-Pruned Attention
+  Layer 8: Standard Attention → KV-Pruned Attention
+  Layer 9: Standard Attention → KV-Pruned Attention
+  Layer 10: Standard Attention → KV-Pruned Attention
+  Layer 11: Standard Attention → KV-Pruned Attention
+Successfully patched 12 layers with KV-pruned attention
+Patching GPT-2 with R-MLP (R_ff=64, expansion=4.0)...
+  Layer 0: Standard MLP → R-MLP
+  Layer 1: Standard MLP → R-MLP
+  Layer 2: Standard MLP → R-MLP
+  Layer 3: Standard MLP → R-MLP
+  Layer 4: Standard MLP → R-MLP
+  Layer 5: Standard MLP → R-MLP
+  Layer 6: Standard MLP → R-MLP
+  Layer 7: Standard MLP → R-MLP
+  Layer 8: Standard MLP → R-MLP
+  Layer 9: Standard MLP → R-MLP
+  Layer 10: Standard MLP → R-MLP
+  Layer 11: Standard MLP → R-MLP
+Successfully patched 12 layers with R-MLP
+Using variance-guided activation (check every 50 steps)
+  Target variance: 0.0200, window: 100 losses
+Compiling model with torch.compile()...
+/opt/conda/envs/pytorch/lib/python3.11/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Model parameters: 124.39M
+Optimizer: adamwspam, LR: 0.0006, weight_decay: 0.1
+
+Initializing experiment tracking: wandb, trackio
+  Project: gpt2-kv-pruning
+  Run: gpt2_adamwspam_ramla_stepV17
+* Trackio project initialized: gpt2-kv-pruning
+* Trackio metrics logged to: /home/mcgrof/.cache/huggingface/trackio
+* View dashboard by running in your terminal:
+[1m[38;5;208mtrackio show --project "gpt2-kv-pruning"[0m
+* or by running in Python: trackio.show(project="gpt2-kv-pruning")
+* Created new run: gpt2_adamwspam_ramla_stepV17
+  ✓ Trackio initialized
+  ✓ Logged .config path to Trackio
+wandb: Currently logged in as: mcgrof (mcgrof-citizen) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.22.3
+wandb: Run data is saved locally in /opt/dlami/nvme/AdamWPrune/gpt2/wandb/run-20251111_210807-goareqnp
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run gpt2_adamwspam_ramla_stepV17
+wandb: ⭐️ View project at https://wandb.ai/mcgrof-citizen/gpt2-kv-pruning
+wandb: 🚀 View run at https://wandb.ai/mcgrof-citizen/gpt2-kv-pruning/runs/goareqnp
+wandb: Initializing weave.
+[36m[1mweave[0m: wandb version 0.23.0 is available!  To upgrade, please run:
+[36m[1mweave[0m:  $ pip install wandb --upgrade
+[36m[1mweave[0m: weave version 0.52.16 is available!  To upgrade, please run:
+[36m[1mweave[0m:  $ pip install weave --upgrade
+[36m[1mweave[0m: Logged in as Weights & Biases user: mcgrof.
+[36m[1mweave[0m: View Weave data at https://wandb.ai/mcgrof-citizen/gpt2-kv-pruning/weave
+  ✓ WandB initialized
+  ✓ Uploaded .config to WandB
+
+Starting training for 10000 iterations...
+
+============================================================
+TRAINING CONFIGURATION
+============================================================
+Batch size: 8, gradient accumulation: 8
+Effective batch size: 64
+Optimizer: adamwspam
+Pruning: None
+RATIO Ablation: Step V17 - Step V17
+============================================================
+
+
+======================================================================
+INFERENCE SCALING LAW ANALYSIS
+======================================================================
+
+Model Configuration:
+  Layers: 12
+  d_model: 768
+  MLP dim: 3072
+  MLP:Attn ratio: 4.00
+  Parameters: 124.4M (0.12GB)
+
+Training Efficiency: MLP:Attention Width Ratio
+==============================================
+
+  Val Loss │                                                          ··
+           │                                                        ··  
+           │                                                      ··    
+           │                                                    ··      
+           │                                                  ··        
+           │                                               ···          
+           │                                             ··             
+           │··                                       ····               
+           │  ····                                ···                   
+           │      ····                       ·····                      
+           │          ·······················                           
+    (good) │                     ★                                      
+           └────────────────────────────────────────────────────────────
+            MLP:Attention Width Ratio
+            0.5                         1.4★                         3.0
+
+  ★ = Optimal    ● = Current configuration
+
+  Current value (4.00) is outside plot range [0.5, 3.0]
+
+Inference Efficiency: Depth vs Latency (0.1GB param budget)
+===========================================================
+
+   Latency │                                                          ··
+           │                                                        ··  
+           │                                                      ··    
+           │                                                    ··      
+           │                                                  ··        
+           │                                               ···          
+           │                                            ···             
+           │··                                       ···                
+           │  ··●                                 ···                   
+           │     ·····                       ·····                      
+           │          ·······················                           
+    (good) │                     ★                                      
+           └────────────────────────────────────────────────────────────
+            Transformer Depth (layers)
+            8.0                         28.0★                       64.0
+
+  ★ = Optimal    ● = Current configuration
+
+  Assessment: ⚠ Moderate - Consider adjusting towards optimal
+  Current: 12.00 | Optimal: 28.00
+  Suggestion: Increase transformer depth (layers) towards 28.00
+
+======================================================================
+Note: Curves based on inference scaling law research
+      Optimal values may vary based on specific use case
+======================================================================
+
+Iter      0 | train loss 10.9741 | val loss 10.9742 | lr 0.00e+00 | RMLP_w_std 0.900 | RMLP_w_rec 0.000
+Saved best checkpoint (val_loss=10.9742)
+Iter      0 | loss 10.9640 | time 4081.1ms | lr 0.00e+00 | RMLP_w_std 0.900 | RMLP_w_rec 0.000
+Iter     10 | loss 9.8607 | time 2579.4ms | lr 3.00e-05 | RMLP_w_std 0.900 | RMLP_w_rec 0.000
+Iter     20 | loss 9.2776 | time 2579.1ms | lr 6.00e-05 | RMLP_w_std 0.900 | RMLP_w_rec 0.000
+Iter     30 | loss 8.7479 | time 2579.2ms | lr 9.00e-05 | RMLP_w_std 0.900 | RMLP_w_rec 0.000
+Iter     40 | loss 8.1246 | time 2585.2ms | lr 1.20e-04 | RMLP_w_std 0.900 | RMLP_w_rec 0.000
+Iter     50 | loss 7.6690 | time 2579.3ms | lr 1.50e-04 | RMLP_w_std 0.900 | RMLP_w_rec 0.000
+Iter     60 | loss 7.5405 | time 2579.1ms | lr 1.80e-04 | RMLP_w_std 0.900 | RMLP_w_rec 0.000
+Iter     70 | loss 7.3424 | time 2578.9ms | lr 2.10e-04 | RMLP_w_std 0.899 | RMLP_w_rec 0.000
+Iter     80 | loss 7.1712 | time 2579.3ms | lr 2.40e-04 | RMLP_w_std 0.899 | RMLP_w_rec 0.000
+Iter     90 | loss 7.0093 | time 2579.3ms | lr 2.70e-04 | RMLP_w_std 0.899 | RMLP_w_rec 0.000
+Iter    100 | train loss 6.9254 | val loss 6.8681 | lr 3.00e-04 | RMLP_w_std 0.899 | RMLP_w_rec 0.000
+Saved best checkpoint (val_loss=6.8681)
+Iter    100 | loss 6.9200 | time 2401.9ms | lr 3.00e-04 | RMLP_w_std 0.899 | RMLP_w_rec 0.000
+Iter    110 | loss 6.8730 | time 2578.8ms | lr 3.30e-04 | RMLP_w_std 0.898 | RMLP_w_rec 0.000
+Iter    120 | loss 6.7202 | time 2578.7ms | lr 3.60e-04 | RMLP_w_std 0.898 | RMLP_w_rec 0.000
+Iter    130 | loss 6.6751 | time 2579.3ms | lr 3.90e-04 | RMLP_w_std 0.897 | RMLP_w_rec 0.000
+Iter    140 | loss 6.6336 | time 2579.0ms | lr 4.20e-04 | RMLP_w_std 0.896 | RMLP_w_rec 0.000
+Iter    150 | loss 6.5340 | time 2579.5ms | lr 4.50e-04 | RMLP_w_std 0.896 | RMLP_w_rec 0.000
+Iter    160 | loss 6.5034 | time 2579.3ms | lr 4.80e-04 | RMLP_w_std 0.895 | RMLP_w_rec 0.000
+Iter    170 | loss 6.4358 | time 2579.7ms | lr 5.10e-04 | RMLP_w_std 0.895 | RMLP_w_rec 0.000
+Iter    180 | loss 6.3705 | time 2579.6ms | lr 5.40e-04 | RMLP_w_std 0.894 | RMLP_w_rec 0.000
+Iter    190 | loss 6.3580 | time 2579.7ms | lr 5.70e-04 | RMLP_w_std 0.893 | RMLP_w_rec 0.000
+Iter    200 | train loss 6.3131 | val loss 6.2787 | lr 6.00e-04 | RMLP_w_std 0.893 | RMLP_w_rec 0.000
+Saved best checkpoint (val_loss=6.2787)
+Iter    200 | loss 6.3724 | time 2403.5ms | lr 6.00e-04 | RMLP_w_std 0.893 | RMLP_w_rec 0.000
+Iter    210 | loss 6.3233 | time 2580.0ms | lr 6.00e-04 | RMLP_w_std 0.892 | RMLP_w_rec 0.000
+Iter    220 | loss 6.2792 | time 2579.5ms | lr 6.00e-04 | RMLP_w_std 0.891 | RMLP_w_rec 0.000
+Iter    230 | loss 6.2896 | time 2578.4ms | lr 6.00e-04 | RMLP_w_std 0.891 | RMLP_w_rec 0.000
+Iter    240 | loss 6.2353 | time 2579.5ms | lr 6.00e-04 | RMLP_w_std 0.890 | RMLP_w_rec 0.000
+  Variance check at step 250: var=0.011756 (target<0.020000, min_step=250)
+
+======================================================================
+Step 250: Training stabilized (var=0.011756)
+Unfreezing reciprocal gates (enabling RA/R-MLP)
+======================================================================
+
+Iter    250 | loss 6.1868 | time 2958.7ms | lr 6.00e-04 | RMLP_w_std 0.890 | RMLP_w_rec 0.000
+Iter    260 | loss 6.2063 | time 2580.0ms | lr 6.00e-04 | RMLP_w_std 0.890 | RMLP_w_rec 0.000
+Iter    270 | loss 6.1229 | time 2579.5ms | lr 6.00e-04 | RMLP_w_std 0.889 | RMLP_w_rec -0.000
+Iter    280 | loss 6.1366 | time 2579.9ms | lr 6.00e-04 | RMLP_w_std 0.889 | RMLP_w_rec -0.001
+Iter    290 | loss 6.1153 | time 2580.4ms | lr 6.00e-04 | RMLP_w_std 0.889 | RMLP_w_rec 0.001
+Iter    300 | train loss 6.0549 | val loss 6.0213 | lr 6.00e-04 | RMLP_w_std 0.889 | RMLP_w_rec 0.001
+Saved best checkpoint (val_loss=6.0213)
+Iter    300 | loss 6.1845 | time 2404.0ms | lr 6.00e-04 | RMLP_w_std 0.889 | RMLP_w_rec 0.001
+Iter    310 | loss 6.0796 | time 2580.6ms | lr 6.00e-04 | RMLP_w_std 0.889 | RMLP_w_rec 0.000
+Iter    320 | loss 6.0150 | time 2580.4ms | lr 6.00e-04 | RMLP_w_std 0.889 | RMLP_w_rec -0.001
+Iter    330 | loss 5.9943 | time 2580.1ms | lr 6.00e-04 | RMLP_w_std 0.889 | RMLP_w_rec -0.001
+Iter    340 | loss 5.9141 | time 2580.5ms | lr 6.00e-04 | RMLP_w_std 0.889 | RMLP_w_rec 0.000
+Iter    350 | loss 5.8634 | time 2579.5ms | lr 6.00e-04 | RMLP_w_std 0.888 | RMLP_w_rec 0.001
+Iter    360 | loss 5.6985 | time 2580.0ms | lr 6.00e-04 | RMLP_w_std 0.887 | RMLP_w_rec 0.001
+Iter    370 | loss 5.0821 | time 2580.1ms | lr 6.00e-04 | RMLP_w_std 0.885 | RMLP_w_rec 0.000
+Iter    380 | loss 4.5710 | time 2580.0ms | lr 6.00e-04 | RMLP_w_std 0.883 | RMLP_w_rec 0.000
+Iter    390 | loss 4.3161 | time 2579.7ms | lr 5.99e-04 | RMLP_w_std 0.883 | RMLP_w_rec -0.000
+Iter    400 | train loss 4.0894 | val loss 4.0389 | lr 5.99e-04 | RMLP_w_std 0.882 | RMLP_w_rec -0.000
+Saved best checkpoint (val_loss=4.0389)
+Iter    400 | loss 4.2401 | time 2403.7ms | lr 5.99e-04 | RMLP_w_std 0.882 | RMLP_w_rec -0.000
+Iter    410 | loss 4.0402 | time 2579.6ms | lr 5.99e-04 | RMLP_w_std 0.882 | RMLP_w_rec 0.000
+Iter    420 | loss 3.9694 | time 2580.4ms | lr 5.99e-04 | RMLP_w_std 0.882 | RMLP_w_rec 0.000
+Iter    430 | loss 3.9430 | time 2580.2ms | lr 5.99e-04 | RMLP_w_std 0.882 | RMLP_w_rec -0.000
+Iter    440 | loss 3.8816 | time 2580.1ms | lr 5.99e-04 | RMLP_w_std 0.882 | RMLP_w_rec -0.000
+Iter    450 | loss 3.8876 | time 2580.0ms | lr 5.99e-04 | RMLP_w_std 0.883 | RMLP_w_rec -0.000
+Iter    460 | loss 3.8027 | time 2579.8ms | lr 5.99e-04 | RMLP_w_std 0.883 | RMLP_w_rec -0.000
+Iter    470 | loss 3.7230 | time 2579.4ms | lr 5.99e-04 | RMLP_w_std 0.883 | RMLP_w_rec -0.000
+Iter    480 | loss 3.7865 | time 2580.1ms | lr 5.99e-04 | RMLP_w_std 0.883 | RMLP_w_rec -0.001
+Iter    490 | loss 3.7686 | time 2579.5ms | lr 5.99e-04 | RMLP_w_std 0.883 | RMLP_w_rec -0.001
+Iter    500 | train loss 3.7195 | val loss 3.6985 | lr 5.99e-04 | RMLP_w_std 0.884 | RMLP_w_rec -0.001
+Saved best checkpoint (val_loss=3.6985)
+Iter    500 | loss 3.7081 | time 2403.5ms | lr 5.99e-04 | RMLP_w_std 0.884 | RMLP_w_rec -0.001
+Iter    510 | loss 3.6707 | time 2580.4ms | lr 5.99e-04 | RMLP_w_std 0.884 | RMLP_w_rec -0.002
+Iter    520 | loss 3.7666 | time 2579.8ms | lr 5.99e-04 | RMLP_w_std 0.885 | RMLP_w_rec -0.001
+Iter    530 | loss 3.7089 | time 2579.6ms | lr 5.98e-04 | RMLP_w_std 0.885 | RMLP_w_rec -0.001
+Iter    540 | loss 3.7024 | time 2579.5ms | lr 5.98e-04 | RMLP_w_std 0.885 | RMLP_w_rec -0.002
+Iter    550 | loss 3.6914 | time 2579.0ms | lr 5.98e-04 | RMLP_w_std 0.886 | RMLP_w_rec -0.003
+Iter    560 | loss 3.6855 | time 2580.1ms | lr 5.98e-04 | RMLP_w_std 0.886 | RMLP_w_rec -0.004
+Iter    570 | loss 3.6993 | time 2579.8ms | lr 5.98e-04 | RMLP_w_std 0.886 | RMLP_w_rec -0.004
+Iter    580 | loss 3.6604 | time 2579.8ms | lr 5.98e-04 | RMLP_w_std 0.887 | RMLP_w_rec -0.004
+Iter    590 | loss 3.6468 | time 2579.5ms | lr 5.98e-04 | RMLP_w_std 0.888 | RMLP_w_rec -0.004
+Iter    600 | train loss 3.6282 | val loss 3.6179 | lr 5.98e-04 | RMLP_w_std 0.888 | RMLP_w_rec -0.004
+Saved best checkpoint (val_loss=3.6179)
+Iter    600 | loss 3.6705 | time 2402.4ms | lr 5.98e-04 | RMLP_w_std 0.888 | RMLP_w_rec -0.004
+Iter    610 | loss 3.7021 | time 2579.9ms | lr 5.98e-04 | RMLP_w_std 0.889 | RMLP_w_rec -0.005
+Iter    620 | loss 3.6784 | time 2580.1ms | lr 5.98e-04 | RMLP_w_std 0.890 | RMLP_w_rec -0.005
+Iter    630 | loss 3.6571 | time 2580.1ms | lr 5.97e-04 | RMLP_w_std 0.890 | RMLP_w_rec -0.005
+Iter    640 | loss 3.6234 | time 2580.4ms | lr 5.97e-04 | RMLP_w_std 0.891 | RMLP_w_rec -0.006
+Iter    650 | loss 3.6245 | time 2578.8ms | lr 5.97e-04 | RMLP_w_std 0.892 | RMLP_w_rec -0.006
+Iter    660 | loss 3.6243 | time 2579.6ms | lr 5.97e-04 | RMLP_w_std 0.893 | RMLP_w_rec -0.007
+Iter    670 | loss 3.6093 | time 2580.1ms | lr 5.97e-04 | RMLP_w_std 0.894 | RMLP_w_rec -0.007
+Iter    680 | loss 3.5710 | time 2580.1ms | lr 5.97e-04 | RMLP_w_std 0.895 | RMLP_w_rec -0.007
+Iter    690 | loss 3.6426 | time 2579.5ms | lr 5.97e-04 | RMLP_w_std 0.896 | RMLP_w_rec -0.008
+Iter    700 | train loss 3.5715 | val loss 3.5595 | lr 5.97e-04 | RMLP_w_std 0.896 | RMLP_w_rec -0.008
+Saved best checkpoint (val_loss=3.5595)
+Iter    700 | loss 3.5967 | time 2404.0ms | lr 5.97e-04 | RMLP_w_std 0.897 | RMLP_w_rec -0.008
+Iter    710 | loss 3.6238 | time 2579.8ms | lr 5.96e-04 | RMLP_w_std 0.898 | RMLP_w_rec -0.008
+Iter    720 | loss 3.6506 | time 2579.5ms | lr 5.96e-04 | RMLP_w_std 0.899 | RMLP_w_rec -0.009
+Iter    730 | loss 3.5792 | time 2579.7ms | lr 5.96e-04 | RMLP_w_std 0.899 | RMLP_w_rec -0.009
+Iter    740 | loss 3.5975 | time 2579.9ms | lr 5.96e-04 | RMLP_w_std 0.900 | RMLP_w_rec -0.010
+Iter    750 | loss 3.6011 | time 2579.6ms | lr 5.96e-04 | RMLP_w_std 0.901 | RMLP_w_rec -0.010
+Iter    760 | loss 3.5849 | time 2579.4ms | lr 5.96e-04 | RMLP_w_std 0.902 | RMLP_w_rec -0.010
+Iter    770 | loss 3.5496 | time 2580.2ms | lr 5.96e-04 | RMLP_w_std 0.903 | RMLP_w_rec -0.010
+Iter    780 | loss 3.5450 | time 2580.1ms | lr 5.95e-04 | RMLP_w_std 0.904 | RMLP_w_rec -0.011
+Iter    790 | loss 3.5783 | time 2580.4ms | lr 5.95e-04 | RMLP_w_std 0.906 | RMLP_w_rec -0.011
+Iter    800 | train loss 3.5575 | val loss 3.5401 | lr 5.95e-04 | RMLP_w_std 0.906 | RMLP_w_rec -0.012
+Saved best checkpoint (val_loss=3.5401)
+Iter    800 | loss 3.5548 | time 2405.7ms | lr 5.95e-04 | RMLP_w_std 0.906 | RMLP_w_rec -0.012
+Iter    810 | loss 3.5738 | time 2580.1ms | lr 5.95e-04 | RMLP_w_std 0.907 | RMLP_w_rec -0.012
+Iter    820 | loss 3.5682 | time 2579.8ms | lr 5.95e-04 | RMLP_w_std 0.909 | RMLP_w_rec -0.012
+Iter    830 | loss 3.6201 | time 2580.2ms | lr 5.95e-04 | RMLP_w_std 0.910 | RMLP_w_rec -0.012
+Iter    840 | loss 3.5307 | time 2580.2ms | lr 5.94e-04 | RMLP_w_std 0.911 | RMLP_w_rec -0.013
+Iter    850 | loss 3.5569 | time 2580.1ms | lr 5.94e-04 | RMLP_w_std 0.912 | RMLP_w_rec -0.013
+Iter    860 | loss 3.5798 | time 2580.5ms | lr 5.94e-04 | RMLP_w_std 0.913 | RMLP_w_rec -0.014
+Iter    870 | loss 3.5718 | time 2579.9ms | lr 5.94e-04 | RMLP_w_std 0.914 | RMLP_w_rec -0.014
+Iter    880 | loss 3.5244 | time 2581.8ms | lr 5.94e-04 | RMLP_w_std 0.916 | RMLP_w_rec -0.014
+Iter    890 | loss 3.5712 | time 2579.7ms | lr 5.93e-04 | RMLP_w_std 0.917 | RMLP_w_rec -0.015
+Iter    900 | train loss 3.5195 | val loss 3.5246 | lr 5.93e-04 | RMLP_w_std 0.918 | RMLP_w_rec -0.015
+Saved best checkpoint (val_loss=3.5246)
+Iter    900 | loss 3.5690 | time 2403.1ms | lr 5.93e-04 | RMLP_w_std 0.918 | RMLP_w_rec -0.015
+Iter    910 | loss 3.5007 | time 2579.9ms | lr 5.93e-04 | RMLP_w_std 0.919 | RMLP_w_rec -0.016
+Iter    920 | loss 3.5611 | time 2580.2ms | lr 5.93e-04 | RMLP_w_std 0.920 | RMLP_w_rec -0.016
+Iter    930 | loss 3.5341 | time 2579.9ms | lr 5.93e-04 | RMLP_w_std 0.921 | RMLP_w_rec -0.016
+Iter    940 | loss 3.5422 | time 2580.1ms | lr 5.92e-04 | RMLP_w_std 0.923 | RMLP_w_rec -0.016
+Iter    950 | loss 3.4979 | time 2579.5ms | lr 5.92e-04 | RMLP_w_std 0.924 | RMLP_w_rec -0.015
+Iter    960 | loss 3.4858 | time 2580.0ms | lr 5.92e-04 | RMLP_w_std 0.925 | RMLP_w_rec -0.016
+Iter    970 | loss 3.5927 | time 2579.8ms | lr 5.92e-04 | RMLP_w_std 0.927 | RMLP_w_rec -0.016
+Iter    980 | loss 3.5466 | time 2579.5ms | lr 5.92e-04 | RMLP_w_std 0.928 | RMLP_w_rec -0.017
+Iter    990 | loss 3.5021 | time 2579.9ms | lr 5.91e-04 | RMLP_w_std 0.929 | RMLP_w_rec -0.017
+Iter   1000 | train loss 3.5013 | val loss 3.5051 | lr 5.91e-04 | RMLP_w_std 0.931 | RMLP_w_rec -0.018
+Saved best checkpoint (val_loss=3.5051)
+Iter   1000 | loss 3.5230 | time 2404.4ms | lr 5.91e-04 | RMLP_w_std 0.931 | RMLP_w_rec -0.018
+Iter   1010 | loss 3.5041 | time 2580.9ms | lr 5.91e-04 | RMLP_w_std 0.932 | RMLP_w_rec -0.018
+Iter   1020 | loss 3.5226 | time 2579.7ms | lr 5.91e-04 | RMLP_w_std 0.933 | RMLP_w_rec -0.018
+Iter   1030 | loss 3.5553 | time 2579.8ms | lr 5.90e-04 | RMLP_w_std 0.935 | RMLP_w_rec -0.018
+Iter   1040 | loss 3.4936 | time 2580.2ms | lr 5.90e-04 | RMLP_w_std 0.936 | RMLP_w_rec -0.019
+Iter   1050 | loss 3.4888 | time 2579.9ms | lr 5.90e-04 | RMLP_w_std 0.937 | RMLP_w_rec -0.019
+Iter   1060 | loss 3.5466 | time 2580.0ms | lr 5.90e-04 | RMLP_w_std 0.939 | RMLP_w_rec -0.019
+Iter   1070 | loss 3.4935 | time 2580.5ms | lr 5.90e-04 | RMLP_w_std 0.940 | RMLP_w_rec -0.020
+Iter   1080 | loss 3.5094 | time 2580.9ms | lr 5.89e-04 | RMLP_w_std 0.941 | RMLP_w_rec -0.020
+Iter   1090 | loss 3.4993 | time 2580.2ms | lr 5.89e-04 | RMLP_w_std 0.943 | RMLP_w_rec -0.020
+Iter   1100 | train loss 3.4853 | val loss 3.4825 | lr 5.89e-04 | RMLP_w_std 0.944 | RMLP_w_rec -0.021
+Saved best checkpoint (val_loss=3.4825)
+Iter   1100 | loss 3.4960 | time 2404.0ms | lr 5.89e-04 | RMLP_w_std 0.944 | RMLP_w_rec -0.021
+Iter   1110 | loss 3.4958 | time 2580.8ms | lr 5.89e-04 | RMLP_w_std 0.946 | RMLP_w_rec -0.021
+Iter   1120 | loss 3.4701 | time 2580.0ms | lr 5.88e-04 | RMLP_w_std 0.947 | RMLP_w_rec -0.021
+Iter   1130 | loss 3.4751 | time 2580.0ms | lr 5.88e-04 | RMLP_w_std 0.948 | RMLP_w_rec -0.021
+Iter   1140 | loss 3.4815 | time 2579.7ms | lr 5.88e-04 | RMLP_w_std 0.950 | RMLP_w_rec -0.021
+Iter   1150 | loss 3.4695 | time 2580.1ms | lr 5.88e-04 | RMLP_w_std 0.951 | RMLP_w_rec -0.021
+Iter   1160 | loss 3.4981 | time 2579.7ms | lr 5.87e-04 | RMLP_w_std 0.953 | RMLP_w_rec -0.022
+Iter   1170 | loss 3.4573 | time 2580.2ms | lr 5.87e-04 | RMLP_w_std 0.954 | RMLP_w_rec -0.022
+Iter   1180 | loss 3.4518 | time 2579.9ms | lr 5.87e-04 | RMLP_w_std 0.956 | RMLP_w_rec -0.023
+Iter   1190 | loss 3.4909 | time 2580.5ms | lr 5.87e-04 | RMLP_w_std 0.957 | RMLP_w_rec -0.023
+Iter   1200 | train loss 3.4548 | val loss 3.4686 | lr 5.86e-04 | RMLP_w_std 0.958 | RMLP_w_rec -0.024
+Saved best checkpoint (val_loss=3.4686)
+Iter   1200 | loss 3.4997 | time 2404.8ms | lr 5.86e-04 | RMLP_w_std 0.959 | RMLP_w_rec -0.024
+Iter   1210 | loss 3.4562 | time 2580.2ms | lr 5.86e-04 | RMLP_w_std 0.960 | RMLP_w_rec -0.024
+Iter   1220 | loss 3.4601 | time 2579.9ms | lr 5.86e-04 | RMLP_w_std 0.961 | RMLP_w_rec -0.024
+Iter   1230 | loss 3.5080 | time 2580.5ms | lr 5.85e-04 | RMLP_w_std 0.963 | RMLP_w_rec -0.024
+Iter   1240 | loss 3.4847 | time 2580.4ms | lr 5.85e-04 | RMLP_w_std 0.964 | RMLP_w_rec -0.024
+Iter   1250 | loss 3.4840 | time 2580.4ms | lr 5.85e-04 | RMLP_w_std 0.966 | RMLP_w_rec -0.024
+Iter   1260 | loss 3.5096 | time 2580.4ms | lr 5.85e-04 | RMLP_w_std 0.967 | RMLP_w_rec -0.024
+Iter   1270 | loss 3.4835 | time 2579.3ms | lr 5.84e-04 | RMLP_w_std 0.969 | RMLP_w_rec -0.025
+Iter   1280 | loss 3.4588 | time 2580.2ms | lr 5.84e-04 | RMLP_w_std 0.970 | RMLP_w_rec -0.025
+Iter   1290 | loss 3.4667 | time 2579.4ms | lr 5.84e-04 | RMLP_w_std 0.971 | RMLP_w_rec -0.025
+Iter   1300 | train loss 3.4571 | val loss 3.4542 | lr 5.83e-04 | RMLP_w_std 0.973 | RMLP_w_rec -0.025
+Saved best checkpoint (val_loss=3.4542)
+Iter   1300 | loss 3.5173 | time 2404.1ms | lr 5.83e-04 | RMLP_w_std 0.973 | RMLP_w_rec -0.025
+Iter   1310 | loss 3.4430 | time 2580.0ms | lr 5.83e-04 | RMLP_w_std 0.974 | RMLP_w_rec -0.025
+Iter   1320 | loss 3.4358 | time 2581.4ms | lr 5.83e-04 | RMLP_w_std 0.976 | RMLP_w_rec -0.025
+Iter   1330 | loss 3.4466 | time 2579.5ms | lr 5.82e-04 | RMLP_w_std 0.977 | RMLP_w_rec -0.025
+Iter   1340 | loss 3.4601 | time 2580.0ms | lr 5.82e-04 | RMLP_w_std 0.979 | RMLP_w_rec -0.025
+Iter   1350 | loss 3.4712 | time 2579.2ms | lr 5.82e-04 | RMLP_w_std 0.981 | RMLP_w_rec -0.026
+Iter   1360 | loss 3.4282 | time 2580.5ms | lr 5.82e-04 | RMLP_w_std 0.982 | RMLP_w_rec -0.026
+Iter   1370 | loss 3.4420 | time 2580.0ms | lr 5.81e-04 | RMLP_w_std 0.983 | RMLP_w_rec -0.026
+Iter   1380 | loss 3.4983 | time 2579.8ms | lr 5.81e-04 | RMLP_w_std 0.985 | RMLP_w_rec -0.027
+Iter   1390 | loss 3.4786 | time 2579.7ms | lr 5.81e-04 | RMLP_w_std 0.986 | RMLP_w_rec -0.027
+Iter   1400 | train loss 3.4319 | val loss 3.4372 | lr 5.80e-04 | RMLP_w_std 0.988 | RMLP_w_rec -0.027
+Saved best checkpoint (val_loss=3.4372)
+Iter   1400 | loss 3.4231 | time 2404.2ms | lr 5.80e-04 | RMLP_w_std 0.988 | RMLP_w_rec -0.027
+Iter   1410 | loss 3.4633 | time 2579.9ms | lr 5.80e-04 | RMLP_w_std 0.990 | RMLP_w_rec -0.027
+Iter   1420 | loss 3.4895 | time 2579.7ms | lr 5.80e-04 | RMLP_w_std 0.991 | RMLP_w_rec -0.027
+Iter   1430 | loss 3.4334 | time 2580.0ms | lr 5.79e-04 | RMLP_w_std 0.993 | RMLP_w_rec -0.027
+Iter   1440 | loss 3.4126 | time 2580.5ms | lr 5.79e-04 | RMLP_w_std 0.994 | RMLP_w_rec -0.028
+Iter   1450 | loss 3.5144 | time 2580.0ms | lr 5.79e-04 | RMLP_w_std 0.996 | RMLP_w_rec -0.028
+Iter   1460 | loss 3.4688 | time 2580.2ms | lr 5.78e-04 | RMLP_w_std 0.997 | RMLP_w_rec -0.029
+Iter   1470 | loss 3.4538 | time 2580.2ms | lr 5.78e-04 | RMLP_w_std 0.998 | RMLP_w_rec -0.029
+Iter   1480 | loss 3.3977 | time 2580.2ms | lr 5.78e-04 | RMLP_w_std 1.000 | RMLP_w_rec -0.029
+Iter   1490 | loss 3.4569 | time 2579.9ms | lr 5.77e-04 | RMLP_w_std 1.001 | RMLP_w_rec -0.029
+Iter   1500 | train loss 3.4221 | val loss 3.4228 | lr 5.77e-04 | RMLP_w_std 1.003 | RMLP_w_rec -0.029
+Saved best checkpoint (val_loss=3.4228)
+Iter   1500 | loss 3.4666 | time 2403.9ms | lr 5.77e-04 | RMLP_w_std 1.003 | RMLP_w_rec -0.029
+Iter   1510 | loss 3.4684 | time 2580.0ms | lr 5.77e-04 | RMLP_w_std 1.004 | RMLP_w_rec -0.029
+Iter   1520 | loss 3.4557 | time 2580.0ms | lr 5.76e-04 | RMLP_w_std 1.006 | RMLP_w_rec -0.030
+Iter   1530 | loss 3.4980 | time 2580.4ms | lr 5.76e-04 | RMLP_w_std 1.007 | RMLP_w_rec -0.030
+Iter   1540 | loss 3.4005 | time 2580.2ms | lr 5.75e-04 | RMLP_w_std 1.008 | RMLP_w_rec -0.031
+Iter   1550 | loss 3.4771 | time 2580.3ms | lr 5.75e-04 | RMLP_w_std 1.010 | RMLP_w_rec -0.031
+Iter   1560 | loss 3.4624 | time 2579.7ms | lr 5.75e-04 | RMLP_w_std 1.012 | RMLP_w_rec -0.031
+Iter   1570 | loss 3.4748 | time 2580.7ms | lr 5.74e-04 | RMLP_w_std 1.013 | RMLP_w_rec -0.031
+Iter   1580 | loss 3.4260 | time 2580.2ms | lr 5.74e-04 | RMLP_w_std 1.014 | RMLP_w_rec -0.031
+Iter   1590 | loss 3.3804 | time 2580.1ms | lr 5.74e-04 | RMLP_w_std 1.016 | RMLP_w_rec -0.031
+Iter   1600 | train loss 3.3981 | val loss 3.4135 | lr 5.73e-04 | RMLP_w_std 1.017 | RMLP_w_rec -0.031
+Saved best checkpoint (val_loss=3.4135)
+Iter   1600 | loss 3.4036 | time 2404.4ms | lr 5.73e-04 | RMLP_w_std 1.018 | RMLP_w_rec -0.031
+Iter   1610 | loss 3.4020 | time 2579.9ms | lr 5.73e-04 | RMLP_w_std 1.019 | RMLP_w_rec -0.031
+Iter   1620 | loss 3.4334 | time 2579.9ms | lr 5.73e-04 | RMLP_w_std 1.020 | RMLP_w_rec -0.032
+Iter   1630 | loss 3.4171 | time 2579.8ms | lr 5.72e-04 | RMLP_w_std 1.022 | RMLP_w_rec -0.032
+Iter   1640 | loss 3.4439 | time 2580.0ms | lr 5.72e-04 | RMLP_w_std 1.023 | RMLP_w_rec -0.033
+Iter   1650 | loss 3.3963 | time 2579.1ms | lr 5.71e-04 | RMLP_w_std 1.025 | RMLP_w_rec -0.033
+Iter   1660 | loss 3.4233 | time 2580.9ms | lr 5.71e-04 | RMLP_w_std 1.026 | RMLP_w_rec -0.033
+Iter   1670 | loss 3.4058 | time 2579.6ms | lr 5.71e-04 | RMLP_w_std 1.027 | RMLP_w_rec -0.033
+Iter   1680 | loss 3.4400 | time 2579.4ms | lr 5.70e-04 | RMLP_w_std 1.029 | RMLP_w_rec -0.033
+Iter   1690 | loss 3.3892 | time 2579.5ms | lr 5.70e-04 | RMLP_w_std 1.030 | RMLP_w_rec -0.033
+Iter   1700 | train loss 3.3910 | val loss 3.4104 | lr 5.69e-04 | RMLP_w_std 1.031 | RMLP_w_rec -0.033
+Saved best checkpoint (val_loss=3.4104)
+Iter   1700 | loss 3.3702 | time 2403.2ms | lr 5.69e-04 | RMLP_w_std 1.031 | RMLP_w_rec -0.033
+Iter   1710 | loss 3.4116 | time 2579.6ms | lr 5.69e-04 | RMLP_w_std 1.033 | RMLP_w_rec -0.033
+Iter   1720 | loss 3.4390 | time 2580.3ms | lr 5.69e-04 | RMLP_w_std 1.034 | RMLP_w_rec -0.033
+Iter   1730 | loss 3.4168 | time 2580.5ms | lr 5.68e-04 | RMLP_w_std 1.036 | RMLP_w_rec -0.033
+Iter   1740 | loss 3.4474 | time 2580.7ms | lr 5.68e-04 | RMLP_w_std 1.037 | RMLP_w_rec -0.033
+Iter   1750 | loss 3.4257 | time 2580.0ms | lr 5.67e-04 | RMLP_w_std 1.038 | RMLP_w_rec -0.033
+Iter   1760 | loss 3.4269 | time 2579.6ms | lr 5.67e-04 | RMLP_w_std 1.040 | RMLP_w_rec -0.034
+Iter   1770 | loss 3.4172 | time 2579.8ms | lr 5.67e-04 | RMLP_w_std 1.041 | RMLP_w_rec -0.034
+Iter   1780 | loss 3.4707 | time 2579.7ms | lr 5.66e-04 | RMLP_w_std 1.043 | RMLP_w_rec -0.034
+Iter   1790 | loss 3.3459 | time 2579.8ms | lr 5.66e-04 | RMLP_w_std 1.044 | RMLP_w_rec -0.035
+Iter   1800 | train loss 3.3933 | val loss 3.3871 | lr 5.65e-04 | RMLP_w_std 1.045 | RMLP_w_rec -0.035
+Saved best checkpoint (val_loss=3.3871)
+Iter   1800 | loss 3.3873 | time 2404.5ms | lr 5.65e-04 | RMLP_w_std 1.045 | RMLP_w_rec -0.035
+Iter   1810 | loss 3.4207 | time 2579.8ms | lr 5.65e-04 | RMLP_w_std 1.047 | RMLP_w_rec -0.035
+Iter   1820 | loss 3.3918 | time 2579.8ms | lr 5.64e-04 | RMLP_w_std 1.048 | RMLP_w_rec -0.035
+Iter   1830 | loss 3.4420 | time 2580.2ms | lr 5.64e-04 | RMLP_w_std 1.049 | RMLP_w_rec -0.036
+Iter   1840 | loss 3.3855 | time 2579.9ms | lr 5.64e-04 | RMLP_w_std 1.050 | RMLP_w_rec -0.036
+Iter   1850 | loss 3.4052 | time 2580.2ms | lr 5.63e-04 | RMLP_w_std 1.052 | RMLP_w_rec -0.036
+Iter   1860 | loss 3.4251 | time 2580.3ms | lr 5.63e-04 | RMLP_w_std 1.053 | RMLP_w_rec -0.036
+Iter   1870 | loss 3.3635 | time 2579.6ms | lr 5.62e-04 | RMLP_w_std 1.054 | RMLP_w_rec -0.036
+Iter   1880 | loss 3.3923 | time 2580.6ms | lr 5.62e-04 | RMLP_w_std 1.056 | RMLP_w_rec -0.037
+Iter   1890 | loss 3.3606 | time 2580.7ms | lr 5.61e-04 | RMLP_w_std 1.057 | RMLP_w_rec -0.037
+Iter   1900 | train loss 3.3608 | val loss 3.3835 | lr 5.61e-04 | RMLP_w_std 1.058 | RMLP_w_rec -0.037
+Saved best checkpoint (val_loss=3.3835)
+Iter   1900 | loss 3.4098 | time 2404.4ms | lr 5.61e-04 | RMLP_w_std 1.058 | RMLP_w_rec -0.037
+Iter   1910 | loss 3.3933 | time 2579.5ms | lr 5.60e-04 | RMLP_w_std 1.060 | RMLP_w_rec -0.037
+Iter   1920 | loss 3.3642 | time 2579.7ms | lr 5.60e-04 | RMLP_w_std 1.061 | RMLP_w_rec -0.037
+Iter   1930 | loss 3.3301 | time 2580.0ms | lr 5.60e-04 | RMLP_w_std 1.062 | RMLP_w_rec -0.038
+Iter   1940 | loss 3.3347 | time 2579.6ms | lr 5.59e-04 | RMLP_w_std 1.063 | RMLP_w_rec -0.038
+Iter   1950 | loss 3.3505 | time 2580.0ms | lr 5.59e-04 | RMLP_w_std 1.064 | RMLP_w_rec -0.039
+Iter   1960 | loss 3.4044 | time 2580.2ms | lr 5.58e-04 | RMLP_w_std 1.066 | RMLP_w_rec -0.039
+Iter   1970 | loss 3.3898 | time 2580.4ms | lr 5.58e-04 | RMLP_w_std 1.067 | RMLP_w_rec -0.039
+Iter   1980 | loss 3.3591 | time 2579.7ms | lr 5.57e-04 | RMLP_w_std 1.068 | RMLP_w_rec -0.039
+Iter   1990 | loss 3.3975 | time 2579.7ms | lr 5.57e-04 | RMLP_w_std 1.069 | RMLP_w_rec -0.040
+Iter   2000 | train loss 3.3622 | val loss 3.3772 | lr 5.56e-04 | RMLP_w_std 1.070 | RMLP_w_rec -0.040
+Saved best checkpoint (val_loss=3.3772)
+Iter   2000 | loss 3.3859 | time 2403.9ms | lr 5.56e-04 | RMLP_w_std 1.070 | RMLP_w_rec -0.040
+Iter   2010 | loss 3.3748 | time 2580.1ms | lr 5.56e-04 | RMLP_w_std 1.071 | RMLP_w_rec -0.040
+Iter   2020 | loss 3.3543 | time 2580.1ms | lr 5.55e-04 | RMLP_w_std 1.072 | RMLP_w_rec -0.040
+Iter   2030 | loss 3.4043 | time 2579.7ms | lr 5.55e-04 | RMLP_w_std 1.073 | RMLP_w_rec -0.041
+Iter   2040 | loss 3.3403 | time 2579.8ms | lr 5.54e-04 | RMLP_w_std 1.074 | RMLP_w_rec -0.041
+Iter   2050 | loss 3.3907 | time 2579.4ms | lr 5.54e-04 | RMLP_w_std 1.074 | RMLP_w_rec -0.041
+Iter   2060 | loss 3.3349 | time 2579.8ms | lr 5.53e-04 | RMLP_w_std 1.075 | RMLP_w_rec -0.041
+
+Reached time limit: 2.00 hours
+Completed 2068 iterations
+
+Saved final checkpoint to checkpoints_ra_mla/final_model.pt
+Saved metrics to /opt/dlami/nvme/AdamWPrune/test_matrix_results_20251111_170325/gpt2_adamwspam_ramla_stepV17/training_metrics.json
+
+Final evaluation:
+Train loss: 3.3546
+Val loss: 3.3689
+Best val loss: 3.3772
+  Avg iteration time: 2572.0ms
+* Run finished. Uploading logs to Trackio (please wait...)
+wandb: updating run metadata
+wandb: 
+wandb: Run history:
+wandb: avg_forward_time_ms ▁
+wandb:       best_val_loss  █▄▄▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:    final_train_loss ▁
+wandb:      final_val_loss ▁
+wandb:     forward_time_ms ████████▁█▁█████████████████████████▁███
+wandb:           iteration ▁▁▁▁▁▂▂▂▂▂▂▂▂▂▂▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▆▆▆▆▇▇▇▇▇█
+wandb:       learning_rate ▁▁▂▅███████████████████████████████████▇
+wandb:      rmlp_w_rec_max ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▂▂▃▃▄▄▅▅▅▅▅▅▅▆▆▆▆▇▇▇▇▇▇▇█
+wandb:     rmlp_w_rec_mean ████████████████▇▇▇▇▆▆▅▅▅▅▄▄▄▄▃▃▃▃▃▂▂▁▁▁
+wandb:      rmlp_w_rec_min █████████▇▆▆▅▅▅▅▅▅▅▅▄▄▄▄▃▃▃▃▂▂▂▂▂▂▂▁▁▁▁▁
+wandb:                 +10 ...
+wandb: 
+wandb: Run summary:
+wandb: avg_forward_time_ms 2572.00539
+wandb:       best_val_loss 3.37722
+wandb:    final_train_loss 3.35462
+wandb:      final_val_loss 3.36892
+wandb:     forward_time_ms 2579.80943
+wandb:           iteration 2060
+wandb:       learning_rate 0.00055
+wandb:      rmlp_w_rec_max 0.42604
+wandb:     rmlp_w_rec_mean -0.04105
+wandb:      rmlp_w_rec_min -0.45852
+wandb:                 +10 ...
+wandb: 
+wandb: 🚀 View run gpt2_adamwspam_ramla_stepV17 at: https://wandb.ai/mcgrof-citizen/gpt2-kv-pruning/runs/goareqnp
+wandb: ⭐️ View project at: https://wandb.ai/mcgrof-citizen/gpt2-kv-pruning
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 1 other file(s)
+wandb: Find logs at: ./wandb/run-20251111_210807-goareqnp/logs
+2025-11-11 23:09:42,810 - INFO - Training completed successfully
+2025-11-11 23:09:43,181 - INFO - Simple GPU monitoring completed
+2025-11-11 23:09:43,644 - WARNING - Graph generation failed: 
+2025-11-11 23:09:43,644 - INFO - GPU stats saved to: test_matrix_results_20251111_170325/gpt2_adamwspam_ramla_stepV17/gpu_stats_gpt2_adamwspam_ramla_stepV17_20251111_210753.json
+2025-11-11 23:09:43,644 - INFO - Generating performance graphs...
+2025-11-11 23:09:44,106 - ERROR - Failed to generate graphs: 
+2025-11-11 23:09:44,106 - WARNING - Failed to generate graphs
+2025-11-11 23:09:44,106 - INFO - Training with monitoring completed successfully!

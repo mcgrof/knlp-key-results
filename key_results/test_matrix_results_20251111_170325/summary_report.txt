@@ -1,0 +1,51 @@
+Test Matrix Summary Report (Regenerated)
+Generated: 2025-11-12T01:11:49.930378
+From: test_matrix_results_20251111_170325
+================================================================================
+
+Total tests: 4
+Successful: 3
+Failed: 1
+
+Results Table:
+---------------------------------------------------------------------------------------------------------
+Test ID                                  Accuracy     Sparsity     Time (s)     Status    
+---------------------------------------------------------------------------------------------------------
+gpt2_adamwspam_ramla_stepV0              0.0000       0.0000       7317.65      ✗ Failed  
+gpt2_adamwspam_ramla_stepV16             0.0000       0.0000       7273.28      ✓ Success 
+gpt2_adamwspam_ramla_stepV17             0.0000       0.0000       7312.99      ✓ Success 
+gpt2_adamwspam_ramla_stepV18             0.0000       0.0000       7314.50      ✓ Success 
+--------------------------------------------------------------------------------
+
+Best Performers:
+--------------------------------------------------------------------------------
+Top 20 by Accuracy:
+1. gpt2_adamwspam_ramla_stepV16: 0.0000
+2. gpt2_adamwspam_ramla_stepV17: 0.0000
+3. gpt2_adamwspam_ramla_stepV18: 0.0000
+
+Best by Optimizer:
+  adamwspam: gpt2_adamwspam_ramla_stepV16 (0.0000)
+
+Memory Efficiency Analysis:
+--------------------------------------------------------------------------------
+Note: Memory shown as multiplier of weight tensor size
+Training memory = weights + optimizer states + pruning overhead
+Inference memory = active weights only (benefits from sparsity)
+
+Top 20 Most Memory-Efficient (Accuracy/Training Memory Ratio):
+1. gpt2_adamwspam_ramla_stepV16
+   Accuracy: 0.00%, Training Memory: 3.10x weights, Efficiency Score: 0.00
+2. gpt2_adamwspam_ramla_stepV17
+   Accuracy: 0.00%, Training Memory: 3.10x weights, Efficiency Score: 0.00
+3. gpt2_adamwspam_ramla_stepV18
+   Accuracy: 0.00%, Training Memory: 3.10x weights, Efficiency Score: 0.00
+
+Top 20 Lowest Inference Memory (with sparsity benefits):
+1. gpt2_adamwspam_ramla_stepV16
+   Accuracy: 0.00%, Sparsity: 0.0%, Inference Memory: 1.00x weights
+2. gpt2_adamwspam_ramla_stepV17
+   Accuracy: 0.00%, Sparsity: 0.0%, Inference Memory: 1.00x weights
+3. gpt2_adamwspam_ramla_stepV18
+   Accuracy: 0.00%, Sparsity: 0.0%, Inference Memory: 1.00x weights
+
