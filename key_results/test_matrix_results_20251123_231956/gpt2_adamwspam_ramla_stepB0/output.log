@@ -1,0 +1,176 @@
+2025-11-23 23:20:03,013 - INFO - Training configuration: gpt2_adamwspam_ramla_stepB0
+2025-11-23 23:20:03,014 - INFO - DDP not enabled in config - using single-GPU mode
+2025-11-23 23:20:03,014 - INFO - Starting training with GPU monitoring: gpt2_adamwspam_ramla_stepB0
+2025-11-23 23:20:03,059 - INFO - Started simple GPU monitoring - stats will be saved to test_matrix_results_20251123_231956/gpt2_adamwspam_ramla_stepB0/gpu_stats_gpt2_adamwspam_ramla_stepB0_20251123_232003.json
+2025-11-23 23:20:03,059 - INFO - Command: /home/mcgrof/envs/w7900-ml/bin/python3 /data/knlp/gpt2/train.py --output-dir test_matrix_results_20251123_231956/gpt2_adamwspam_ramla_stepB0 --optimizer adamwspam --dataset finewebedu --data-dir ./gpt2/data --block-size 1024 --flash-attention --warmup-steps 2000 --eval-interval 50 --eval-samples 200 --max-iters 10000 --max-time 7200 --decay-lr --min-lr 6e-5 --learning-rate 6e-4 --pruning-method none --spam-theta 50.0 --spam-interval 1000 --spam-warmup-steps 1000 --spam-enable-clip --architecture ramla --ra-step B0 --run-lm-eval --lm-eval-tasks hellaswag --json-output /data/knlp/test_matrix_results_20251123_231956/gpt2_adamwspam_ramla_stepB0/training_metrics.json --tracker wandb,trackio --tracker-project gpt2-kvsplice-ablation-w7900-mla-fixed --tracker-run-name gpt2_adamwspam_ramla_stepB0
+Hyperparams: AUTO mode - GPU: AMD Radeon Pro W7900 (48.3GB total, 48.3GB free) × 2, model=gpt2, compile=ON → batch=32, grad_acc=16 (effective=1024, target=1024)
+Compile: Enabled (GPU 'AMD Radeon Pro W7900' has good torch.compile support)
+Running RAMLA trainer (step B0)
+Step B0: baseline architecture, standard LR (6.0e-04)
+* Trackio project initialized: gpt2-kvsplice-ablation-w7900-mla-fixed
+* Trackio metrics logged to: /home/mcgrof/.cache/huggingface/trackio
+* View dashboard by running in your terminal:
+[1m[38;5;208mtrackio show --project "gpt2-kvsplice-ablation-w7900-mla-fixed"[0m
+* or by running in Python: trackio.show(project="gpt2-kvsplice-ablation-w7900-mla-fixed")
+* Created new run: gpt2_adamwspam_ramla_stepB0
+Initialized Trackio tracking for project: gpt2-kvsplice-ablation-w7900-mla-fixed
+wandb: Currently logged in as: mcgrof (mcgrof-citizen) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.23.0
+wandb: Run data is saved locally in /data/knlp/wandb/run-20251123_232006-coqu0thz
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run gpt2_adamwspam_ramla_stepB0
+wandb: ⭐️ View project at https://wandb.ai/mcgrof-citizen/gpt2-kvsplice-ablation-w7900-mla-fixed
+wandb: 🚀 View run at https://wandb.ai/mcgrof-citizen/gpt2-kvsplice-ablation-w7900-mla-fixed/runs/coqu0thz
+wandb: Initializing weave.
+[36m[1mweave[0m: Logged in as Weights & Biases user: mcgrof.
+[36m[1mweave[0m: View Weave data at https://wandb.ai/mcgrof-citizen/gpt2-kvsplice-ablation-w7900-mla-fixed/weave
+Initialized WandB tracking for project: gpt2-kvsplice-ablation-w7900-mla-fixed
+Initializing GPT-2 model: gpt2
+Number of parameters: 123.69M
+Setting up adamwspam optimizer...
+Weight decay: 0.1
+
+Starting training...
+Parameters: 123.69M
+Device: cuda, dtype: bfloat16
+Batch size: 32, Gradient accumulation: 16
+Effective batch size: 512
+Save checkpoint: True, Output: test_matrix_results_20251123_231956/gpt2_adamwspam_ramla_stepB0
+--------------------------------------------------
+Iter     0 | loss 1.0956 | ppl    2.99 | lr 0.00e+00 | sparsity 0.0% | 1673.9ms/iter
+
+Eval @ iter 0: train 10.9520, val 10.9511, ppl 57019.25
+Saved checkpoint at iteration 0
+Iter    10 | loss 10.7804 | ppl 48069.12 | lr 3.00e-06 | sparsity 0.0% | 32558.9ms/iter
+Iter    20 | loss 10.1420 | ppl 25388.40 | lr 6.00e-06 | sparsity 0.0% | 17106.1ms/iter
+Iter    30 | loss 9.7179 | ppl 16612.10 | lr 9.00e-06 | sparsity 0.0% | 17117.9ms/iter
+Iter    40 | loss 9.5155 | ppl 13568.09 | lr 1.20e-05 | sparsity 0.0% | 17069.0ms/iter
+Iter    50 | loss 9.2873 | ppl 10799.70 | lr 1.50e-05 | sparsity 0.0% | 17064.5ms/iter
+
+Eval @ iter 50: train 9.1167, val 9.0977, ppl 8934.49
+Iter    60 | loss 9.0264 | ppl 8320.00 | lr 1.80e-05 | sparsity 0.0% | 32806.8ms/iter
+Iter    70 | loss 8.7802 | ppl 6504.48 | lr 2.10e-05 | sparsity 0.0% | 17068.3ms/iter
+Iter    80 | loss 8.5403 | ppl 5117.09 | lr 2.40e-05 | sparsity 0.0% | 17066.5ms/iter
+Iter    90 | loss 8.2858 | ppl 3967.08 | lr 2.70e-05 | sparsity 0.0% | 17053.5ms/iter
+Iter   100 | loss 8.0313 | ppl 3075.72 | lr 3.00e-05 | sparsity 0.0% | 17079.1ms/iter
+
+Eval @ iter 100: train 7.8888, val 7.8516, ppl 2569.90
+Iter   110 | loss 7.8329 | ppl 2522.28 | lr 3.30e-05 | sparsity 0.0% | 32847.9ms/iter
+Iter   120 | loss 7.6361 | ppl 2071.60 | lr 3.60e-05 | sparsity 0.0% | 17072.6ms/iter
+Iter   130 | loss 7.4667 | ppl 1748.76 | lr 3.90e-05 | sparsity 0.0% | 17092.3ms/iter
+Iter   140 | loss 7.3034 | ppl 1485.35 | lr 4.20e-05 | sparsity 0.0% | 17073.2ms/iter
+Iter   150 | loss 7.2173 | ppl 1362.78 | lr 4.50e-05 | sparsity 0.0% | 17076.3ms/iter
+
+Eval @ iter 150: train 7.1514, val 7.0964, ppl 1207.59
+Iter   160 | loss 7.1521 | ppl 1276.76 | lr 4.80e-05 | sparsity 0.0% | 32876.4ms/iter
+Iter   170 | loss 7.0765 | ppl 1183.80 | lr 5.10e-05 | sparsity 0.0% | 17132.7ms/iter
+Iter   180 | loss 7.0268 | ppl 1126.46 | lr 5.40e-05 | sparsity 0.0% | 17100.6ms/iter
+Iter   190 | loss 6.9649 | ppl 1058.79 | lr 5.70e-05 | sparsity 0.0% | 17104.4ms/iter
+Iter   200 | loss 6.9236 | ppl 1015.94 | lr 6.00e-05 | sparsity 0.0% | 17110.0ms/iter
+
+Eval @ iter 200: train 6.8609, val 6.8097, ppl 906.60
+Iter   210 | loss 6.8659 | ppl  959.00 | lr 6.30e-05 | sparsity 0.0% | 32889.7ms/iter
+Iter   220 | loss 6.7981 | ppl  896.18 | lr 6.60e-05 | sparsity 0.0% | 17108.2ms/iter
+Iter   230 | loss 6.7410 | ppl  846.39 | lr 6.90e-05 | sparsity 0.0% | 17114.7ms/iter
+Iter   240 | loss 6.6999 | ppl  812.32 | lr 7.20e-05 | sparsity 0.0% | 17142.8ms/iter
+Iter   250 | loss 6.6551 | ppl  776.73 | lr 7.50e-05 | sparsity 0.0% | 17092.6ms/iter
+
+Eval @ iter 250: train 6.6043, val 6.5530, ppl 701.38
+Iter   260 | loss 6.6246 | ppl  753.42 | lr 7.80e-05 | sparsity 0.0% | 32938.2ms/iter
+Iter   270 | loss 6.5930 | ppl  729.93 | lr 8.10e-05 | sparsity 0.0% | 17125.7ms/iter
+Iter   280 | loss 6.5498 | ppl  699.09 | lr 8.40e-05 | sparsity 0.0% | 17124.4ms/iter
+Iter   290 | loss 6.5108 | ppl  672.40 | lr 8.70e-05 | sparsity 0.0% | 17117.0ms/iter
+Iter   300 | loss 6.4369 | ppl  624.48 | lr 9.00e-05 | sparsity 0.0% | 17116.4ms/iter
+
+Eval @ iter 300: train 6.3963, val 6.3389, ppl 566.18
+Iter   310 | loss 6.4151 | ppl  611.02 | lr 9.30e-05 | sparsity 0.0% | 32922.5ms/iter
+Iter   320 | loss 6.3845 | ppl  592.57 | lr 9.60e-05 | sparsity 0.0% | 17129.0ms/iter
+Iter   330 | loss 6.3517 | ppl  573.48 | lr 9.90e-05 | sparsity 0.0% | 17159.1ms/iter
+Iter   340 | loss 6.3337 | ppl  563.21 | lr 1.02e-04 | sparsity 0.0% | 17116.2ms/iter
+Iter   350 | loss 6.2985 | ppl  543.73 | lr 1.05e-04 | sparsity 0.0% | 17140.5ms/iter
+
+Eval @ iter 350: train 6.2592, val 6.2089, ppl 497.18
+
+Reached max training time of 7200s (7261.9s elapsed)
+
+Training complete! Total time: 121.03 minutes
+Best validation perplexity achieved: 497.18
+Metrics saved to /data/knlp/test_matrix_results_20251123_231956/gpt2_adamwspam_ramla_stepB0/training_metrics_stepV0.json
+Saved final model: test_matrix_results_20251123_231956/gpt2_adamwspam_ramla_stepB0/final_model_stepV0.pt
+
+--- lm-eval Benchmarks ---
+Running lm-eval with limit=100 samples per task
+Overwriting default num_fewshot of hellaswag from None to 0
+
+  0%|          | 0/100 [00:00<?, ?it/s]
+100%|██████████| 100/100 [00:00<00:00, 10859.88it/s]
+hellaswag/acc,none: 0.2300
+hellaswag/acc_stderr,none: 0.0423
+hellaswag/acc_norm,none: 0.2300
+hellaswag/acc_norm_stderr,none: 0.0423
+
+--- Text Generation Samples ---
+
+Prompt: The meaning of life is
+Output: The meaning of life is not only to be in the time from the time and the same number of people of the most likely to the best to work.
+In this is an object of a study is the same time to be at a result...
+
+Prompt: In a shocking discovery, scientists found that
+Output: In a shocking discovery, scientists found that it is to the time, and the same time of the body to be, which makes the main day, where in its health. Even if it’s own and the body.’s work into a numbe...
+
+Prompt: Once upon a time in a land far away,
+Output: Once upon a time in a land far away, the time of the following time of their own. These were not have a large. The first step on to the most of the first thing about how to all of the time, so there’s...
+
+Prompt: The best way to learn programming is
+Output: The best way to learn programming is important.
+One of a large-to-to-up-level.
+-5-0.
+- The most of the following the past- The World.
+"
+- If the first year. It is that it is the...
+* Run finished. Uploading logs to Trackio (please wait...)
+Trackio tracking finished
+wandb: uploading artifact run-coqu0thz-text_samples; uploading history steps 35-36, summary, console lines 67-104; updating run metadata
+wandb: uploading config.yaml
+wandb: 
+wandb: Run history:
+wandb:                    final/best_val_loss ▁
+wandb:              final/best_val_perplexity ▁
+wandb:                              iteration ▁▁▁▂▂▂▂▂▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇████
+wandb:                          learning_rate ▁▁▁▂▂▂▂▂▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇███
+wandb:             lm_eval/hellaswag_acc,none ▁
+wandb:        lm_eval/hellaswag_acc_norm,none ▁
+wandb: lm_eval/hellaswag_acc_norm_stderr,none ▁
+wandb:      lm_eval/hellaswag_acc_stderr,none ▁
+wandb:                               sparsity ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:                             train_loss ▁██▇▇▇▇▇▆▆▆▆▆▆▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅
+wandb:                                     +3 ...
+wandb: 
+wandb: Run summary:
+wandb:                    final/best_val_loss 6.20895
+wandb:              final/best_val_perplexity 497.17683
+wandb:                              iteration 351
+wandb:                          learning_rate 0.0001
+wandb:             lm_eval/hellaswag_acc,none 0.23
+wandb:        lm_eval/hellaswag_acc_norm,none 0.23
+wandb: lm_eval/hellaswag_acc_norm_stderr,none 0.0423
+wandb:      lm_eval/hellaswag_acc_stderr,none 0.0423
+wandb:                               sparsity 0
+wandb:                             train_loss 6.29845
+wandb:                                     +3 ...
+wandb: 
+wandb: 🚀 View run gpt2_adamwspam_ramla_stepB0 at: https://wandb.ai/mcgrof-citizen/gpt2-kvsplice-ablation-w7900-mla-fixed/runs/coqu0thz
+wandb: ⭐️ View project at: https://wandb.ai/mcgrof-citizen/gpt2-kvsplice-ablation-w7900-mla-fixed
+wandb: Synced 5 W&B file(s), 1 media file(s), 2 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20251123_232006-coqu0thz/logs
+W&B tracking finished
+
+Training complete!
+2025-11-24 01:21:26,159 - INFO - Training completed successfully
+2025-11-24 01:21:26,461 - INFO - Simple GPU monitoring completed
+2025-11-24 01:21:26,975 - INFO - GPU performance graphs generated: test_matrix_results_20251123_231956/gpt2_adamwspam_ramla_stepB0/gpu_stats_gpt2_adamwspam_ramla_stepB0_20251123_232003_plot.png
+2025-11-24 01:21:26,977 - INFO - GPU stats saved to: test_matrix_results_20251123_231956/gpt2_adamwspam_ramla_stepB0/gpu_stats_gpt2_adamwspam_ramla_stepB0_20251123_232003.json
+2025-11-24 01:21:26,977 - INFO - Generating performance graphs...
+2025-11-24 01:21:27,494 - INFO - GPU performance graphs saved to test_matrix_results_20251123_231956/gpt2_adamwspam_ramla_stepB0/gpu_stats_gpt2_adamwspam_ramla_stepB0_20251123_232003_plot.png
+2025-11-24 01:21:27,494 - INFO - Performance graphs saved to: test_matrix_results_20251123_231956/gpt2_adamwspam_ramla_stepB0/gpu_stats_gpt2_adamwspam_ramla_stepB0_20251123_232003_plot.png
+2025-11-24 01:21:27,494 - INFO - Training with monitoring completed successfully!

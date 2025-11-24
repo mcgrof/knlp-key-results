@@ -1,0 +1,57 @@
+[
+  {
+    "gpu_memory_mean": 26274.1953313253,
+    "gpu_memory_max": 46048,
+    "test_id": "gpt2_adamwspam_ramla_stepB0",
+    "model": "gpt2",
+    "optimizer": "adamwspam",
+    "pruning": "none",
+    "target_sparsity": 0,
+    "elapsed_time": 7286.897113800049,
+    "success": true
+  },
+  {
+    "gpu_memory_mean": 30174.573033707864,
+    "gpu_memory_max": 46055,
+    "test_id": "gpt2_adamwspam_ramla_stepMLA0",
+    "model": "gpt2",
+    "optimizer": "adamwspam",
+    "pruning": "none",
+    "target_sparsity": 0,
+    "elapsed_time": 7233.092126607895,
+    "success": true
+  },
+  {
+    "gpu_memory_mean": 32184.554544075254,
+    "gpu_memory_max": 46055,
+    "test_id": "gpt2_adamwspam_ramla_stepMLAKV0",
+    "model": "gpt2",
+    "optimizer": "adamwspam",
+    "pruning": "none",
+    "target_sparsity": 0,
+    "elapsed_time": 7239.355464696884,
+    "success": true
+  },
+  {
+    "gpu_memory_mean": 30568.647737625266,
+    "gpu_memory_max": 46055,
+    "test_id": "gpt2_adamwspam_ramla_stepRAMLA0",
+    "model": "gpt2",
+    "optimizer": "adamwspam",
+    "pruning": "none",
+    "target_sparsity": 0,
+    "elapsed_time": 7232.286783695221,
+    "success": true
+  },
+  {
+    "gpu_memory_mean": 31727.728059520196,
+    "gpu_memory_max": 46055,
+    "test_id": "gpt2_adamwspam_ramla_stepRAMLAKV0",
+    "model": "gpt2",
+    "optimizer": "adamwspam",
+    "pruning": "none",
+    "target_sparsity": 0,
+    "elapsed_time": 7232.813432455063,
+    "success": true
+  }
+]

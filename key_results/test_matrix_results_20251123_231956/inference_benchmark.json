@@ -1,0 +1,130 @@
+{
+  "memory": {
+    "MLA0": {
+      "peak_memory_gb": 0.9709720611572266,
+      "latency_ms": 30.062860064208508,
+      "tokens_per_sec": 17030.98104792645,
+      "cache_type": "standard",
+      "standard_cache_mb": 18.0,
+      "actual_cache_mb": 18.0,
+      "cache_compression": 1.0,
+      "cache_savings_pct": 0.0
+    },
+    "MLAKV0": {
+      "peak_memory_gb": 0.9927463531494141,
+      "latency_ms": 29.375949129462242,
+      "tokens_per_sec": 17429.224082039822,
+      "cache_type": "kvsplice",
+      "standard_cache_mb": 18.0,
+      "actual_cache_mb": 1.5,
+      "cache_compression": 0.5,
+      "cache_savings_pct": 91.66666666666666
+    },
+    "RAMLA0": {
+      "peak_memory_gb": 0.9692635536193848,
+      "latency_ms": 23.599066864699125,
+      "tokens_per_sec": 21695.773097108333,
+      "cache_type": "standard",
+      "standard_cache_mb": 18.0,
+      "actual_cache_mb": 18.0,
+      "cache_compression": 1.0,
+      "cache_savings_pct": 0.0
+    },
+    "RAMLAKV0": {
+      "peak_memory_gb": 0.9927468299865723,
+      "latency_ms": 24.59185943007469,
+      "tokens_per_sec": 20819.89779812453,
+      "cache_type": "kvsplice",
+      "standard_cache_mb": 18.0,
+      "actual_cache_mb": 1.5,
+      "cache_compression": 0.5,
+      "cache_savings_pct": 91.66666666666666
+    }
+  },
+  "lm_eval": {
+    "MLA0": {
+      "arc_easy": {
+        "alias": "arc_easy",
+        "acc,none": 0.24,
+        "acc_stderr,none": 0.04292346959909278,
+        "acc_norm,none": 0.27,
+        "acc_norm_stderr,none": 0.04461960433384737
+      },
+      "hellaswag": {
+        "alias": "hellaswag",
+        "acc,none": 0.28,
+        "acc_stderr,none": 0.045126085985421296,
+        "acc_norm,none": 0.28,
+        "acc_norm_stderr,none": 0.045126085985421296
+      },
+      "winogrande": {
+        "alias": "winogrande",
+        "acc,none": 0.48,
+        "acc_stderr,none": 0.05021167315686783
+      }
+    },
+    "MLAKV0": {
+      "arc_easy": {
+        "alias": "arc_easy",
+        "acc,none": 0.25,
+        "acc_stderr,none": 0.04351941398892446,
+        "acc_norm,none": 0.28,
+        "acc_norm_stderr,none": 0.045126085985421296
+      },
+      "hellaswag": {
+        "alias": "hellaswag",
+        "acc,none": 0.29,
+        "acc_stderr,none": 0.045604802157206865,
+        "acc_norm,none": 0.28,
+        "acc_norm_stderr,none": 0.045126085985421296
+      },
+      "winogrande": {
+        "alias": "winogrande",
+        "acc,none": 0.59,
+        "acc_stderr,none": 0.04943110704237104
+      }
+    },
+    "RAMLA0": {
+      "arc_easy": {
+        "alias": "arc_easy",
+        "acc,none": 0.26,
+        "acc_stderr,none": 0.0440844002276808,
+        "acc_norm,none": 0.3,
+        "acc_norm_stderr,none": 0.04605661864718382
+      },
+      "hellaswag": {
+        "alias": "hellaswag",
+        "acc,none": 0.29,
+        "acc_stderr,none": 0.045604802157206865,
+        "acc_norm,none": 0.31,
+        "acc_norm_stderr,none": 0.04648231987117317
+      },
+      "winogrande": {
+        "alias": "winogrande",
+        "acc,none": 0.51,
+        "acc_stderr,none": 0.05024183937956913
+      }
+    },
+    "RAMLAKV0": {
+      "arc_easy": {
+        "alias": "arc_easy",
+        "acc,none": 0.25,
+        "acc_stderr,none": 0.04351941398892446,
+        "acc_norm,none": 0.3,
+        "acc_norm_stderr,none": 0.04605661864718382
+      },
+      "hellaswag": {
+        "alias": "hellaswag",
+        "acc,none": 0.3,
+        "acc_stderr,none": 0.04605661864718382,
+        "acc_norm,none": 0.28,
+        "acc_norm_stderr,none": 0.045126085985421296
+      },
+      "winogrande": {
+        "alias": "winogrande",
+        "acc,none": 0.52,
+        "acc_stderr,none": 0.05021167315686783
+      }
+    }
+  }
+}

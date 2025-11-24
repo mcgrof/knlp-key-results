@@ -1,0 +1,174 @@
+2025-11-24 01:21:34,112 - INFO - Training configuration: gpt2_adamwspam_ramla_stepMLA0
+2025-11-24 01:21:34,112 - INFO - DDP not enabled in config - using single-GPU mode
+2025-11-24 01:21:34,112 - INFO - Starting training with GPU monitoring: gpt2_adamwspam_ramla_stepMLA0
+2025-11-24 01:21:34,158 - INFO - Started simple GPU monitoring - stats will be saved to test_matrix_results_20251123_231956/gpt2_adamwspam_ramla_stepMLA0/gpu_stats_gpt2_adamwspam_ramla_stepMLA0_20251124_012134.json
+2025-11-24 01:21:34,158 - INFO - Command: /home/mcgrof/envs/w7900-ml/bin/python3 /data/knlp/gpt2/train.py --output-dir test_matrix_results_20251123_231956/gpt2_adamwspam_ramla_stepMLA0 --optimizer adamwspam --dataset finewebedu --data-dir ./gpt2/data --block-size 1024 --flash-attention --warmup-steps 2000 --eval-interval 50 --eval-samples 200 --max-iters 10000 --max-time 7200 --decay-lr --min-lr 6e-5 --learning-rate 6e-4 --pruning-method none --spam-theta 50.0 --spam-interval 1000 --spam-warmup-steps 1000 --spam-enable-clip --architecture ramla --ra-step MLA0 --run-lm-eval --lm-eval-tasks hellaswag --json-output /data/knlp/test_matrix_results_20251123_231956/gpt2_adamwspam_ramla_stepMLA0/training_metrics.json --tracker wandb,trackio --tracker-project gpt2-kvsplice-ablation-w7900-mla-fixed --tracker-run-name gpt2_adamwspam_ramla_stepMLA0
+Hyperparams: AUTO mode - GPU: AMD Radeon Pro W7900 (48.3GB total, 48.3GB free) × 2, model=gpt2, compile=ON → batch=32, grad_acc=16 (effective=1024, target=1024)
+Compile: Enabled (GPU 'AMD Radeon Pro W7900' has good torch.compile support)
+Running RAMLA trainer (step MLA0)
+Step MLA0: mla architecture, standard LR (6.0e-04)
+* Trackio project initialized: gpt2-kvsplice-ablation-w7900-mla-fixed
+* Trackio metrics logged to: /home/mcgrof/.cache/huggingface/trackio
+* View dashboard by running in your terminal:
+[1m[38;5;208mtrackio show --project "gpt2-kvsplice-ablation-w7900-mla-fixed"[0m
+* or by running in Python: trackio.show(project="gpt2-kvsplice-ablation-w7900-mla-fixed")
+* Created new run: gpt2_adamwspam_ramla_stepMLA0
+Initialized Trackio tracking for project: gpt2-kvsplice-ablation-w7900-mla-fixed
+wandb: Currently logged in as: mcgrof (mcgrof-citizen) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.23.0
+wandb: Run data is saved locally in /data/knlp/wandb/run-20251124_012137-mxp7cd6n
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run gpt2_adamwspam_ramla_stepMLA0
+wandb: ⭐️ View project at https://wandb.ai/mcgrof-citizen/gpt2-kvsplice-ablation-w7900-mla-fixed
+wandb: 🚀 View run at https://wandb.ai/mcgrof-citizen/gpt2-kvsplice-ablation-w7900-mla-fixed/runs/mxp7cd6n
+wandb: Initializing weave.
+[36m[1mweave[0m: Logged in as Weights & Biases user: mcgrof.
+[36m[1mweave[0m: View Weave data at https://wandb.ai/mcgrof-citizen/gpt2-kvsplice-ablation-w7900-mla-fixed/weave
+Initialized WandB tracking for project: gpt2-kvsplice-ablation-w7900-mla-fixed
+Initializing GPT-2 model: gpt2
+Number of parameters: 123.69M
+Setting up adamwspam optimizer...
+Weight decay: 0.1
+Created MLAGPT with d_latent=256
+Number of parameters: 117.36M
+Created optimizer with LR=6.0e-04
+
+Starting training...
+Parameters: 123.69M
+Device: cuda, dtype: bfloat16
+Batch size: 32, Gradient accumulation: 16
+Effective batch size: 512
+Save checkpoint: True, Output: test_matrix_results_20251123_231956/gpt2_adamwspam_ramla_stepMLA0
+--------------------------------------------------
+Iter     0 | loss 1.0946 | ppl    2.99 | lr 0.00e+00 | sparsity 0.0% | 2076.0ms/iter
+
+Eval @ iter 0: train 10.9466, val 10.9467, ppl 56766.90
+Saved checkpoint at iteration 0
+Iter    10 | loss 10.8758 | ppl 52882.72 | lr 3.00e-06 | sparsity 0.0% | 42505.1ms/iter
+Iter    20 | loss 10.4965 | ppl 36189.96 | lr 6.00e-06 | sparsity 0.0% | 21215.8ms/iter
+Iter    30 | loss 10.0193 | ppl 22456.63 | lr 9.00e-06 | sparsity 0.0% | 21185.0ms/iter
+Iter    40 | loss 9.6721 | ppl 15868.59 | lr 1.20e-05 | sparsity 0.0% | 21181.8ms/iter
+Iter    50 | loss 9.4562 | ppl 12786.81 | lr 1.50e-05 | sparsity 0.0% | 21171.4ms/iter
+
+Eval @ iter 50: train 9.3579, val 9.3510, ppl 11510.33
+Iter    60 | loss 9.2795 | ppl 10716.45 | lr 1.80e-05 | sparsity 0.0% | 42397.4ms/iter
+Iter    70 | loss 9.0708 | ppl 8697.84 | lr 2.10e-05 | sparsity 0.0% | 21181.0ms/iter
+Iter    80 | loss 8.8500 | ppl 6974.41 | lr 2.40e-05 | sparsity 0.0% | 21185.6ms/iter
+Iter    90 | loss 8.6140 | ppl 5508.30 | lr 2.70e-05 | sparsity 0.0% | 21184.7ms/iter
+Iter   100 | loss 8.3876 | ppl 4392.39 | lr 3.00e-05 | sparsity 0.0% | 21174.7ms/iter
+
+Eval @ iter 100: train 8.2688, val 8.2435, ppl 3802.79
+Iter   110 | loss 8.1736 | ppl 3545.97 | lr 3.30e-05 | sparsity 0.0% | 42402.1ms/iter
+Iter   120 | loss 7.9687 | ppl 2889.08 | lr 3.60e-05 | sparsity 0.0% | 21163.7ms/iter
+Iter   130 | loss 7.7775 | ppl 2386.20 | lr 3.90e-05 | sparsity 0.0% | 21183.3ms/iter
+Iter   140 | loss 7.6001 | ppl 1998.49 | lr 4.20e-05 | sparsity 0.0% | 21175.5ms/iter
+Iter   150 | loss 7.4475 | ppl 1715.65 | lr 4.50e-05 | sparsity 0.0% | 21185.7ms/iter
+
+Eval @ iter 150: train 7.3532, val 7.3146, ppl 1502.10
+Iter   160 | loss 7.3059 | ppl 1489.01 | lr 4.80e-05 | sparsity 0.0% | 42390.5ms/iter
+Iter   170 | loss 7.1878 | ppl 1323.25 | lr 5.10e-05 | sparsity 0.0% | 21170.5ms/iter
+Iter   180 | loss 7.1018 | ppl 1214.13 | lr 5.40e-05 | sparsity 0.0% | 21170.9ms/iter
+Iter   190 | loss 7.0332 | ppl 1133.68 | lr 5.70e-05 | sparsity 0.0% | 21176.3ms/iter
+Iter   200 | loss 6.9477 | ppl 1040.75 | lr 6.00e-05 | sparsity 0.0% | 21175.3ms/iter
+
+Eval @ iter 200: train 6.9037, val 6.8617, ppl 954.97
+Iter   210 | loss 6.8786 | ppl  971.25 | lr 6.30e-05 | sparsity 0.0% | 42411.7ms/iter
+Iter   220 | loss 6.8066 | ppl  903.79 | lr 6.60e-05 | sparsity 0.0% | 21187.2ms/iter
+Iter   230 | loss 6.7707 | ppl  871.95 | lr 6.90e-05 | sparsity 0.0% | 21196.3ms/iter
+Iter   240 | loss 6.7101 | ppl  820.61 | lr 7.20e-05 | sparsity 0.0% | 21193.2ms/iter
+Iter   250 | loss 6.6778 | ppl  794.60 | lr 7.50e-05 | sparsity 0.0% | 21186.3ms/iter
+
+Eval @ iter 250: train 6.6584, val 6.6090, ppl 741.76
+Iter   260 | loss 6.6400 | ppl  765.08 | lr 7.80e-05 | sparsity 0.0% | 42413.2ms/iter
+Iter   270 | loss 6.6251 | ppl  753.78 | lr 8.10e-05 | sparsity 0.0% | 21196.2ms/iter
+
+Reached max training time of 7200s (7205.1s elapsed)
+
+Training complete! Total time: 120.09 minutes
+Best validation perplexity achieved: 741.76
+Metrics saved to /data/knlp/test_matrix_results_20251123_231956/gpt2_adamwspam_ramla_stepMLA0/training_metrics_stepV0.json
+Saved final model: test_matrix_results_20251123_231956/gpt2_adamwspam_ramla_stepMLA0/final_model_stepV0.pt
+  (Fisher metrics computation failed: 'MLA_Flash' object has no attribute 'to_latent')
+
+--- KV Cache Memory ---
+  Cache type: standard
+  seq=512: 18.0 MB
+  seq=1024: 36.0 MB
+  seq=2048: 72.0 MB
+  seq=4096: 144.0 MB
+
+--- lm-eval Benchmarks ---
+Running lm-eval with limit=100 samples per task
+Overwriting default num_fewshot of hellaswag from None to 0
+
+  0%|          | 0/100 [00:00<?, ?it/s]
+100%|██████████| 100/100 [00:00<00:00, 10275.37it/s]
+hellaswag/acc,none: 0.2800
+hellaswag/acc_stderr,none: 0.0451
+hellaswag/acc_norm,none: 0.3000
+hellaswag/acc_norm_stderr,none: 0.0461
+
+--- Text Generation Samples ---
+
+Prompt: The meaning of life is
+Output: The meaning of life is a large.
+There is the first, this is in the same of a group.
+The people, to the one in the end from the the two, and the body.
+The first year, the most of the “the the...
+
+Prompt: In a shocking discovery, scientists found that
+Output: In a shocking discovery, scientists found that are given that the people has a day of the government in a year, which was to reduce the state of the most of the world. The same time in the “There is a...
+
+Prompt: Once upon a time in a land far away,
+Output: Once upon a time in a land far away, and to the country.
+’t have a “When you’ with a new, which is only about about the ‘What’s “’s in the child”
+’t get to the...
+
+Prompt: The best way to learn programming is
+Output: The best way to learn programming is an you to the first one of the following the same time. It is, he and the second is not an important to the people have an people to the problem. This is an possib...
+* Run finished. Uploading logs to Trackio (please wait...)
+Trackio tracking finished
+wandb: uploading artifact run-mxp7cd6n-text_samples; updating run metadata
+wandb: uploading history steps 28-28, summary, console lines 80-104
+wandb: 
+wandb: Run history:
+wandb:          final/best_val_loss ▁
+wandb:    final/best_val_perplexity ▁
+wandb:                    iteration ▁▁▁▂▂▂▃▃▃▃▃▄▄▄▅▅▅▅▅▆▆▆▇▇▇▇▇██
+wandb:   kv_cache/seq1024_actual_mb ▁
+wandb: kv_cache/seq1024_savings_pct ▁
+wandb: kv_cache/seq1024_standard_mb ▁
+wandb:   kv_cache/seq2048_actual_mb ▁
+wandb: kv_cache/seq2048_savings_pct ▁
+wandb: kv_cache/seq2048_standard_mb ▁
+wandb:   kv_cache/seq4096_actual_mb ▁
+wandb:                          +16 ...
+wandb: 
+wandb: Run summary:
+wandb:          final/best_val_loss 6.60902
+wandb:    final/best_val_perplexity 741.75591
+wandb:                    iteration 280
+wandb:   kv_cache/seq1024_actual_mb 36
+wandb: kv_cache/seq1024_savings_pct 0
+wandb: kv_cache/seq1024_standard_mb 36
+wandb:   kv_cache/seq2048_actual_mb 72
+wandb: kv_cache/seq2048_savings_pct 0
+wandb: kv_cache/seq2048_standard_mb 72
+wandb:   kv_cache/seq4096_actual_mb 144
+wandb:                          +16 ...
+wandb: 
+wandb: 🚀 View run gpt2_adamwspam_ramla_stepMLA0 at: https://wandb.ai/mcgrof-citizen/gpt2-kvsplice-ablation-w7900-mla-fixed/runs/mxp7cd6n
+wandb: ⭐️ View project at: https://wandb.ai/mcgrof-citizen/gpt2-kvsplice-ablation-w7900-mla-fixed
+wandb: Synced 5 W&B file(s), 1 media file(s), 2 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20251124_012137-mxp7cd6n/logs
+W&B tracking finished
+
+Training complete!
+2025-11-24 03:22:03,411 - INFO - Training completed successfully
+2025-11-24 03:22:04,337 - INFO - Simple GPU monitoring completed
+2025-11-24 03:22:04,887 - INFO - GPU performance graphs generated: test_matrix_results_20251123_231956/gpt2_adamwspam_ramla_stepMLA0/gpu_stats_gpt2_adamwspam_ramla_stepMLA0_20251124_012134_plot.png
+2025-11-24 03:22:04,888 - INFO - GPU stats saved to: test_matrix_results_20251123_231956/gpt2_adamwspam_ramla_stepMLA0/gpu_stats_gpt2_adamwspam_ramla_stepMLA0_20251124_012134.json
+2025-11-24 03:22:04,888 - INFO - Generating performance graphs...
+2025-11-24 03:22:05,432 - INFO - GPU performance graphs saved to test_matrix_results_20251123_231956/gpt2_adamwspam_ramla_stepMLA0/gpu_stats_gpt2_adamwspam_ramla_stepMLA0_20251124_012134_plot.png
+2025-11-24 03:22:05,432 - INFO - Performance graphs saved to: test_matrix_results_20251123_231956/gpt2_adamwspam_ramla_stepMLA0/gpu_stats_gpt2_adamwspam_ramla_stepMLA0_20251124_012134_plot.png
+2025-11-24 03:22:05,432 - INFO - Training with monitoring completed successfully!
