@@ -1,0 +1,25 @@
+GPU Performance Summary
+========================
+
+GPU: NVIDIA H100 80GB HBM3
+Type: nvidia
+Duration: 7050 seconds
+Start: 2025-11-28T11:27:52.794517
+End: 2025-11-28T13:28:12.338569
+
+GPU Utilization:
+  Average: 90.5%
+  Max: 100.0%
+  Min: 0.0%
+
+Memory Usage:
+  Average: 34.0%
+  Max: 95.3%
+  Min: 0.0%
+
+Temperature Sensors:
+
+Power Draw:
+  Average: 332.4W
+  Max: 371.2W
+  Min: 75.2W

@@ -1,0 +1,24 @@
+[
+  {
+    "gpu_memory_mean": 44894.88769030679,
+    "gpu_memory_max": 46055,
+    "test_id": "gpt2_adamwspam_mla",
+    "model": "gpt2",
+    "optimizer": "adamwspam",
+    "pruning": "none",
+    "target_sparsity": 0,
+    "elapsed_time": 14418.94579744339,
+    "success": true
+  },
+  {
+    "gpu_memory_mean": 44914.65530709144,
+    "gpu_memory_max": 46055,
+    "test_id": "gpt2_adamwspam_mla_kv",
+    "model": "gpt2",
+    "optimizer": "adamwspam",
+    "pruning": "none",
+    "target_sparsity": 0,
+    "elapsed_time": 14423.391837120056,
+    "success": true
+  }
+]

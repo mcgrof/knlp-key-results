@@ -1,0 +1,55 @@
+Test Matrix Summary Report (Regenerated)
+Generated: 2025-11-28T17:00:25.043637
+From: test_matrix_results_20251128_085840
+================================================================================
+
+Total tests: 2
+Successful: 2
+Failed: 0
+
+Results Table:
+---------------------------------------------------------------------------------------------------------
+Test ID                                  Accuracy Sparsity GPU Mean (MiB) GPU Max (MiB) Status    
+---------------------------------------------------------------------------------------------------------
+gpt2_adamwspam_mla                         0.0000   0.0000        18009.9       34512.0 ✓ Success 
+gpt2_adamwspam_mla_kv                      0.0000   0.0000        17924.4       34514.0 ✓ Success 
+--------------------------------------------------------------------------------
+
+Best Performers:
+--------------------------------------------------------------------------------
+Top 20 by Accuracy:
+1. gpt2_adamwspam_mla: 0.0000
+2. gpt2_adamwspam_mla_kv: 0.0000
+
+Best by Optimizer:
+  adamwspam: gpt2_adamwspam_mla (0.0000)
+
+GPU Memory Usage (Real Measurements):
+--------------------------------------------------------------------------------
+Most Memory-Efficient Tests:
+1. gpt2_adamwspam_mla_kv:
+   Accuracy: 0.00%, GPU Mean: 17924.4 MiB, GPU Max: 34514.0 MiB
+2. gpt2_adamwspam_mla:
+   Accuracy: 0.00%, GPU Mean: 18009.9 MiB, GPU Max: 34512.0 MiB
+
+GPU Memory by Optimizer:
+  adamwspam   :  17967.2 MiB (avg of 2 runs)
+
+Memory Efficiency Analysis:
+--------------------------------------------------------------------------------
+Note: Memory shown as multiplier of weight tensor size
+Training memory = weights + optimizer states + pruning overhead
+Inference memory = active weights only (benefits from sparsity)
+
+Top 20 Most Memory-Efficient (Accuracy/Training Memory Ratio):
+1. gpt2_adamwspam_mla
+   Accuracy: 0.00%, Training Memory: 3.10x weights, Efficiency Score: 0.00
+2. gpt2_adamwspam_mla_kv
+   Accuracy: 0.00%, Training Memory: 3.10x weights, Efficiency Score: 0.00
+
+Top 20 Lowest Inference Memory (with sparsity benefits):
+1. gpt2_adamwspam_mla
+   Accuracy: 0.00%, Sparsity: 0.0%, Inference Memory: 1.00x weights
+2. gpt2_adamwspam_mla_kv
+   Accuracy: 0.00%, Sparsity: 0.0%, Inference Memory: 1.00x weights
+

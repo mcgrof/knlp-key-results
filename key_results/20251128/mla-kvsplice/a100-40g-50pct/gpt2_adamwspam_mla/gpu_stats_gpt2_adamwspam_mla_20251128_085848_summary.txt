@@ -1,0 +1,25 @@
+GPU Performance Summary
+========================
+
+GPU: NVIDIA A100-SXM4-40GB
+Type: nvidia
+Duration: 11848 seconds
+Start: 2025-11-28T08:58:48.146482
+End: 2025-11-28T12:59:15.656051
+
+GPU Utilization:
+  Average: 98.7%
+  Max: 100.0%
+  Min: 0.0%
+
+Memory Usage:
+  Average: 45.1%
+  Max: 86.4%
+  Min: 0.0%
+
+Temperature Sensors:
+
+Power Draw:
+  Average: 94.8W
+  Max: 253.5W
+  Min: 44.2W

@@ -1,0 +1,211 @@
+/root/.venv/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+2025-11-28 08:58:48,065 - INFO - Training configuration: gpt2_adamwspam_mla
+2025-11-28 08:58:48,067 - INFO - DDP not enabled in config - using single-GPU mode
+2025-11-28 08:58:48,067 - INFO - Starting training with GPU monitoring: gpt2_adamwspam_mla
+2025-11-28 08:58:48,098 - INFO - Started simple GPU monitoring - stats will be saved to test_matrix_results_20251128_085840/gpt2_adamwspam_mla/gpu_stats_gpt2_adamwspam_mla_20251128_085848.json
+2025-11-28 08:58:48,099 - INFO - Command: /root/.venv/bin/python3 /mnt/tmpfs/knlp/gpt2/train.py --output-dir test_matrix_results_20251128_085840/gpt2_adamwspam_mla --optimizer adamwspam --dataset tinystories --data-dir ./gpt2/data --block-size 1024 --flash-attention --warmup-steps 2000 --eval-interval 50 --eval-samples 200 --max-iters 10000 --max-time 14400 --decay-lr --min-lr 6e-5 --learning-rate 6e-4 --pruning-method none --spam-theta 50.0 --spam-interval 1000 --spam-warmup-steps 1000 --spam-enable-clip --json-output /mnt/tmpfs/knlp/test_matrix_results_20251128_085840/gpt2_adamwspam_mla/training_metrics.json --tracker wandb,trackio --tracker-project gpt2-kvsplice-ablation-70pct-a100-40g --tracker-run-name gpt2_adamwspam_mla
+/root/.venv/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Hyperparams: AUTO mode - GPU: NVIDIA A100-SXM4-40GB (41.4GB total, 40.9GB free), model=gpt2, compile=ON → batch=32, grad_acc=8 (per_gpu_eff=256, total_eff=256, target=256)
+Compile: Enabled (GPU 'NVIDIA A100-SXM4-40GB' has good torch.compile support)
+Running Vanilla GPT-2 trainer
+* Trackio project initialized: gpt2-kvsplice-ablation-70pct-a100-40g
+* Trackio metrics logged to: /root/.cache/huggingface/trackio
+* View dashboard by running in your terminal:
+[1m[38;5;208mtrackio show --project "gpt2-kvsplice-ablation-70pct-a100-40g"[0m
+* or by running in Python: trackio.show(project="gpt2-kvsplice-ablation-70pct-a100-40g")
+* Resumed existing run: gpt2_adamwspam_mla
+Initialized Trackio tracking for project: gpt2-kvsplice-ablation-70pct-a100-40g
+wandb: Currently logged in as: mcgrof (mcgrof-citizen) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: setting up run iyket6zi
+wandb: Tracking run with wandb version 0.23.0
+wandb: Run data is saved locally in /mnt/tmpfs/knlp/wandb/run-20251128_085857-iyket6zi
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run gpt2_adamwspam_mla
+wandb: ⭐️ View project at https://wandb.ai/mcgrof-citizen/gpt2-kvsplice-ablation-70pct-a100-40g
+wandb: 🚀 View run at https://wandb.ai/mcgrof-citizen/gpt2-kvsplice-ablation-70pct-a100-40g/runs/iyket6zi
+wandb: Initializing weave.
+[36m[1mweave[0m: weave version 0.52.20 is available!  To upgrade, please run:
+[36m[1mweave[0m:  $ pip install weave --upgrade
+[36m[1mweave[0m: Logged in as Weights & Biases user: mcgrof.
+[36m[1mweave[0m: View Weave data at https://wandb.ai/mcgrof-citizen/gpt2-kvsplice-ablation-70pct-a100-40g/weave
+Initialized WandB tracking for project: gpt2-kvsplice-ablation-70pct-a100-40g
+Initializing MLA model: mla
+  MLA: d_latent=256
+Setting up adamwspam optimizer...
+Weight decay: 0.1
+
+Starting training...
+Parameters: 117.36M
+Device: cuda, dtype: bfloat16
+Batch size: 32, Gradient accumulation: 8
+Effective batch size: 256
+Save checkpoint: True, Output: test_matrix_results_20251128_085840/gpt2_adamwspam_mla
+--------------------------------------------------
+Iter     0 | loss 1.0950 | ppl    2.99 | lr 0.00e+00 | sparsity 0.0% | 2005.5ms/iter
+
+Eval @ iter 0: train 10.9530, val 10.9530, ppl 57124.30
+
+--- lm-eval Benchmarks ---
+Running lm-eval with limit=100 samples per task
+Overwriting default num_fewshot of hellaswag from None to 0
+
+  0%|          | 0/100 [00:00<?, ?it/s]
+100%|██████████| 100/100 [00:00<00:00, 3170.20it/s]
+hellaswag/acc,none: 0.2500
+hellaswag/acc_stderr,none: 0.0435
+hellaswag/acc_norm,none: 0.2800
+hellaswag/acc_norm_stderr,none: 0.0451
+Created lm-eval results table with 1 tasks
+
+Generated 3 text samples
+Saved checkpoint at iteration 0
+Iter    10 | loss 10.8807 | ppl 53139.72 | lr 3.00e-06 | sparsity 0.0% | 63735.1ms/iter
+Iter    20 | loss 10.4522 | ppl 34618.98 | lr 6.00e-06 | sparsity 0.0% | 20834.8ms/iter
+Iter    30 | loss 9.6941 | ppl 16222.24 | lr 9.00e-06 | sparsity 0.0% | 20832.5ms/iter
+Iter    40 | loss 8.9700 | ppl 7863.37 | lr 1.20e-05 | sparsity 0.0% | 20773.4ms/iter
+Iter    50 | loss 8.3589 | ppl 4267.91 | lr 1.50e-05 | sparsity 0.0% | 20760.8ms/iter
+
+Eval @ iter 50: train 7.9640, val 7.9559, ppl 2852.42
+
+--- KV Cache Memory ---
+  Cache type: mla
+  seq=512: 3.0 MB (83% savings)
+  seq=1024: 6.0 MB (83% savings)
+  seq=2048: 12.0 MB (83% savings)
+  seq=4096: 24.0 MB (83% savings)
+
+Generated 3 text samples
+Iter    60 | loss 7.7506 | ppl 2322.86 | lr 1.80e-05 | sparsity 0.0% | 61384.8ms/iter
+Iter    70 | loss 7.1423 | ppl 1264.33 | lr 2.10e-05 | sparsity 0.0% | 20733.7ms/iter
+Iter    80 | loss 6.5600 | ppl  706.28 | lr 2.40e-05 | sparsity 0.0% | 20700.1ms/iter
+Iter    90 | loss 5.9974 | ppl  402.40 | lr 2.70e-05 | sparsity 0.0% | 20687.6ms/iter
+Iter   100 | loss 5.5312 | ppl  252.45 | lr 3.00e-05 | sparsity 0.0% | 20707.1ms/iter
+
+Eval @ iter 100: train 5.2610, val 5.2611, ppl 192.70
+
+Generated 3 text samples
+Iter   110 | loss 5.1708 | ppl  176.05 | lr 3.30e-05 | sparsity 0.0% | 61409.7ms/iter
+Iter   120 | loss 4.9206 | ppl  137.08 | lr 3.60e-05 | sparsity 0.0% | 20699.4ms/iter
+Iter   130 | loss 4.6965 | ppl  109.56 | lr 3.90e-05 | sparsity 0.0% | 20704.3ms/iter
+Iter   140 | loss 4.5395 | ppl   93.64 | lr 4.20e-05 | sparsity 0.0% | 20701.6ms/iter
+Iter   150 | loss 4.4050 | ppl   81.86 | lr 4.50e-05 | sparsity 0.0% | 20708.8ms/iter
+
+Eval @ iter 150: train 4.2873, val 4.2872, ppl 72.76
+
+Generated 3 text samples
+Iter   160 | loss 4.2943 | ppl   73.28 | lr 4.80e-05 | sparsity 0.0% | 61390.4ms/iter
+Iter   170 | loss 4.2006 | ppl   66.73 | lr 5.10e-05 | sparsity 0.0% | 20704.9ms/iter
+Iter   180 | loss 4.1255 | ppl   61.90 | lr 5.40e-05 | sparsity 0.0% | 20690.9ms/iter
+Iter   190 | loss 4.0516 | ppl   57.49 | lr 5.70e-05 | sparsity 0.0% | 20702.2ms/iter
+Iter   200 | loss 4.0119 | ppl   55.25 | lr 6.00e-05 | sparsity 0.0% | 20712.3ms/iter
+
+Eval @ iter 200: train 3.9579, val 3.9626, ppl 52.60
+
+Generated 3 text samples
+Iter   210 | loss 3.9866 | ppl   53.87 | lr 6.30e-05 | sparsity 0.0% | 61396.3ms/iter
+Iter   220 | loss 3.9493 | ppl   51.90 | lr 6.60e-05 | sparsity 0.0% | 20712.3ms/iter
+Iter   230 | loss 3.8971 | ppl   49.26 | lr 6.90e-05 | sparsity 0.0% | 20694.7ms/iter
+Iter   240 | loss 3.8309 | ppl   46.10 | lr 7.20e-05 | sparsity 0.0% | 20706.8ms/iter
+Iter   250 | loss 3.7839 | ppl   43.99 | lr 7.50e-05 | sparsity 0.0% | 20676.4ms/iter
+
+Eval @ iter 250: train 3.7194, val 3.7168, ppl 41.13
+
+Generated 3 text samples
+Iter   260 | loss 3.7323 | ppl   41.78 | lr 7.80e-05 | sparsity 0.0% | 61395.8ms/iter
+Iter   270 | loss 3.6817 | ppl   39.71 | lr 8.10e-05 | sparsity 0.0% | 20708.5ms/iter
+Iter   280 | loss 3.6290 | ppl   37.67 | lr 8.40e-05 | sparsity 0.0% | 20728.4ms/iter
+Iter   290 | loss 3.5638 | ppl   35.30 | lr 8.70e-05 | sparsity 0.0% | 20711.0ms/iter
+Iter   300 | loss 3.5215 | ppl   33.84 | lr 9.00e-05 | sparsity 0.0% | 20705.6ms/iter
+
+Eval @ iter 300: train 3.4477, val 3.4475, ppl 31.42
+
+Generated 3 text samples
+Iter   310 | loss 3.4842 | ppl   32.60 | lr 9.30e-05 | sparsity 0.0% | 61428.6ms/iter
+Iter   320 | loss 3.4414 | ppl   31.23 | lr 9.60e-05 | sparsity 0.0% | 20737.5ms/iter
+Iter   330 | loss 3.4088 | ppl   30.23 | lr 9.90e-05 | sparsity 0.0% | 20722.2ms/iter
+Iter   340 | loss 3.3608 | ppl   28.81 | lr 1.02e-04 | sparsity 0.0% | 20702.7ms/iter
+Iter   350 | loss 3.3362 | ppl   28.11 | lr 1.05e-04 | sparsity 0.0% | 20732.6ms/iter
+
+Eval @ iter 350: train 3.2538, val 3.2541, ppl 25.90
+
+Generated 3 text samples
+Iter   360 | loss 3.3021 | ppl   27.17 | lr 1.08e-04 | sparsity 0.0% | 61413.4ms/iter
+Iter   370 | loss 3.2425 | ppl   25.60 | lr 1.11e-04 | sparsity 0.0% | 20709.6ms/iter
+Iter   380 | loss 3.1961 | ppl   24.44 | lr 1.14e-04 | sparsity 0.0% | 20706.8ms/iter
+Iter   390 | loss 3.1376 | ppl   23.05 | lr 1.17e-04 | sparsity 0.0% | 20694.2ms/iter
+Iter   400 | loss 3.0992 | ppl   22.18 | lr 1.20e-04 | sparsity 0.0% | 20696.2ms/iter
+
+Eval @ iter 400: train 3.0270, val 3.0324, ppl 20.75
+
+Generated 3 text samples
+Iter   410 | loss 3.0618 | ppl   21.37 | lr 1.23e-04 | sparsity 0.0% | 61393.8ms/iter
+Iter   420 | loss 3.0121 | ppl   20.33 | lr 1.26e-04 | sparsity 0.0% | 20666.7ms/iter
+Iter   430 | loss 2.9825 | ppl   19.74 | lr 1.29e-04 | sparsity 0.0% | 20699.6ms/iter
+Iter   440 | loss 2.9394 | ppl   18.91 | lr 1.32e-04 | sparsity 0.0% | 20701.1ms/iter
+Iter   450 | loss 2.8990 | ppl   18.16 | lr 1.35e-04 | sparsity 0.0% | 20696.8ms/iter
+
+Eval @ iter 450: train 2.8073, val 2.8128, ppl 16.66
+
+Generated 3 text samples
+Iter   460 | loss 2.8636 | ppl   17.52 | lr 1.38e-04 | sparsity 0.0% | 61359.1ms/iter
+Iter   470 | loss 2.8256 | ppl   16.87 | lr 1.41e-04 | sparsity 0.0% | 20672.7ms/iter
+Iter   480 | loss 2.7870 | ppl   16.23 | lr 1.44e-04 | sparsity 0.0% | 20693.8ms/iter
+Iter   490 | loss 2.7491 | ppl   15.63 | lr 1.47e-04 | sparsity 0.0% | 20689.5ms/iter
+
+Reached max training time of 14400s (14406.3s elapsed)
+
+Training complete! Total time: 240.10 minutes
+Best validation perplexity achieved: 16.66
+Metrics saved to /mnt/tmpfs/knlp/test_matrix_results_20251128_085840/gpt2_adamwspam_mla/training_metrics_stepV0.json
+Saved final model: test_matrix_results_20251128_085840/gpt2_adamwspam_mla/final_model_stepV0.pt
+* Run finished. Uploading logs to Trackio (please wait...)
+Trackio tracking finished
+wandb: updating run metadata
+wandb: uploading output.log; uploading wandb-summary.json
+wandb: uploading history steps 49-50, summary, console lines 126-134
+wandb: 
+wandb: Run history:
+wandb:       final/best_val_loss ▁
+wandb: final/best_val_perplexity ▁
+wandb:    fisher/cond_global_max ▅▁▇▅▇▃▃█▁▅
+wandb:   fisher/cond_global_mean ▆▄██▇▃▁▂▃▃
+wandb:  fisher/eigmax_global_max ▆▃▆▄▇▄▄█▁▅
+wandb: fisher/eigmax_global_mean ▆▅██▆▂▁▂▂▃
+wandb:  fisher/eigmax_global_min ██▇▇▅▂▅▁▃▅
+wandb:  fisher/layer0/eigmax_max ▄▂█▆▇▆▄▁▃▅
+wandb: fisher/layer0/eigmax_mean ▅▄▆█▇▄▄▂▁▄
+wandb:  fisher/layer0/head0/cond ▆▇▁█▂▅▇▅▂▅
+wandb:                      +501 ...
+wandb: 
+wandb: Run summary:
+wandb:       final/best_val_loss 2.81275
+wandb: final/best_val_perplexity 16.65571
+wandb:    fisher/cond_global_max 5236114.5
+wandb:   fisher/cond_global_mean 3138843.40625
+wandb:  fisher/eigmax_global_max 0.05236
+wandb: fisher/eigmax_global_mean 0.03211
+wandb:  fisher/eigmax_global_min 0.01884
+wandb:  fisher/layer0/eigmax_max 0.04848
+wandb: fisher/layer0/eigmax_mean 0.034
+wandb:  fisher/layer0/head0/cond 3113864.0
+wandb:                      +501 ...
+wandb: 
+wandb: 🚀 View run gpt2_adamwspam_mla at: https://wandb.ai/mcgrof-citizen/gpt2-kvsplice-ablation-70pct-a100-40g/runs/iyket6zi
+wandb: ⭐️ View project at: https://wandb.ai/mcgrof-citizen/gpt2-kvsplice-ablation-70pct-a100-40g
+wandb: Synced 5 W&B file(s), 11 media file(s), 22 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20251128_085857-iyket6zi/logs
+W&B tracking finished
+
+Training complete!
+[W1128 12:59:16.645139701 AllocatorConfig.cpp:29] Warning: PYTORCH_HIP_ALLOC_CONF is deprecated, use PYTORCH_ALLOC_CONF instead (function operator())
+2025-11-28 12:59:16,557 - INFO - Training completed successfully
+2025-11-28 12:59:17,069 - INFO - Simple GPU monitoring completed
+2025-11-28 12:59:18,909 - INFO - GPU performance graphs generated: test_matrix_results_20251128_085840/gpt2_adamwspam_mla/gpu_stats_gpt2_adamwspam_mla_20251128_085848_plot.png
+2025-11-28 12:59:18,918 - INFO - GPU stats saved to: test_matrix_results_20251128_085840/gpt2_adamwspam_mla/gpu_stats_gpt2_adamwspam_mla_20251128_085848.json
+2025-11-28 12:59:18,918 - INFO - Generating performance graphs...
+2025-11-28 12:59:20,734 - INFO - GPU performance graphs saved to test_matrix_results_20251128_085840/gpt2_adamwspam_mla/gpu_stats_gpt2_adamwspam_mla_20251128_085848_plot.png
+2025-11-28 12:59:20,734 - INFO - Performance graphs saved to: test_matrix_results_20251128_085840/gpt2_adamwspam_mla/gpu_stats_gpt2_adamwspam_mla_20251128_085848_plot.png
+2025-11-28 12:59:20,734 - INFO - Training with monitoring completed successfully!
+[W1128 12:59:21.274540056 AllocatorConfig.cpp:29] Warning: PYTORCH_HIP_ALLOC_CONF is deprecated, use PYTORCH_ALLOC_CONF instead (function operator())
